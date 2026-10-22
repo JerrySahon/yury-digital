@@ -1406,8 +1406,7 @@ function prods(){
  $("#prods").innerHTML=PROD.map(function(p){
   return '<article class="prod"><span class="pstate '+p.s+'">'+esc(p.st)+"</span>"+
    "<h3>"+esc(p.n)+"</h3><p>"+esc(p.p)+"</p>"+
-   plateHTML({n:p.n,e:p.a},'<b>'+esc(p.st)+'</b><span>'+esc(p.w)+'</span>',PCOL[p.s])+
-   '<div class="why">'+esc(p.w)+"</div>"+
+   plateHTML({n:p.n,e:p.a},'<span>'+esc(p.w)+'</span>',PCOL[p.s])+
    '<div class="act">'+p.a.map(function(a){
      return a[1].charAt(0)==="#"
       ? '<button class="btn go" data-open="lead">'+esc(a[0])+"</button>"
