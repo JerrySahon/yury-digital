@@ -249,7 +249,7 @@ section{padding:56px 0;border-top:1px solid var(--ln)}
 .prod{border:1px solid var(--ln);border-radius:var(--r);background:var(--s1);
   padding:18px;display:flex;flex-direction:column;gap:11px}
 .prod h3{font-family:var(--fd);font-weight:700;font-size:16px;
-  letter-spacing:-.02em}
+  letter-spacing:-.02em;line-height:1.25}
 .prod p{font-size:13.5px;color:#BFC6C9;line-height:1.5}
 .pstate{font-family:var(--fm);font-size:9.5px;letter-spacing:.1em;
   text-transform:uppercase;padding:3px 8px;border-radius:5px;
@@ -434,6 +434,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 .card:hover .cband{border-color:#2E383D}
 @media(max-width:700px){.pthumb{width:62px}}
 .prod .plate{max-width:none;margin:13px 0 0}
+/* plates start on one line across the row: the longest blurb is five lines,
+   so the paragraph holds that floor whenever the cards sit side by side. */
+@media(min-width:560px){.prod h3{min-height:2.5em}.prod p{min-height:7.5em}}
 .steps{margin:0 0 22px;border:1px solid var(--ln);border-radius:12px;
   background:#0E1113;padding:16px 14px 0;overflow:hidden}
 .steps svg{width:100%;height:auto;display:block}
