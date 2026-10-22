@@ -332,7 +332,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
   .drow.open .dbody{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);
     gap:10px 30px;align-items:start}
   .dbody>p,.dbody>.ev,.dbody>.subs,.dbody>.why{grid-column:1}
-  .dbody>.shot,.dbody>.hole{grid-column:2;grid-row:1/span 4;align-self:start}
+  .dbody>.shot,.dbody>.hole,.dbody>.plate{grid-column:2;grid-row:1/span 4;align-self:start}
   .dbody>.shot img{max-height:none}
 }
 
@@ -403,8 +403,57 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
     column-gap:44px;align-items:start;align-content:start;
     grid-auto-rows:max-content;padding-top:6px}
   .trow.on .tbody>.subs{grid-column:2;grid-row:1/span 4;margin-top:3px}
-  .trow.on .tbody>.shot,.trow.on .tbody>.hole{max-width:none}
+  .trow.on .tbody>.shot,.trow.on .tbody>.hole,.trow.on .tbody>.plate{max-width:none}
 }
+
+/* ═══ ПЛИТА: процедурный кадр проекта ════════════════════════════════
+   Земля — domain warping (Iñigo Quilez, iquilezles.org/articles/warp):
+   шум, координаты которого смещены другим шумом. Геометрия сверху —
+   вложенности: по рамке на каждый реальный пункт доказательств и на
+   каждый подпроект, то есть плита считана с содержания карточки.
+   Цвет — из ICO, того же движка, что рисует знаки проектов. */
+.plate{margin-top:14px;border:1px solid var(--ln);border-radius:10px;
+  overflow:hidden;max-width:560px;background:#0E1113;position:relative}
+.plate>canvas{width:100%;display:block;aspect-ratio:16/10;background:#0E1113}
+.plate figcaption{font-family:var(--fm);font-size:10.5px;color:var(--dim);
+  padding:8px 11px;border-top:1px solid var(--ln);background:var(--s2);
+  display:flex;gap:9px;align-items:baseline;flex-wrap:wrap}
+.plate figcaption b{color:var(--go);font-weight:600;letter-spacing:.07em;
+  text-transform:uppercase;font-size:9px;flex:none;padding-top:1px}
+.plate figcaption i{font-style:normal;color:var(--mu)}
+.plate .pact{margin-left:auto;flex:none}
+.dk .plate{margin:0 0 12px;max-width:none;border-radius:8px}
+
+/* миниатюра-плита: тот же процедурный кадр, маленький */
+.pthumb{flex:none;width:84px;aspect-ratio:16/10;display:block;border-radius:7px;
+  border:1px solid var(--ln);background:#0E1113;opacity:.88;
+  transition:opacity .2s ease,border-color .2s ease}
+.drow:hover .pthumb,.drow.open .pthumb{opacity:1;border-color:#2E383D}
+.cband{width:100%;aspect-ratio:16/10;display:block;border-radius:9px;
+  border:1px solid var(--ln);background:#0E1113;margin-bottom:11px}
+.card:hover .cband{border-color:#2E383D}
+@media(max-width:700px){.pthumb{width:62px}}
+.prod .plate{max-width:none;margin:13px 0 0}
+.steps{margin:0 0 22px;border:1px solid var(--ln);border-radius:12px;
+  background:#0E1113;padding:16px 14px 0;overflow:hidden}
+.steps svg{width:100%;height:auto;display:block}
+.steps figcaption{font-family:var(--fm);font-size:10.5px;color:var(--dim);
+  border-top:1px solid var(--ln);margin:12px -14px 0;padding:8px 14px;
+  background:var(--s2)}
+
+/* ═══ СЛЕД КУРСОРА ═══════════════════════════════════════════════════
+   Референс: критически задемпфированный follower (Rauno Freiberg,
+   rauno.me — «Invisible details of interaction design») плюс
+   тейперящаяся лента из семейства интерактивных trail-демо Codrops.
+   Цепочка 20 точек: голова lerp .30, звенья .44; толщина 3.4px → .25px,
+   рывок добавляет не больше +1.6px; осадок гаснет ~.35 с.
+   Изюминка: цвет не из палитры сайта, а из движка знаков — наводишься
+   на проект, след окрашивается в цвет его группы. */
+.trl{position:fixed;inset:0;width:100%;height:100%;z-index:70;pointer-events:none;
+  mix-blend-mode:screen;opacity:0;transition:opacity .35s ease}
+.trl.on{opacity:1}
+@media (hover:none),(pointer:coarse){.trl{display:none}}
+@media (prefers-reduced-motion:reduce){.trl{display:none}}
 </style>
 </head><body>
 
@@ -1012,16 +1061,172 @@ function subHTML(sub){ if(!sub||!sub.length)return"";
  return '<div class="subs">'+sub.map(function(s){
   return '<div class="sub"><b>'+esc(s.n)+"</b><span>"+esc(s.p||"")+"</span></div>";
  }).join("")+"</div>"; }
+/* ─── 2.5 · ПЛИТА И СЛЕД КУРСОРА ───────────────────────────────────
+   Плита: кадр, которого ещё нет, но который уже спроектирован.
+   Земля — domain warping (Iñigo Quilez, iquilezles.org/articles/warp).
+   Рамки — вложенности по числу реальных пунктов карточки.
+   Цвет — ICO.color, тот же движок, что рисует знаки проектов. */
+var KMAP={}; C.flat.forEach(function(f){KMAP[f.it.n]=f.k;});
+
+function fnv1(s){var h=2166136261>>>0,i;s=String(s);
+ for(i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0;}
+ return h>>>0;}
+function rgb3(h){h=String(h||"#9AA0A8");
+ return [parseInt(h.substr(1,2),16),parseInt(h.substr(3,2),16),parseInt(h.substr(5,2),16)];}
+function pcount(it){
+ return ((it.e||[]).length)+((it.sub||[]).length);}
+function plateHTML(it,cap,col){
+ var k=KMAP[it.n]||"", n=pcount(it);
+ return '<figure class="plate"><canvas data-plv="1" data-pn="'+esc(it.n)+
+  '" data-pk="'+esc(k)+'"'+(col?' data-pc="'+col+'"':'')+
+  ' data-pr="'+Math.max(2,Math.min(9,n+2))+
+  '" aria-label="'+esc(it.n)+' \u2014 procedural plate"></canvas>'+
+  '<figcaption>'+cap+'</figcaption></figure>';
+}
+function thumbHTML(it){
+ var k=KMAP[it.n]||"", n=pcount(it);
+ return '<canvas class="pthumb" data-plv="1" data-pn="'+esc(it.n)+
+  '" data-pk="'+esc(k)+'" data-pr="'+Math.max(2,Math.min(9,n+2))+
+  '" aria-hidden="true"></canvas>';
+}
+function plateDraw(cv){
+ if(cv.__pd)return; var W=Math.round(cv.clientWidth||0);
+ if(W<40)return;                       /* ещё скрыт — нарисуем при раскрытии */
+ cv.__pd=1;
+ var nm=cv.dataset.pn||"", k=cv.dataset.pk||"", rings=+cv.dataset.pr||3;
+ var H=Math.round(W*10/16), dpr=Math.min(2,window.devicePixelRatio||1);
+ cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
+ var g=cv.getContext("2d"); if(!g)return;
+ g.setTransform(dpr,0,0,dpr,0,0);
+ var sd=fnv1(nm)/4294967296;
+ function rr(n){var v=Math.sin((n+sd*131.7)*12.9898)*43758.5453123;return v-Math.floor(v);}
+ function nz(x,y,o){var X=Math.floor(x),Y=Math.floor(y),fx=x-X,fy=y-Y;
+  fx=fx*fx*(3-2*fx); fy=fy*fy*(3-2*fy);
+  var a=rr(X*157.3+Y*311.1+o*79.7), b=rr((X+1)*157.3+Y*311.1+o*79.7),
+      e=rr(X*157.3+(Y+1)*311.1+o*79.7), f=rr((X+1)*157.3+(Y+1)*311.1+o*79.7),
+      ab=a+(b-a)*fx;
+  return ab+((e+(f-e)*fx)-ab)*fy;}
+ function fbm(x,y,o){return nz(x,y,o)*0.55+nz(x*2.03,y*2.03,o+3)*0.28+
+   nz(x*4.11,y*4.11,o+7)*0.17;}
+ var w2=Math.max(28,Math.round(W/5)), h2=Math.max(18,Math.round(H/5));
+ var off=document.createElement("canvas"); off.width=w2; off.height=h2;
+ var og=off.getContext("2d"), id=og.createImageData(w2,h2), d=id.data;
+ var A=[13,16,18], B=rgb3(cv.dataset.pc||(window.ICO?ICO.color(k):"#9AA0A8")),
+     x,y,i=0,t,qx,qy,u,v;
+ for(y=0;y<h2;y++) for(x=0;x<w2;x++){
+  u=x/w2*3.4+sd*7.1; v=y/h2*2.2+sd*3.3;
+  qx=fbm(u,v,0); qy=fbm(u+1.7,v+4.3,0);
+  t=fbm(u+3.1*qx, v+3.1*qy, 11);
+  t=(t-0.17)/0.62; t=t<0?0:t>1?1:t; t=t*t*(0.32+0.68*t);
+  d[i++]=A[0]+(B[0]-A[0])*t; d[i++]=A[1]+(B[1]-A[1])*t;
+  d[i++]=A[2]+(B[2]-A[2])*t; d[i++]=255;
+ }
+ og.putImageData(id,0,0);
+ g.imageSmoothingEnabled=true; g.drawImage(off,0,0,W,H);
+ var vg=g.createRadialGradient(W*0.5,H*0.44,W*0.10,W*0.5,H*0.5,W*0.80);
+ vg.addColorStop(0,"rgba(10,12,13,0)"); vg.addColorStop(1,"rgba(10,12,13,0.80)");
+ g.fillStyle=vg; g.fillRect(0,0,W,H);
+ /* вложенности */
+ var tiny=W<170; if(tiny&&rings>3)rings=3;
+ var pad=W*0.055, step=(W*0.46-pad)/rings, ox,oy;
+ g.lineWidth=1;
+ for(i=0;i<rings;i++){ ox=pad+step*i; oy=ox*H/W;
+  g.strokeStyle="rgba("+B.join(",")+","+Math.max(0.055,0.26-0.027*i).toFixed(3)+")";
+  g.strokeRect(Math.round(ox)+0.5,Math.round(oy)+0.5,
+               Math.round(W-2*ox),Math.round(H-2*oy));
+ }
+ if(tiny)return;
+ /* метки кадра */
+ g.strokeStyle="rgba(237,239,240,0.20)"; g.lineWidth=1;
+ var m=Math.round(W*0.034), cc=Math.round(W*0.017);
+ [[m,m,1,1],[W-m,m,-1,1],[m,H-m,1,-1],[W-m,H-m,-1,-1]].forEach(function(p){
+  g.beginPath(); g.moveTo(p[0]+0.5,p[1]+0.5); g.lineTo(p[0]+cc*p[2]+0.5,p[1]+0.5);
+  g.moveTo(p[0]+0.5,p[1]+0.5); g.lineTo(p[0]+0.5,p[1]+cc*p[3]+0.5); g.stroke();
+ });
+ /* тики: по одному на пункт содержания */
+ g.strokeStyle="rgba("+B.join(",")+",0.62)";
+ var tn=rings-2, tx0=Math.round(W*0.5-tn*3.5);
+ for(i=0;i<tn;i++){ g.beginPath();
+  g.moveTo(tx0+i*7+0.5,H-m-1.5); g.lineTo(tx0+i*7+0.5,H-m-6.5); g.stroke(); }
+}
+var pio=null;
+function plates(root){
+ var list=$$("canvas[data-plv]",root||document);
+ if(!list.length)return;
+ if(!("IntersectionObserver" in window)){ list.forEach(plateDraw); return; }
+ if(!pio) pio=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ plateDraw(e.target);
+   if(e.target.__pd) pio.unobserve(e.target); } });
+ },{rootMargin:"220px"});
+ list.forEach(function(cv){ if(!cv.__pd) pio.observe(cv); });
+}
+
+function trail(){
+ if(!window.matchMedia) return;
+ if(!matchMedia("(pointer:fine)").matches) return;
+ if(matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+ var cv=document.createElement("canvas"); cv.className="trl";
+ cv.setAttribute("aria-hidden","true");
+ document.body.appendChild(cv);
+ var g=cv.getContext("2d"); if(!g){cv.remove();return;}
+ var dpr=Math.min(2,window.devicePixelRatio||1), W=0,H=0;
+ function size(){ W=innerWidth; H=innerHeight;
+  cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
+  g.setTransform(dpr,0,0,dpr,0,0); }
+ size(); addEventListener("resize",size);
+ var N=20, px=new Float64Array(N), py=new Float64Array(N), i;
+ var mx=0,my=0,lx=0,ly=0,live=false,idle=0;
+ var col=[226,224,74], want=[226,224,74];
+ addEventListener("pointermove",function(e){
+  if(e.pointerType==="touch")return;
+  mx=e.clientX; my=e.clientY; idle=0;
+  if(!live){ live=true; for(i=0;i<N;i++){px[i]=mx;py[i]=my;}
+   lx=mx; ly=my; cv.classList.add("on"); }
+  var el=e.target, c=el&&el.closest?el.closest("[data-i],[data-ico],[data-pk]"):null, k=null;
+  if(c){ if(c.dataset.pk) k=c.dataset.pk;
+   else { var ix=+(c.dataset.i!=null?c.dataset.i:c.dataset.ico);
+          if(C.flat[ix]) k=C.flat[ix].k; } }
+  want = (k&&window.ICO) ? rgb3(ICO.color(k)) : [226,224,74];
+ },{passive:true});
+ addEventListener("pointerleave",function(){ cv.classList.remove("on"); });
+ addEventListener("pointerenter",function(){ if(live)cv.classList.add("on"); });
+ (function loop(){
+  requestAnimationFrame(loop);
+  if(!live)return;
+  if(++idle>150){ g.clearRect(0,0,W,H); return; }
+  for(i=0;i<3;i++) col[i]+=(want[i]-col[i])*0.09;
+  px[0]+=(mx-px[0])*0.30; py[0]+=(my-py[0])*0.30;
+  for(i=1;i<N;i++){ px[i]+=(px[i-1]-px[i])*0.44; py[i]+=(py[i-1]-py[i])*0.44; }
+  var vx=px[0]-lx, vy=py[0]-ly; lx=px[0]; ly=py[0];
+  var sp=Math.sqrt(vx*vx+vy*vy)/26; if(sp>1)sp=1;
+  g.globalCompositeOperation="destination-out";
+  g.fillStyle="rgba(0,0,0,0.072)"; g.fillRect(0,0,W,H);
+  g.globalCompositeOperation="lighter";
+  var c3=Math.round(col[0])+","+Math.round(col[1])+","+Math.round(col[2]);
+  g.lineCap="round"; g.lineJoin="round";
+  for(i=1;i<N;i++){ var f=1-i/N;
+   g.strokeStyle="rgba("+c3+","+(0.12+0.46*f*f).toFixed(3)+")";
+   g.lineWidth=0.3+(5.4+2.2*sp)*f;
+   g.beginPath(); g.moveTo(px[i-1],py[i-1]); g.lineTo(px[i],py[i]); g.stroke();
+  }
+  g.fillStyle="rgba("+c3+",0.92)";
+  g.beginPath(); g.arc(mx,my,2.2+1.4*sp,0,6.2832); g.fill();
+  g.globalCompositeOperation="source-over";
+ })();
+}
+
 function visHTML(it){
  if(it.img&&IMG[it.img]) return '<figure class="shot"><img alt="'+esc(it.n)+
    '" src="'+IMG[it.img]+'"><figcaption>'+esc(CAP[it.img]||"")+"</figcaption></figure>";
- if(it.need) return '<div class="hole">'+esc(it.need)+"</div>";
- return "";
+ if(it.need) return plateHTML(it,'<b>Photo pending</b><span>'+esc(it.need)+
+   '</span><i>frame drawn from the case itself</i>');
+ return plateHTML(it,'<b>Plate</b><span>'+pcount(it)+
+   (pcount(it)===1?" point":" points")+' of this case, drawn</span>');
 }
 function bodyHTML(it){
  if(it.gate&&!unlocked()) return '<p>'+esc(it.p)+"</p>"+evHTML(it.e)+
-   '<div class="hole">This case opens after the form. '+
-   '<button class="btn go" data-open="lead" style="margin-left:6px">Open</button></div>';
+   plateHTML(it,'<b>Locked</b><span>'+esc(it.gate)+'</span>'+
+    '<span class="pact"><button class="btn go" data-open="lead">Open</button></span>');
  return "<p>"+esc(it.p)+"</p>"+evHTML(it.e)+visHTML(it)+subHTML(it.sub)+
   (it.link?'<div class="why">'+esc(it.link)+"</div>":"");
 }
@@ -1037,15 +1242,17 @@ FMT["Dossier"]=function(host){                      /* вариант 12 · Morp
    '<span class="dmeta"><span class="dname">'+esc(it.n)+
      '<span class="st '+stCls(it.st)+'">'+stTx(it.st)+"</span></span>"+
      '<span class="dtag">'+esc(it.tag||"")+"</span></span>"+
-   '<span class="dgrp">'+esc(f.g)+"</span></button>"+
+   '<span class="dgrp">'+esc(f.g)+"</span>"+thumbHTML(it)+"</button>"+
    '<div class="dbody">'+bodyHTML(it)+"</div></article>";
  }).join("")+"</div>";
  $$(".drow",host).forEach(function(r){
   var b=$(".dhead",r);
   b.addEventListener("click",function(){
-   var o=r.classList.toggle("open"); b.setAttribute("aria-expanded",o?"true":"false");});
+   var o=r.classList.toggle("open"); b.setAttribute("aria-expanded",o?"true":"false");
+   if(o)plates(r);});
  });
- if(C.flat.length) $(".drow",host).classList.add("open");
+ $$(".drow",host).slice(0,3).forEach(function(r){ r.classList.add("open");
+  $(".dhead",r).setAttribute("aria-expanded","true"); });
 };
 
 FMT["Through type"]=function(host){                 /* вариант 08 */
@@ -1058,7 +1265,7 @@ FMT["Through type"]=function(host){                 /* вариант 08 */
    '<div class="tbody">'+bodyHTML(it)+"</div></article>";
  }).join("")+"</div>";
  $$(".trow",host).forEach(function(r){
-  function tg(){ r.classList.toggle("on"); }
+  function tg(){ r.classList.toggle("on"); if(r.classList.contains("on"))plates(r); }
   r.addEventListener("click",tg);
   r.addEventListener("keydown",function(e){
    if(e.key==="Enter"||e.key===" "){e.preventDefault();tg();}});
@@ -1075,7 +1282,10 @@ FMT["Grid"]=function(host){                      /* вариант 14 + груп
    "<b>"+esc(g.g)+"</b><span>"+g.items.length+
    (g.items.length===1?" project":" projects")+'</span><div class="gbar"></div></div>'+
    '<div class="cards">'+g.items.map(function(it){var i=n++;
-    return '<button class="card" data-i="'+i+'"><canvas class="ico" data-ico="'+i+'"></canvas>'+
+    return '<button class="card" data-i="'+i+'">'+
+     '<canvas class="cband" data-plv="1" data-pn="'+esc(it.n)+'" data-pk="'+esc(g.k)+
+     '" data-pr="'+Math.max(2,Math.min(9,pcount(it)+2))+'" aria-hidden="true"></canvas>'+
+     '<canvas class="ico" data-ico="'+i+'"></canvas>'+
      '<span class="cname">'+esc(it.n)+"</span>"+
      '<span class="st '+stCls(it.st)+'" style="align-self:flex-start">'+stTx(it.st)+"</span>"+
      '<span class="ctag">'+esc(it.tag||"")+"</span></button>";
@@ -1088,6 +1298,11 @@ FMT["Grid"]=function(host){                      /* вариант 14 + груп
 FMT["Deck"]=function(host){                     /* вариант 15 */
  host.innerHTML='<div class="deck">'+C.flat.map(function(f,i){var it=f.it;
   return '<button class="dk" data-i="'+i+'"><canvas class="ico" data-ico="'+i+'"></canvas>'+
+   (it.img&&IMG[it.img]
+    ? '<figure class="plate"><img alt="'+esc(it.n)+'" src="'+IMG[it.img]+
+      '" style="width:100%;display:block"></figure>'
+    : plateHTML(it,'<b>'+(it.need?'Photo pending':'Plate')+'</b><span>'+
+        esc(it.need||(pcount(it)+' points, drawn'))+'</span>'))+
    "<h3>"+esc(it.n)+"</h3>"+
    '<span class="st '+stCls(it.st)+'" style="align-self:flex-start">'+stTx(it.st)+"</span>"+
    "<p>"+esc(it.p)+"</p>"+evHTML((it.e||[]).slice(0,2))+"</button>";
@@ -1107,6 +1322,7 @@ function paintFormat(name){
  var host=$("#fhost"); FMT[name](host);
  $("#fnote").textContent=NOTE[name];
  $$("[data-ico]",host).forEach(function(cv){ icoInto(cv,+cv.dataset.ico); });
+ plates(host);
  $$("#ftabs button").forEach(function(b){
   b.setAttribute("aria-selected", b.textContent===name?"true":"false"); });
 }
@@ -1116,6 +1332,7 @@ function openCase(i){
  var f=C.flat[i], it=f.it;
  panel('<h3>'+esc(it.n)+"</h3><p>"+esc(f.g)+" · "+esc(it.tag||"")+"</p>"+
   '<div style="margin-top:14px">'+bodyHTML(it)+"</div>");
+ plates($("#pan"));
 }
 
 /* ─── 5 · БЕНЧМАРК ─── */
@@ -1134,10 +1351,38 @@ function bench(){
      '<i class="ldot"></i><span class="lwhy">'+esc(r.w)+'</span></div>';
    }).join("")+'</div></li>';
  }).join("")+'</ol>';
+ /* Высота ступени = МЕСТО. Пейпер даёт места, а не баллы, поэтому
+    длину полосы рисовать нечем — ступень честнее столбика. */
+ var N=ord.length, SW=620, gp=14, bw=(SW-gp*(N+1))/N, base=168;
+ $("#brows").insertAdjacentHTML("afterbegin",
+  '<figure class="steps"><svg viewBox="0 0 '+SW+' 214" role="img" '+
+   'aria-label="rank ladder from the paper, our engine first"><g>'+
+   ord.map(function(rk,i){
+    var set=map[rk], hot=set.some(function(r){return r.hot;}),
+        h=42+(N-1-i)*44, x=gp+(bw+gp)*i, y=base-h,
+        c=hot?"#E2E04A":"#4A565C";
+    return '<rect x="'+x.toFixed(1)+'" y="'+y+'" width="'+bw.toFixed(1)+
+      '" height="'+h+'" rx="4" fill="'+c+'" fill-opacity="'+(hot?".90":".26")+
+      '" stroke="'+c+'" stroke-opacity="'+(hot?"1":".55")+'"></rect>'+
+     '<text x="'+(x+bw/2).toFixed(1)+'" y="'+(y-9)+'" text-anchor="middle" '+
+      'font-family="JetBrains Mono,monospace" font-size="12" fill="'+
+      (hot?"#E2E04A":"#7E8A91")+'">'+esc(rk)+'</text>'+
+     set.map(function(r,j){
+      return '<text x="'+(x+bw/2).toFixed(1)+'" y="'+(base+21+j*17)+
+       '" text-anchor="middle" font-family="JetBrains Mono,monospace" '+
+       'font-size="11.5" fill="'+(r.hot?"#EDEFF0":"#7E8A91")+'">'+
+       esc(r.n)+(r.hot?" \u2190 ours":"")+'</text>';
+     }).join("")+
+     '<line x1="'+x.toFixed(1)+'" y1="'+base+'" x2="'+(x+bw).toFixed(1)+
+      '" y2="'+base+'" stroke="#222A2E"></line>';
+   }).join("")+'</g></svg>'+
+   '<figcaption>Height is the place, not a score \u2014 the paper reports '+
+   'ranks, so there is no bar length to draw honestly.</figcaption></figure>');
  $("#bsrc").textContent=b.t+" · "+b.src;
 }
 
 /* ─── 6 · ПРОДУКТЫ (только существующее, без выдумок) ─── */
+var PCOL={open:"#2FE0A6",beta:"#E2E04A",ask:"#FF8A3D"};
 var PROD=[
  {n:"Pearch.AI \u00b7 API and MCP server",s:"open",st:"open",
   p:"Finds people from a plain-language description. Plugs into somebody else's ATS as an MCP server \u2014 and that ATS suddenly knows how to search people.",
@@ -1160,13 +1405,16 @@ var PROD=[
 function prods(){
  $("#prods").innerHTML=PROD.map(function(p){
   return '<article class="prod"><span class="pstate '+p.s+'">'+esc(p.st)+"</span>"+
-   "<h3>"+esc(p.n)+"</h3><p>"+esc(p.p)+'</p><div class="why">'+esc(p.w)+"</div>"+
+   "<h3>"+esc(p.n)+"</h3><p>"+esc(p.p)+"</p>"+
+   plateHTML({n:p.n,e:p.a},'<b>'+esc(p.st)+'</b><span>'+esc(p.w)+'</span>',PCOL[p.s])+
+   '<div class="why">'+esc(p.w)+"</div>"+
    '<div class="act">'+p.a.map(function(a){
      return a[1].charAt(0)==="#"
       ? '<button class="btn go" data-open="lead">'+esc(a[0])+"</button>"
       : '<a class="btn" target="_blank" rel="noopener" href="'+a[1]+'">'+esc(a[0])+"</a>";
    }).join("")+"</div></article>";
  }).join("");
+ plates($("#prods"));
 }
 
 /* ─── 7 · ПАНЕЛЬ ─── */
@@ -1302,7 +1550,7 @@ function boot(){
  $$("#ftabs button").forEach(function(b){
   b.addEventListener("click",function(){paintFormat(b.textContent);});});
  paintFormat(ORDER[0]);
- bench(); prods(); shareCard();
+ bench(); prods(); shareCard(); trail();
  $("#entry").textContent=unlocked()?"Access open":"Sign in";
  /* события */
  document.addEventListener("click",function(e){
