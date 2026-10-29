@@ -3,11 +3,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sakhonchyk.</title>
-<meta name="description" content="Fifteen projects across six industries — what shipped, what it changed, and the numbers behind it.">
+<meta name="description" content="Sixteen projects across six industries — what shipped, what it changed, and the numbers behind it.">
 <link rel="canonical" href="https://yury.digital/">
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Sakhonchyk — fifteen projects, six industries">
-<meta property="og:description" content="Yury Sakhonchyk — founder of Pearch.AI. Fifteen projects across six industries, and a benchmark we won.">
+<meta property="og:title" content="Sakhonchyk — sixteen projects, six industries">
+<meta property="og:description" content="Yury Sakhonchyk — founder of Pearch.AI. Sixteen projects across six industries, and a benchmark we won.">
 <meta property="og:url" content="https://yury.digital/">
 <meta property="og:image" content="https://yury.digital/img/camp.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -242,12 +242,6 @@ section{padding:56px 0;border-top:1px solid var(--ln)}
 .pan{position:relative}
 
 /* ═══ ШЕРИНГ-КАРТОЧКА ═══ */
-.shr{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start}
-.shrcv{width:100%;border:1px solid var(--ln);border-radius:14px;display:block;
-  background:var(--s1)}
-.shrtx{font-size:14px;color:#C6CCCF;line-height:1.55}
-.shrtx .btn{margin-top:6px;margin-right:8px}
-@media(max-width:820px){.shr{grid-template-columns:1fr}}
 
 /* ═══ КОНТАКТЫ · ПОДВАЛ ═══ */
 .cts{display:flex;flex-wrap:wrap;gap:9px}
@@ -349,7 +343,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
   <a class="brand" href="#"><span class="sig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="M12 7.5 16.5 12 12 16.5 7.5 12z"/><circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none"/></svg></span><span id="mark2">Sakhonchyk.</span></a>
   <nav class="nav">
     <a href="#work">Work</a><a href="#bench">Benchmark</a>
-    <a href="#prod">Products</a><a href="#share">Share</a>
+    <a href="#prod">Products</a><a href="#ct">Contact</a>
   </nav>
   <button class="btn go" id="entry" data-open="lead">Sign in</button>
 </div></header>
@@ -363,9 +357,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
       <p class="hthesis" id="hthesis"></p>
       <p class="hturn" id="hturn"></p>
       <div class="hcta">
-        <button class="btn go" data-open="lead">Investor / Partnership</button>
-        <a class="btn" href="#work">See the work</a>
-        <a class="btn" href="#share">Pass me on</a>
+        <button class="btn go" data-open="lead">For Investors &amp; Partnerships</button>
+        <a class="btn" href="#work">See the track record</a>
+        <a class="btn" href="https://www.linkedin.com/in/yu-ry" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </div>
   </div>
@@ -375,7 +369,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 <section id="work"><div class="wrap">
   <div class="shead">
     <h2>Work<span class="num" id="ccount"></span></h2>
-    <p>Fifteen projects, grouped by industry. Open any card for the case:
+    <p>Projects grouped by industry. Open any card for the case:
        what was built, what it changed, and what is still pending.</p>
   </div>
   <div id="fhost"></div>
@@ -397,32 +391,6 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
   <div class="prods" id="prods"></div>
 </div></section>
 
-<section id="share"><div class="wrap">
-  <div class="shead">
-    <h2>Pass me on</h2>
-    <p>The card is drawn right here in your browser: the constellation, my mark
-       and the marks of all fifteen projects. Take the picture and the text,
-       and send them to whoever needs them.</p>
-  </div>
-  <div class="shr">
-    <canvas class="shrcv" id="shrcv"></canvas>
-    <div class="shrtx">
-      <b>What this site is</b>
-      <p>A man who has spent fourteen years launching what did not exist yet:
-         concrete, retail, 3D, networking, now AI people search. Fifteen
-         projects, six industries, one paper in which we came out ahead of
-         LinkedIn Recruiter.</p>
-      <b>Who the character is</b>
-      <p>Stopped managing people and started managing models. Builds products by
-         vibe-coding and runs them from a dashboard made for ADHD rather than
-         against it.</p>
-      <button class="btn go" id="copysum">Copy the summary</button>
-      <button class="btn" id="savecard">Download the card</button>
-      <button class="btn" id="natshare" style="display:none">Share…</button>
-    </div>
-  </div>
-</div></section>
-
 <section id="ct"><div class="wrap">
   <div class="shead"><h2>Contact</h2><p>Straight to me, no form.</p></div>
   <div class="cts">
@@ -438,7 +406,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 </div></section>
 
 <footer><div class="wrap">
-  <span>Fifteen projects across six industries — the cases, the numbers, and what is still missing.</span>
+  <span>Sixteen projects across six industries — the cases, the numbers, and what is still missing.</span>
   <span class="num">yury.digital</span>
 </div></footer>
 
@@ -454,12 +422,12 @@ var C={
  name:"Yury Sakhonchyk", mark:"Sakhonchyk.",
  role:"Founder · product · vibe-coding",
  city:"Yerevan, Armenia",
- thesis:"Fourteen years of launching what didn't exist yet — concrete, retail, 3D, networking, now AI search.",
- turn:"I stopped managing people and started managing models.",
+ thesis:"Fourteen years of launching what didn't exist yet: HVAC engineering, BTL & retail, XR & EdTech, social networks, people tech & data science, hardware health tech — and AI business automation.",
+ turn:"I used to manage people. Now I lead people who run agents.",
  /* доказательства — только из реальных цифр портфеля */
- chips:[{k:"15",u:"products shipped"},{k:"6",u:"industries"},{k:"$1M+",u:"raised"},
+ chips:[{k:"16",u:"projects"},{k:"6",u:"industries"},{k:"$1M+",u:"raised"},
         {k:"150+",u:"B2B clients"},{k:"40",u:"people led, peak"}],
- door:{t:"Investor / Partnership",s:"four questions, then straight to me"},
+ door:{t:"For Investors & Partnerships",s:"four questions, then straight to me"},
  hint:"Contacts are always here — bottom right.",
  /* бенчмарк живёт внутри Pearch, не в первом экране */
  bench:{
@@ -483,7 +451,7 @@ var C={
          {n:"Onboarding flow",p:"A partner's path from key to first query."},
          {n:"API documentation format",p:"Mine to own — which is where the technical depth comes from."}]}]},
   {g:"Software for sports clubs",k:"sport",items:[
-   {n:"Padel Club OS",top:2,why:"inspired by a hobby",link:"yury.digital/padel_club_OS",st:"live",tag:"portfolio project: Paddle Battle Club",
+   {n:"Padel Club OS",top:2,why:"inspired by a hobby",link:"yury.digital/padel_club_OS",st:"live",tag:"portfolio project: Padel Battle Club",
     p:"The operating system of a padel club: a site with CRM and intake, a Telegram bot with admins wired in, court-load tracking, a content plan driven by that load, and a corporate offer that tracks who opened it.",
     e:[],need:"numbers are on you",img:"courts",
     sub:[{n:"Media kit",p:"Work in progress."},
@@ -494,34 +462,32 @@ var C={
     e:["100+ events","5,000 attendees","15,000 conversations started","five figures revenue"],
     need:"app screens + stats"}]},
   {g:"Digital, 3D and retail production",k:"dig",items:[
-   {n:"Under Armour Russia",st:"done",tag:"every store fit-out across Russia",
-    p:"Technical director of the brand agency. Every marketing fit-out of the stores across the country, working straight with the head office in Panama. Adapted international window designs to local manufacturing and ran simultaneous night shifts in different cities.",
+   {n:"Under Armour",st:"done",tag:"Agency Co-Founder & CTO · 13 stores across the country in 4 months",
+    p:"Co-founder and CTO of the brand agency. Every marketing fit-out of the stores across the country, working straight with the head office in Panama. Adapted international window designs to local manufacturing and ran simultaneous night shifts in different cities.",
     e:["13 stores in 4 months","50+ people","a direct line to Panama"],
     need:"window, fixture and render photos"},
-   {n:"Yurasha",st:"done",tag:"a brand, next to Under Armour",
-    p:"Drove traffic and made content for the brand. Four products under it.",
-    e:["top-10 sales on the tables"],
+   {n:"YouRussia",st:"done",tag:"brand · online course «Wild bouquets» · 5,000+ students",
+    p:"My own brand: traffic, content and four products under one name. The biggest was an online course on wild bouquets — more than 5,000 people took it.",
+    e:["5,000+ students","top-10 sales on the tables"],
     sub:[{n:"Steel tables cut as vyshyvanka embroidery",p:"Top-10 by sales."},
          {n:"Planters from ventilation duct",p:"The same duct as in Gresco — only indoors."},
-         {n:"Online course «Wild bouquets»",p:"An info product."},
+         {n:"Online course «Wild bouquets»",p:"5,000+ students."},
          {n:"T-shirts with a stand we designed ourselves",p:"In many Russian cities."}],
     need:"photos of the tables and the stand"},
-   {n:"Simple Digital",st:"done",tag:"AR / 3D studio",
-    p:"Managing partner. A remote team of design, development, 3D and motion — seven people from four countries. Launched the Hyundai Sonata in the UAE. Digitised 70+ Elikor hood models plus a configurator.",
+   {n:"Simple Digital",st:"done",tag:"Founder, CEO & Creative Director · Hyundai · Elikor",
+    p:"Founder, CEO and creative director of an AR / 3D studio. A remote team of design, development, 3D and motion — seven people from four countries. Launched the Hyundai Sonata in the UAE. Digitised 70+ Elikor hood models plus a configurator.",
     e:["120+ projects","average deal ×10","7 people / 4 countries"],
     need:"validate the numbers + screens"},
-   {n:"WNM Digital",st:"done",tag:"Disney · EA Games · Epic Games",
-    p:"Senior account manager. 18 projects at an average budget of ₽3–5M, five of them with public figures. Shoots with crews of 50+. One project went wide in the media.",
-    e:["18 projects","₽3–5M average budget","10M+ reach","50+ on set"]}]},
+   {n:"WNM Digital",st:"done",tag:"Senior Account Manager · Disney · EA Games · Epic Games",
+    p:"Senior account manager. 18 projects at an average budget of ≈$45–75K, five of them with public figures. Shoots with crews of 50+. One project went wide in the media.",
+    e:["18 projects","≈$45–75K average budget","10M+ reach","50+ on set"]}]},
   {g:"Construction and industrial engineering",k:"build",items:[
-   {n:"Gresco",st:"done",tag:"my brother is CEO, I held a partner-level seat",
-    p:"From selling industrial ventilation to running construction sites. Two or three sites at once, up to 40 people reporting directly — the most I have ever led.",
-    e:["₽350M+ turnover","10+ sites","₽20–40M per site","40 people"],
-    need:"site photos and screens"},
-   {n:"Condor-S",st:"done",tag:"time tracking and face recognition on sites",
-    p:"Time tracking, face recognition, interactive tablets on five sites, electronic data capture. A ≈₽100K rollout saved ₽500K+ of payroll in two months.",
-    e:["₽500K saved in 2 months","×5 return in a quarter","5 sites"],
-    need:"screens"}]},
+   {n:"Gresco",st:"done",tag:"Managing Partner · HVAC engineering · GR · innovation driver",
+    p:"Managing partner of an HVAC engineering company. From selling industrial ventilation to running construction sites: two or three at once, up to 40 people reporting directly — the most I have ever led. GR was part of the job: permits, utilities and public clients.",
+    e:["$5M+ turnover","10+ sites","$300–600K per site","40 people"],
+    sub:[{n:"Innovation: offline face recognition on our sites",
+          p:"Offline face recognition plus a work-tracking system with deadlines on five sites. A ≈$1.5K rollout saved $7.5K+ of payroll in two months — ×5 return in a quarter."}],
+    need:"site photos and screens"}]},
   {g:"Personal products, vibe-coded",k:"vibe",items:[
    {n:"Project Radar",st:"live",tag:"vibe-coded on myself",
     p:"A product-owner agent that manages me: ranks projects by impact and cost, runs scheduled tasks, swaps my phone wallpaper to match the focus, and reads information back through neuro-interface rules.",
@@ -540,18 +506,25 @@ var C={
     e:["hunting the first buyer"],need:"hackathon name + a shot"},
    {n:"Frontier map",st:"wip",tag:"a future product",
     p:"It decomposes a task and hunts the leading solution for each part: GitHub open source → products → and if there are none or they are absurdly priced, how to build it yourself and which services you would need. Recursively, until the ideal.",
-    e:["36 nodes · 6 ok / 11 known / 19 holes"]}]}
+    e:["36 nodes · 6 ok / 11 known / 19 holes"]},
+   {n:"Kettlebell technique advisor",st:"wip",tag:"fitness · camera-based form check",
+    p:"Watches a kettlebell set through the camera and points out technique errors — so you fix the swing before it costs you your back.",
+    e:["prototype"]},
+   {n:"Padel highlights cropper",st:"wip",tag:"cuts the best rallies from a match",
+    p:"Takes a recording of a padel game and cuts the highlights out of it, ready to post.",
+    e:["prototype"]}]}
  ]
 };
 C.flat=[];C.groups.forEach(function(g){g.items.forEach(function(it){
  C.flat.push({g:g.g,k:g.k,it:it});});});
 C.n=C.flat.length;
+C.chips[0].k=String(C.n);
 C.gcount=C.groups.length;
 /* ═══ ОБЩИЕ УТИЛИТЫ ═══ */
 var V={};
 var CAP={camp:"Highland camp — the cover shot he picked himself",
  pearch:"Pearch.AI results — candidate data redacted in the pixels, not by CSS",
- courts:"Paddle Battle Club courts, from the drone",
+ courts:"Padel Battle Club courts, from the drone",
  arxiv:"arXiv:2504.02463 — the preprint page"};
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(m){
  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m];});}
@@ -592,7 +565,7 @@ function BENCH(cls){
 function GSTYLE(){return window.gsap?gsap:null;}
 </script>
 <script>/* ═══ ЗНАКИ ПРОЕКТОВ ═══════════════════════════════════════════════════
-   Пятнадцать нарисованных иконок, по одной на проект, в порядке
+   Шестнадцать нарисованных иконок, по одной на проект, в порядке
    C.flat. Линейные, 24×24, stroke=currentColor — цвет задаёт
    группа проекта. Никакого движка: статичный SVG, первый кадр
    рисуется сразу и без JS-пересчёта.
@@ -608,13 +581,14 @@ var D=[
  '<path d="M12 2.6 20.6 7.1v9.8L12 21.4 3.4 16.9V7.1z"/><path d="M12 2.6v9.4l8.6-4.9M12 12 3.4 7.1M12 12v9.4"/>',   /* 5 */
  '<rect x="2.6" y="7.6" width="18.8" height="8.8" rx="4.4"/><path d="M7 10.6v2.8M5.6 12h2.8"/><circle cx="16.1" cy="11.1" r="1" fill="currentColor" stroke="none"/><circle cx="18.4" cy="13.5" r="1" fill="currentColor" stroke="none"/>',   /* 6 */
  '<path d="M4.6 21.4V12A7.4 7.4 0 0 1 12 4.6h7.4"/><path d="M1.6 21.4h6"/><path d="M19.4 1.6v6"/>',   /* 7 */
- '<path d="M2.6 9.4 12 15l9.4-5.6"/><path d="M5.6 14.4 12 18.4l6.4-4"/>',   /* 8 */
- '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.4"/><path d="M12 12 18.4 7.8"/><circle cx="15.8" cy="15.3" r="1.2" fill="currentColor" stroke="none"/>',   /* 9 */
- '<circle cx="12" cy="12" r="9"/><circle cx="9.1" cy="10" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.9" cy="10" r="1.1" fill="currentColor" stroke="none"/><path d="M8 14.4c1.1 1.5 2.4 2.2 4 2.2s2.9-.7 4-2.2"/>',   /* 10 */
- '<path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="M7.25 7.25 16.75 16.75M16.75 7.25 7.25 16.75"/>',   /* 11 */
- '<path d="M12 6.5C10 4.9 7.5 4.2 4 4.2v12.6c3.5 0 6 .7 8 2.3 2-1.6 4.5-2.3 8-2.3V4.2c-3.5 0-6 .7-8 2.3z"/><path d="M12 6.5v12.6"/>',   /* 12 */
- '<rect x="10" y="10" width="4" height="4" rx=".8"/><rect x="2.6" y="10.5" width="5.4" height="3" rx=".8"/><rect x="16" y="10.5" width="5.4" height="3" rx=".8"/><path d="M12 10V6.6"/><path d="M10.2 5.3a2.5 2.5 0 0 1 3.6 0"/>',   /* 13 */
- '<path d="M4.5 12c1.5-5 5-7.5 9-6.5s5.5 4.5 5 8-3 6-6.5 6-9-2.5-7.5-7.5z"/><path d="M8 12.2c.8-2.6 2.6-3.9 4.7-3.4s2.9 2.3 2.6 4.1-1.6 3.1-3.4 3.1-4.7-1.3-3.9-3.8z"/><circle cx="12" cy="12.4" r="1.2" fill="currentColor" stroke="none"/>',   /* 14 */
+ '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.4"/><path d="M12 12 18.4 7.8"/><circle cx="15.8" cy="15.3" r="1.2" fill="currentColor" stroke="none"/>',   /* 8 */
+ '<circle cx="12" cy="12" r="9"/><circle cx="9.1" cy="10" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.9" cy="10" r="1.1" fill="currentColor" stroke="none"/><path d="M8 14.4c1.1 1.5 2.4 2.2 4 2.2s2.9-.7 4-2.2"/>',   /* 9 */
+ '<path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="M7.25 7.25 16.75 16.75M16.75 7.25 7.25 16.75"/>',   /* 10 */
+ '<path d="M12 6.5C10 4.9 7.5 4.2 4 4.2v12.6c3.5 0 6 .7 8 2.3 2-1.6 4.5-2.3 8-2.3V4.2c-3.5 0-6 .7-8 2.3z"/><path d="M12 6.5v12.6"/>',   /* 11 */
+ '<rect x="10" y="10" width="4" height="4" rx=".8"/><rect x="2.6" y="10.5" width="5.4" height="3" rx=".8"/><rect x="16" y="10.5" width="5.4" height="3" rx=".8"/><path d="M12 10V6.6"/><path d="M10.2 5.3a2.5 2.5 0 0 1 3.6 0"/>',   /* 12 */
+ '<path d="M4.5 12c1.5-5 5-7.5 9-6.5s5.5 4.5 5 8-3 6-6.5 6-9-2.5-7.5-7.5z"/><path d="M8 12.2c.8-2.6 2.6-3.9 4.7-3.4s2.9 2.3 2.6 4.1-1.6 3.1-3.4 3.1-4.7-1.3-3.9-3.8z"/><circle cx="12" cy="12.4" r="1.2" fill="currentColor" stroke="none"/>',   /* 13 */
+ '<path d="M8.6 9.4V7.6a3.4 3.4 0 0 1 6.8 0v1.8"/><circle cx="12" cy="14.8" r="6"/><path d="M9.6 14.8h4.8"/>',   /* 14 */
+ '<path d="M6 2.6V18h15.4"/><path d="M2.6 6H18v15.4"/><path d="M10.4 9.4v5.2l4.2-2.6z"/>'   /* 15 */
 ];
 var SITE='<path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="M12 7.5 16.5 12 12 16.5 7.5 12z"/><circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none"/>';
 function w(b){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+b+"</svg>";}
@@ -702,7 +676,8 @@ function bodyHTML(it){
    '<div class="shot hole"><span>'+esc(it.gate)+'</span>'+
    '<button class="btn go" data-open="lead">Open</button></div>';
  return "<p>"+esc(it.p)+"</p>"+evHTML(it.e)+visHTML(it)+subHTML(it.sub)+
-  (it.link?'<div class="why"><a href="https://'+esc(it.link)+'" target="_blank" rel="noopener">'+esc(it.link)+" ↗</a></div>":"");
+  (it.link?'<div class="why"><a href="https://'+esc(it.link)+'" target="_blank" rel="noopener">'+esc(it.link)+" ↗</a></div>":"")+
+  '<div class="why">Full case page — details coming soon.</div>';
 }
 /* ─── 3 · ПОРТФЕЛЬ: ОДИН ФОРМАТ ───────────────────────────────────
    Группы видны полосами, ширина полосы = её населённость, внутри —
@@ -796,23 +771,26 @@ function bench(){
 
 /* ─── 6 · ПРОДУКТЫ (только существующее, без выдумок) ─── */
 var PROD=[
- {n:"Pearch.AI \u00b7 API and MCP server",s:"open",st:"open",
-  p:"Finds people from a plain-language description. Plugs into somebody else's ATS as an MCP server \u2014 and that ATS suddenly knows how to search people.",
-  w:"live product: 150+ B2B clients, 15+ countries",
-  a:[["Open pearch.ai","https://pearch.ai"]]},
- {n:"The benchmark paper",s:"open",st:"download",
-  p:"Blind human judgement across four sourcing engines. Our name is on it, and we come first.",
-  w:"arXiv:2504.02463 \u00b7 PDF, open access",
-  a:[["Download the PDF","https://arxiv.org/pdf/2504.02463"],
-     ["Page on arXiv","https://arxiv.org/abs/2504.02463"]]},
- {n:"An hour with me",s:"ask",st:"on request",
-  p:"A teardown of your product, your sourcing or your vibe-coding. One hour, from $100. A short form first \u2014 so I can tell whether I'm any use to you.",
-  w:"payment is arranged directly, after the form",
-  a:[["Leave a request","#lead"]]},
- {n:"Project Radar",s:"beta",st:"closed beta",
-  p:"A dashboard that runs my projects instead of me: ranks them by impact, spots the abandoned ones and nags. Built for ADHD, not against it.",
-  w:"handed out one at a time \u2014 tell me what you'd use it for",
-  a:[["Ask for access","#lead"]]}
+ {n:"Pearch.ai",s:"open",st:"open",
+  p:"AI people search: describe who you need in plain words and get the people. Works as an API and as an MCP server inside somebody else's ATS.",
+  w:"150+ B2B clients in 15 countries \u00b7 paper on arXiv, first in blind tests",
+  a:[["Open pearch.ai","https://pearch.ai"],["Read the paper","https://arxiv.org/abs/2504.02463"]]},
+ {n:"Padel Club OS",s:"open",st:"open",
+  p:"The operating system of a working padel club: bookings, events, guests and partners in one place. Running on the largest club in Armenia.",
+  w:"the case, and how to plug it into your own club",
+  a:[["Open Padel Club OS","https://yury.digital/padel_club_OS/"]]},
+ {n:"Padel Battle club site",s:"open",st:"open",
+  p:"The public site of the club where Padel Club OS runs.",
+  w:"padelbattle.am",
+  a:[["Open padelbattle.am","https://padelbattle.am"]]},
+ {n:"Satellite imagery \u00b7 GroundTruth",s:"open",st:"open",
+  p:"The hackathon project on satellite data. My way into space tech.",
+  w:"public page with the build",
+  a:[["Open GroundTruth","https://jerrysahon.github.io/groundtruth/"]]},
+ {n:"Emozu pitch deck",s:"ask",st:"on request",
+  p:"Hardware health tech for children: a device that warns about a meltdown early. We are raising now; the deck goes out after a short form.",
+  w:"pre-seed \u00b7 raising",
+  a:[["Request the deck","#lead"]]}
 ];
 function prods(){
  $("#prods").innerHTML=PROD.map(function(p){
@@ -884,54 +862,6 @@ function gateRefresh(){
  work();
 }
 
-/* ─── 9 · ШЕРИНГ: КАРТОЧКА «О ЧЁМ САЙТ И ЧТО ЗА ПЕРСОНАЖ» ─── */
-function shareText(){
- return C.name+" — "+C.role+", "+C.city+".\n"+C.thesis+"\n«"+C.turn+"»\n"+
-  C.chips.map(function(c){return c.k+" "+c.u;}).join(" · ")+
-  "\n"+C.n+" projects across "+C.gcount+" industries \u2014 yury.digital";
-}
-function shareCard(){
- var cv=$("#shrcv"), W=1200, H=630, g=cv.getContext("2d");
- cv.width=W; cv.height=H;
- g.fillStyle="#0A0C0D"; g.fillRect(0,0,W,H);
- var i,j,k=[];
- function fr(n){var v=Math.sin(n*12.9898)*43758.5453123;return v-Math.floor(v);}
- for(i=0;i<46;i++)k.push([fr(i*1.7+.2)*W,fr(i*3.1+5.4)*H,
-   .6+fr(i*11.7)*1.8,["#4DA3FF","#2FE0A6","#A277FF","#FF5CA8","#FF8A3D","#E2E04A"][Math.floor(fr(i*13.1)*6)]]);
- for(i=0;i<k.length;i++)for(j=i+1;j<k.length;j++){
-  var dx=k[i][0]-k[j][0],dy=k[i][1]-k[j][1],d=Math.sqrt(dx*dx+dy*dy);
-  if(d<190){g.globalAlpha=(1-d/190)*.14;g.strokeStyle=k[i][3];g.lineWidth=1;
-   g.beginPath();g.moveTo(k[i][0],k[i][1]);g.lineTo(k[j][0],k[j][1]);g.stroke();}}
- for(i=0;i<k.length;i++){g.globalAlpha=.5;g.fillStyle=k[i][3];
-  g.beginPath();g.arc(k[i][0],k[i][1],k[i][2],0,6.284);g.fill();}
- g.globalAlpha=1;
- g.fillStyle="#EDEFF0";
- g.font='800 62px Unbounded, system-ui, sans-serif';
- g.fillText(C.name,64,128);
- g.fillStyle="#7E8A91"; g.font='500 23px "JetBrains Mono", monospace';
- g.fillText(C.role+"  ·  "+C.city,64,170);
- g.fillStyle="#D3D8DA"; g.font='400 28px Archivo, system-ui, sans-serif';
- wrap(g,C.thesis,64,226,1072,40);
- g.fillStyle="#E2E04A"; g.font='600 25px Unbounded, system-ui, sans-serif';
- wrap(g,"«"+C.turn+"»",64,352,1072,38);
- var cl=C.chips.map(function(c){return c.k+" "+c.u;}).join("   ·   "), fs=22;
- g.fillStyle="#7E8A91";
- do{ fs-=1; g.font='500 '+fs+'px "JetBrains Mono", monospace'; }
- while(g.measureText(cl).width>W-128 && fs>11);
- g.fillText(cl,64,484);
- g.fillStyle="#EDEFF0"; g.font='700 28px Unbounded, system-ui, sans-serif';
- g.fillText("yury.digital",64,576);
- g.fillStyle="#525C62"; g.font='400 19px "JetBrains Mono", monospace';
- g.fillText(C.n+" projects \u00b7 "+C.gcount+" industries \u00b7 every mark is computed from its name",252,576);
-}
-function wrap(g,s,x,y,w,lh){
- var ws=String(s).split(" "),l="",n=0,i;
- for(i=0;i<ws.length;i++){ var t=l+ws[i]+" ";
-  if(g.measureText(t).width>w&&l){ g.fillText(l,x,y+n*lh); l=ws[i]+" "; n++; }
-  else l=t; }
- g.fillText(l,x,y+n*lh);
-}
-
 /* ─── 10 · ЗАПУСК ─── */
 function boot(){
  /* герой */
@@ -945,7 +875,7 @@ function boot(){
  $("#ccount").textContent=C.n+" projects \u00b7 "+C.gcount+" industries";
  sky($("#sky"));
  work();
- bench(); prods(); shareCard();
+ bench(); prods();
  $("#entry").textContent=unlocked()?"Access open":"Sign in";
  /* события */
  document.addEventListener("click",function(e){
@@ -954,21 +884,6 @@ function boot(){
   if(e.target.closest("[data-x]")||e.target.id==="ov") closePanel();
  });
  addEventListener("keydown",function(e){ if(e.key==="Escape")closePanel(); });
- $("#copysum").addEventListener("click",function(){
-  var b=this;
-  if(navigator.clipboard) navigator.clipboard.writeText(shareText());
-  b.textContent="Copied"; setTimeout(function(){b.textContent="Copy the summary";},1600);
- });
- $("#savecard").addEventListener("click",function(){
-  var a=document.createElement("a");
-  a.download="sakhonchyk-card.png"; a.href=$("#shrcv").toDataURL("image/png");
-  a.click();
- });
- if(navigator.share) $("#natshare").style.display="";
- $("#natshare").addEventListener("click",function(){
-  if(navigator.share) navigator.share({title:C.name,text:shareText(),
-    url:location.href})["catch"](function(){});
- });
 }
 if(document.readyState!=="loading")boot();
 else document.addEventListener("DOMContentLoaded",boot);
