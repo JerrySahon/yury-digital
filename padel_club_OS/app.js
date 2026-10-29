@@ -181,14 +181,15 @@
   var cells = []; try { cells = JSON.parse(document.getElementById('cells').textContent); } catch (e) {}
   var layer = document.getElementById('tvs-layer');
   var left = document.getElementById('tvs-left'), sold = document.getElementById('tvs-sold'), all = document.getElementById('tvs-all');
-  var fmt = function(n){ return n.toLocaleString('en-US') + ' ֏'; };
+  var fmt = function(n){ return '$' + Math.round(n).toLocaleString('en-US'); };
   var total = cells.reduce(function(s, c){ return s + c[6]; }, 0), soldSum = 0;
   function refresh(){
     var leftSum = total - soldSum;
     var leftCells = layer.querySelectorAll('button:not(.sold)').length;
     left.textContent = (leftCells / 2) + ' court-hours · ' + fmt(leftSum);
     sold.textContent = fmt(soldSum);
-    if (!leftCells) { all.firstChild.nodeValue = 'All sold. Again '; }
+    if (!leftCells) { all.firstChild.nodeValue = 'All sold. Tap to reset '; }
+    var hint = document.getElementById('tvs-hint'); if (hint && soldSum > 0) hint.classList.add('done');
   }
   cells.forEach(function(c){
     var b = document.createElement('button');
@@ -206,10 +207,23 @@
   all.addEventListener('click', function(){
     var btns = Array.prototype.slice.call(layer.querySelectorAll('button'));
     var rest = btns.filter(function(b){ return !b.classList.contains('sold'); });
-    if (!rest.length) { btns.forEach(function(b){ b.click(); }); all.firstChild.nodeValue = 'Sell them all '; return; }
+    if (!rest.length) { btns.forEach(function(b){ b.click(); }); all.firstChild.nodeValue = 'Tap to sell them all '; return; }
     rest.forEach(function(b, i){ setTimeout(function(){ b.click(); }, reduced ? 0 : i * 55); });
   });
   if (cells.length) refresh();
+  // Beckon: the first free slots pulse until the viewer sells one
+  Array.prototype.slice.call(layer.querySelectorAll('button')).slice(0, 3).forEach(function(b){ b.classList.add('beckon'); });
+  layer.addEventListener('click', function(){ layer.querySelectorAll('.beckon').forEach(function(b){ b.classList.remove('beckon'); }); }, {once: true});
+  all.addEventListener('click', function(){ layer.querySelectorAll('.beckon').forEach(function(b){ b.classList.remove('beckon'); }); var h = document.getElementById('tvs-hint'); if (h) h.classList.add('done'); });
+
+  // Mobile CTA: shows after the hero button scrolls away, hides at the contact block
+  var mcta = document.getElementById('m-cta'), heroBtn = document.querySelector('.hero-actions .primary'), contact = document.getElementById('contact');
+  if (mcta && heroBtn && 'IntersectionObserver' in window) {
+    var past = false, atEnd = false;
+    var upd = function(){ mcta.classList.toggle('on', past && !atEnd); };
+    new IntersectionObserver(function(es){ es.forEach(function(e){ past = !e.isIntersecting && e.boundingClientRect.top < 0; upd(); }); }).observe(heroBtn);
+    if (contact) new IntersectionObserver(function(es){ es.forEach(function(e){ atEnd = e.isIntersecting; upd(); }); }).observe(contact);
+  }
 
   // Spoiler, like in a messenger.
   var sp = document.getElementById('spoiler');
