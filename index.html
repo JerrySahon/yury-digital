@@ -167,6 +167,8 @@ section{padding:56px 0;border-top:1px solid var(--ln)}
   letter-spacing:-.015em;line-height:1.2}
 .ctag{font-family:var(--fm);font-size:10.5px;color:var(--mu);
   line-height:1.4;margin-top:auto}
+.cwhy{font-family:var(--fm);font-size:11px;color:var(--c);line-height:1.3;margin-top:-4px}
+.why a{color:inherit}
 .cnum{font-family:var(--fd);font-weight:700;font-size:15px;letter-spacing:-.01em;
   color:var(--tx);font-variant-numeric:tabular-nums}
 @media(max-width:760px){.gband{grid-template-columns:1fr}
@@ -469,7 +471,7 @@ var C={
         {n:"LinkedIn Recruiter",p:900,r:"last",w:"the industry standard",cool:1}]},
  groups:[
   {g:"AI and people search",k:"ai",items:[
-   {n:"Pearch.AI",st:"live",tag:"finds people from a plain-language description · API + MCP",
+   {n:"Pearch.AI",top:1,why:"inspired by a challenge",st:"live",tag:"finds people from a plain-language description · API + MCP",
     p:"Founder. An engine that finds the right person from a plain-language description instead of filters. Shipped as an API and an MCP server — so somebody else's ATS suddenly knows how to search people.",
     e:["$1M+ raised","15+ countries","150+ B2B clients","six figures ARR"],
     img:"pearch",link:"pearch.ai",
@@ -481,7 +483,7 @@ var C={
          {n:"Onboarding flow",p:"A partner's path from key to first query."},
          {n:"API documentation format",p:"Mine to own — which is where the technical depth comes from."}]}]},
   {g:"Software for sports clubs",k:"sport",items:[
-   {n:"Paddle Club OS",st:"live",tag:"portfolio project: Paddle Battle Club",
+   {n:"Padel Club OS",top:2,why:"inspired by a hobby",link:"yury.digital/padel_club_OS",st:"live",tag:"portfolio project: Paddle Battle Club",
     p:"The operating system of a padel club: a site with CRM and intake, a Telegram bot with admins wired in, court-load tracking, a content plan driven by that load, and a corporate offer that tracks who opened it.",
     e:[],need:"numbers are on you",img:"courts",
     sub:[{n:"Media kit",p:"Work in progress."},
@@ -524,7 +526,7 @@ var C={
    {n:"Project Radar",st:"live",tag:"vibe-coded on myself",
     p:"A product-owner agent that manages me: ranks projects by impact and cost, runs scheduled tasks, swaps my phone wallpaper to match the focus, and reads information back through neuro-interface rules.",
     e:["10 projects","a daily run"]},
-   {n:"Emozu",st:"live",tag:"pre-seed · raising",
+   {n:"Emozu",top:3,why:"inspired by a personal story",st:"live",tag:"pre-seed · raising",
     p:"A device for children that warns about a meltdown early — early enough for a parent to act. Roadmap: a paper in nine months.",
     e:["logo + deck ready"],gate:"deep into this case only through the form and the quiz"},
    {n:"Nevod",st:"live",tag:"used every single day",
@@ -700,7 +702,7 @@ function bodyHTML(it){
    '<div class="shot hole"><span>'+esc(it.gate)+'</span>'+
    '<button class="btn go" data-open="lead">Open</button></div>';
  return "<p>"+esc(it.p)+"</p>"+evHTML(it.e)+visHTML(it)+subHTML(it.sub)+
-  (it.link?'<div class="why">'+esc(it.link)+"</div>":"");
+  (it.link?'<div class="why"><a href="https://'+esc(it.link)+'" target="_blank" rel="noopener">'+esc(it.link)+" ↗</a></div>":"");
 }
 /* ─── 3 · ПОРТФЕЛЬ: ОДИН ФОРМАТ ───────────────────────────────────
    Группы видны полосами, ширина полосы = её населённость, внутри —
@@ -709,23 +711,33 @@ function bodyHTML(it){
 /* главная цифра кейса — на карточку; у проектов в работе её нет */
 function cnum(it){var e=(it.e||[])[0];
  return e&&/\d/.test(e)&&it.st!=="wip"?e:"";}
-function work(){
- var host=$("#fhost"), n=0;
- host.innerHTML='<div class="gwrap">'+C.groups.map(function(g){
-  var col=window.MARK?MARK.color(g.k):"#7E8A91";
-  var w=g.items.length<=1?" sm":(g.items.length<=2?" md":"");
-  return '<section class="gband'+w+'"><div class="gttl" style="color:'+col+'">'+
-   "<b>"+esc(g.g)+"</b><span>"+g.items.length+
-   (g.items.length===1?" project":" projects")+'</span><div class="gbar"></div></div>'+
-   '<div class="cards">'+g.items.map(function(it){var i=n++;
-    return '<button class="card" data-i="'+i+'" style="--c:'+col+'">'+
+function card(f){
+ var it=f.it, i=C.flat.indexOf(f), col=window.MARK?MARK.color(f.k):"#7E8A91";
+ return '<button class="card" data-i="'+i+'" style="--c:'+col+'">'+
      '<span class="ico">'+(window.MARK?MARK.svg(i):"")+'</span>'+
      '<span class="cname">'+esc(it.n)+"</span>"+
+     (it.why?'<span class="cwhy">'+esc(it.why)+"</span>":"")+
      '<span class="st '+stCls(it.st)+'">'+stTx(it.st)+"</span>"+
      (cnum(it)?'<span class="cnum">'+esc(cnum(it))+"</span>":"")+
      '<span class="ctag">'+esc(it.tag||"")+"</span></button>";
-   }).join("")+"</div></section>";
- }).join("")+"</div>";
+}
+function band(title,col,list,w){
+ return '<section class="gband'+w+'"><div class="gttl" style="color:'+col+'">'+
+   "<b>"+esc(title)+"</b><span>"+list.length+
+   (list.length===1?" project":" projects")+'</span><div class="gbar"></div></div>'+
+   '<div class="cards">'+list.map(card).join("")+"</div></section>";
+}
+function work(){
+ var host=$("#fhost");
+ var top=C.flat.filter(function(f){return f.it.top;})
+  .sort(function(a,b){return a.it.top-b.it.top;});
+ host.innerHTML='<div class="gwrap">'+band("Top 3","var(--go)",top,"")+
+  C.groups.map(function(g){
+   var list=C.flat.filter(function(f){return f.k===g.k&&!f.it.top;});
+   if(!list.length) return "";
+   var col=window.MARK?MARK.color(g.k):"#7E8A91";
+   return band(g.g,col,list,list.length<=1?" sm":(list.length<=2?" md":""));
+  }).join("")+"</div>";
  $$(".card",host).forEach(function(c){
   c.addEventListener("click",function(){ openCase(+c.dataset.i); });});
 }
