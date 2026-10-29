@@ -3,11 +3,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sakhonchyk.</title>
-<meta name="description" content="Fifteen projects across six industries. Every mark is computed from the project's own name.">
+<meta name="description" content="Fifteen projects across six industries — what shipped, what it changed, and the numbers behind it.">
 <link rel="canonical" href="https://yury.digital/">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Sakhonchyk — fifteen projects, six industries">
-<meta property="og:description" content="Yury Sakhonchyk — founder of Pearch.AI. Fifteen projects across six industries, four ways to look at them, and a benchmark we won.">
+<meta property="og:description" content="Yury Sakhonchyk — founder of Pearch.AI. Fifteen projects across six industries, and a benchmark we won.">
 <meta property="og:url" content="https://yury.digital/">
 <meta property="og:image" content="https://yury.digital/img/camp.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -78,7 +78,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hero .wrap{position:relative;z-index:2}
 .hgrid{display:grid;grid-template-columns:168px 1fr;gap:34px;
   align-items:start}
-.mark{width:168px;height:168px;display:block;border-radius:22px}
+.mark{width:168px;height:168px;display:block;color:var(--go);line-height:0}
 .htitle{font-family:var(--fd);font-weight:800;line-height:.94;
   letter-spacing:-.035em;font-size:clamp(40px,7.4vw,86px);
   text-wrap:balance;margin:-6px 0 0}
@@ -111,44 +111,20 @@ section{padding:56px 0;border-top:1px solid var(--ln)}
   letter-spacing:-.03em;line-height:1.05}
 .shead p{color:var(--mu);font-size:14px;max-width:46ch;margin-left:auto}
 
-/* ── переключатель форматов ── */
-.forms{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
-.forms button{font-family:var(--fm);font-size:12px;padding:8px 13px;
-  border-radius:9px;border:1px solid var(--ln);color:var(--mu);
-  transition:all .18s}
-.forms button:hover{color:var(--tx)}
-.forms button[aria-selected="true"]{background:var(--tx);color:#0A0C0D;
-  border-color:var(--tx);font-weight:600}
-.fnote{font-family:var(--fm);font-size:11px;color:var(--dim);
-  margin:-12px 0 20px}
-
 /* ── знак проекта ── */
-.ico{display:block;border-radius:11px;flex:none}
+.ico{display:block;flex:none;line-height:0}
+.ico svg,.mark svg,.sig svg{width:100%;height:100%;display:block}
+.sig{display:block;flex:none;width:30px;height:30px;color:var(--go);
+  line-height:0}
+.cbody{margin-top:14px}
+.cbody p{color:#C6CCCF;font-size:14.5px;max-width:68ch}
 
-/* ФОРМАТ 1 · ДОСЬЕ (из варианта 12 «Morph») */
-.dos{display:flex;flex-direction:column;gap:9px}
-.drow{border:1px solid var(--ln);border-radius:var(--r);background:var(--s1);
-  overflow:hidden;transition:border-color .2s}
-.drow:hover{border-color:#2E383D}
-.dhead{display:flex;align-items:center;gap:15px;padding:15px 17px;
-  width:100%;text-align:left}
-.dhead .ico{width:46px;height:46px}
-.dmeta{min-width:0;flex:1}
-.dname{font-family:var(--fd);font-weight:600;font-size:17px;
-  letter-spacing:-.02em;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-.dtag{font-family:var(--fm);font-size:11px;color:var(--mu);margin-top:3px;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* ── статусы проекта ── */
 .st{font-family:var(--fm);font-size:9.5px;letter-spacing:.1em;
   text-transform:uppercase;padding:3px 7px;border-radius:5px;
   border:1px solid currentColor;flex:none}
 .st.live{color:var(--ok)} .st.done{color:var(--dim)}
 .st.soon{color:var(--warm)}
-.dgrp{font-family:var(--fm);font-size:10px;color:var(--dim);flex:none;
-  text-align:right}
-.dbody{display:none;padding:0 17px 17px 78px;border-top:1px solid var(--ln);
-  margin-top:0}
-.drow.open .dbody{display:block;padding-top:15px}
-.dbody p{color:#C6CCCF;font-size:14.5px;max-width:68ch}
 .ev{margin-top:13px;display:flex;flex-wrap:wrap;gap:7px}
 .ev i{font-style:normal;font-family:var(--fm);font-size:11px;
   background:var(--s2);border:1px solid var(--ln);border-radius:7px;
@@ -167,26 +143,6 @@ section{padding:56px 0;border-top:1px solid var(--ln)}
   color:var(--dim);display:flex;gap:10px;align-items:center}
 .hole::before{content:"";width:26px;height:26px;border-radius:7px;flex:none;
   background:repeating-linear-gradient(45deg,#1A2024 0 5px,#141A1D 5px 10px)}
-@media(max-width:700px){.dbody{padding-left:17px}.dgrp{display:none}}
-
-/* ФОРМАТ 2 · СКВОЗЬ ТИП (из варианта 8) */
-.thr{display:flex;flex-direction:column}
-.trow{border-bottom:1px solid var(--ln);padding:20px 0;display:grid;
-  grid-template-columns:1fr auto;gap:20px;align-items:center;
-  cursor:pointer}
-.tname{font-family:var(--fd);font-weight:800;letter-spacing:-.045em;
-  font-size:clamp(26px,5.6vw,58px);line-height:.95;
-  color:transparent;-webkit-text-stroke:1px #39444A;
-  transition:-webkit-text-stroke-color .25s}
-.trow:hover .tname,.trow.on .tname{-webkit-text-stroke-color:transparent}
-.trow.on .tname,.trow:hover .tname{color:var(--tx)}
-.tside{display:flex;align-items:center;gap:13px}
-.tside .ico{width:52px;height:52px}
-.tinfo{text-align:right;font-family:var(--fm);font-size:11px;color:var(--mu);
-  max-width:190px}
-.tbody{grid-column:1/-1;display:none}
-.trow.on .tbody{display:block;padding-top:6px}
-@media(max-width:620px){.tinfo{display:none}}
 
 /* ФОРМАТ 3 · СЕТКА С ВИДИМЫМИ ГРУППАМИ (его правка к варианту 14) */
 .gwrap{display:flex;flex-direction:column;gap:30px}
@@ -204,28 +160,18 @@ section{padding:56px 0;border-top:1px solid var(--ln)}
   padding:15px;text-align:left;display:flex;flex-direction:column;gap:10px;
   min-height:168px;transition:transform .22s cubic-bezier(.2,.7,.3,1),
   border-color .22s}
-.card:hover{transform:translateY(-3px);border-color:#2E383D}
-.card .ico{width:54px;height:54px}
+.card:hover{transform:translateY(-3px);border-color:var(--c,#2E383D)}
+.card .ico{width:54px;height:54px;color:var(--c,var(--go))}
+.card .st{align-self:flex-start}
 .cname{font-family:var(--fd);font-weight:600;font-size:14.5px;
   letter-spacing:-.015em;line-height:1.2}
 .ctag{font-family:var(--fm);font-size:10.5px;color:var(--mu);
   line-height:1.4;margin-top:auto}
+.cnum{font-family:var(--fd);font-weight:700;font-size:15px;letter-spacing:-.01em;
+  color:var(--tx);font-variant-numeric:tabular-nums}
 @media(max-width:760px){.gband{grid-template-columns:1fr}
   .gttl{position:static}}
 
-/* ФОРМАТ 4 · КОЛОДА (из варианта 15) */
-.deck{display:flex;gap:13px;overflow-x:auto;padding:4px 4px 16px;
-  scroll-snap-type:x mandatory}
-.dk{flex:none;width:268px;scroll-snap-align:start;border:1px solid var(--ln);
-  border-radius:16px;background:var(--s1);padding:19px;display:flex;
-  flex-direction:column;gap:13px;min-height:310px;text-align:left}
-.dk .ico{width:76px;height:76px}
-.dk h3{font-family:var(--fd);font-weight:700;font-size:19px;
-  letter-spacing:-.025em;line-height:1.1}
-.dk p{font-size:13px;color:#BFC6C9;line-height:1.5;
-  display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;
-  overflow:hidden}
-.dk .ev{margin-top:auto}
 
 /* ═══ БЕНЧМАРК ═══ */
 .bench{display:flex;flex-direction:column;gap:11px}
@@ -318,8 +264,8 @@ footer{padding:34px 0 48px;border-top:1px solid var(--ln);
   padding:9px 13px;font-family:var(--fm);font-size:11.5px;color:var(--mu);
   transition:border-color .2s}
 .hint:hover{border-color:var(--go);color:var(--tx)}
-.hint canvas{width:22px;height:22px;display:block}
-@media(max-width:520px){.hint span{display:none}}
+.hint .sig{width:22px;height:22px}
+@media(max-width:520px){.hint>span:not(.sig){display:none}}
 
 /* ── правки после первого рендера ─────────────────────────────────── */
 .shead h2 .num{margin-left:16px;font-size:15px;letter-spacing:.02em;
@@ -327,15 +273,6 @@ footer{padding:34px 0 48px;border-top:1px solid var(--ln);
 .ct{display:flex;flex-direction:column;gap:5px}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;
   gap:18px;flex-wrap:wrap}
-/* досье: текст слева, визуал справа — правая половина больше не пустая */
-@media (min-width:900px){
-  .drow.open .dbody{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);
-    gap:10px 30px;align-items:start}
-  .dbody>p,.dbody>.ev,.dbody>.subs,.dbody>.why{grid-column:1}
-  .dbody>.shot,.dbody>.hole,.dbody>.plate{grid-column:2;grid-row:1/span 4;align-self:start}
-  .dbody>.shot img{max-height:none}
-}
-
 /* ── лестница бенчмарка ────────────────────────────────────────────
    Полоса кодировала бы величину, которой в пейпере нет: там слепая
    человеческая оценка даёт только порядок и одну ничью. Кодируем
@@ -393,49 +330,8 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 @media(max-width:760px){.gband.sm{grid-column:span 12}}
 
 
-/* ПРАВКА ФОРМАТА 2 · тело открытой строки шло одной колонкой на 1180px:
-   абзац растягивался на ~150 знаков в строку, а справа от скриншота и
-   списка подпроектов висела пустая половина. Слева кейс, справа подпроекты. */
-.tinfo{display:flex;flex-direction:column;align-items:flex-end;gap:7px}
-.ttag{line-height:1.45}
-@media(min-width:900px){
-  .trow.on .tbody{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
-    column-gap:44px;align-items:start;align-content:start;
-    grid-auto-rows:max-content;padding-top:6px}
-  .trow.on .tbody>.subs{grid-column:2;grid-row:1/span 4;margin-top:3px}
-  .trow.on .tbody>.shot,.trow.on .tbody>.hole,.trow.on .tbody>.plate{max-width:none}
-}
-
-/* ═══ ПЛИТА: процедурный кадр проекта ════════════════════════════════
-   Земля — domain warping (Iñigo Quilez, iquilezles.org/articles/warp):
-   шум, координаты которого смещены другим шумом. Геометрия сверху —
-   вложенности: по рамке на каждый реальный пункт доказательств и на
-   каждый подпроект, то есть плита считана с содержания карточки.
-   Цвет — из ICO, того же движка, что рисует знаки проектов. */
-.plate{margin-top:14px;border:1px solid var(--ln);border-radius:10px;
-  overflow:hidden;max-width:560px;background:#0E1113;position:relative}
-.plate>canvas{width:100%;display:block;aspect-ratio:16/10;background:#0E1113}
-.plate figcaption{font-family:var(--fm);font-size:10.5px;color:var(--dim);
-  padding:8px 11px;border-top:1px solid var(--ln);background:var(--s2);
-  display:flex;gap:9px;align-items:baseline;flex-wrap:wrap}
-.plate figcaption b{color:var(--go);font-weight:600;letter-spacing:.07em;
-  text-transform:uppercase;font-size:9px;flex:none;padding-top:1px}
-.plate figcaption i{font-style:normal;color:var(--mu)}
-.plate .pact{margin-left:auto;flex:none}
-.dk .plate{margin:0 0 12px;max-width:none;border-radius:8px}
-
-/* миниатюра-плита: тот же процедурный кадр, маленький */
-.pthumb{flex:none;width:84px;aspect-ratio:16/10;display:block;border-radius:7px;
-  border:1px solid var(--ln);background:#0E1113;opacity:.88;
-  transition:opacity .2s ease,border-color .2s ease}
-.drow:hover .pthumb,.drow.open .pthumb{opacity:1;border-color:#2E383D}
-.cband{width:100%;aspect-ratio:16/10;display:block;border-radius:9px;
-  border:1px solid var(--ln);background:#0E1113;margin-bottom:11px}
-.card:hover .cband{border-color:#2E383D}
-@media(max-width:700px){.pthumb{width:62px}}
-.prod .plate{max-width:none;margin:13px 0 0}
-/* plates start on one line across the row: the longest blurb is five lines,
-   so the paragraph holds that floor whenever the cards sit side by side. */
+/* продукты: самая длинная подпись — пять строк, поэтому абзац держит
+   этот пол, пока карточки стоят в один ряд */
 @media(min-width:560px){.prod h3{min-height:2.5em}.prod p{min-height:7.5em}}
 .steps{margin:0 0 22px;border:1px solid var(--ln);border-radius:12px;
   background:#0E1113;padding:16px 14px 0;overflow:hidden}
@@ -444,24 +340,11 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
   border-top:1px solid var(--ln);margin:12px -14px 0;padding:8px 14px;
   background:var(--s2)}
 
-/* ═══ СЛЕД КУРСОРА ═══════════════════════════════════════════════════
-   Референс: критически задемпфированный follower (Rauno Freiberg,
-   rauno.me — «Invisible details of interaction design») плюс
-   тейперящаяся лента из семейства интерактивных trail-демо Codrops.
-   Цепочка 20 точек: голова lerp .30, звенья .44; толщина 3.4px → .25px,
-   рывок добавляет не больше +1.6px; осадок гаснет ~.35 с.
-   Изюминка: цвет не из палитры сайта, а из движка знаков — наводишься
-   на проект, след окрашивается в цвет его группы. */
-.trl{position:fixed;inset:0;width:100%;height:100%;z-index:70;pointer-events:none;
-  mix-blend-mode:screen;opacity:0;transition:opacity .35s ease}
-.trl.on{opacity:1}
-@media (hover:none),(pointer:coarse){.trl{display:none}}
-@media (prefers-reduced-motion:reduce){.trl{display:none}}
 </style>
 </head><body>
 
 <header class="top"><div class="wrap">
-  <a class="brand" href="#"><canvas id="bmark" width="30" height="30"></canvas><span id="mark2">Sakhonchyk.</span></a>
+  <a class="brand" href="#"><span class="sig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="M12 7.5 16.5 12 12 16.5 7.5 12z"/><circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none"/></svg></span><span id="mark2">Sakhonchyk.</span></a>
   <nav class="nav">
     <a href="#work">Work</a><a href="#bench">Benchmark</a>
     <a href="#prod">Products</a><a href="#share">Share</a>
@@ -471,7 +354,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 
 <section class="hero"><canvas id="sky"></canvas><div class="wrap">
   <div class="hgrid">
-    <canvas class="mark" id="hmark"></canvas>
+    <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="M12 7.5 16.5 12 12 16.5 7.5 12z"/><circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none"/></svg></span>
     <div>
       <h1 class="htitle" id="hname"></h1>
       <div class="hrole" id="hrole"></div>
@@ -490,11 +373,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 <section id="work"><div class="wrap">
   <div class="shead">
     <h2>Work<span class="num" id="ccount"></span></h2>
-    <p>Four ways of looking at the same fifteen things. The mark to the left of
-       each project is not drawn — it is computed from the project's own name.</p>
+    <p>Fifteen projects, grouped by industry. Open any card for the case:
+       what was built, what it changed, and what is still pending.</p>
   </div>
-  <div class="forms" id="ftabs" role="tablist"></div>
-  <div class="fnote" id="fnote"></div>
   <div id="fhost"></div>
 </div></section>
 
@@ -555,11 +436,11 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 </div></section>
 
 <footer><div class="wrap">
-  <span>Project marks are generated from their names — one algorithm, fifteen different shapes.</span>
+  <span>Fifteen projects across six industries — the cases, the numbers, and what is still missing.</span>
   <span class="num">yury.digital</span>
 </div></footer>
 
-<div class="hint" data-open="lead"><canvas id="hintmark" width="22" height="22"></canvas><span>contacts are always here</span></div>
+<div class="hint" data-open="lead"><span class="sig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="M12 7.5 16.5 12 12 16.5 7.5 12z"/><circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none"/></svg></span><span>contacts are always here</span></div>
 
 <div class="ov" id="ov"><div class="pan" id="pan"></div></div>
 
@@ -588,7 +469,7 @@ var C={
         {n:"LinkedIn Recruiter",p:900,r:"last",w:"the industry standard",cool:1}]},
  groups:[
   {g:"AI and people search",k:"ai",items:[
-   {n:"Pearch.AI",st:"live",tag:"data science · deep tech · people tech",
+   {n:"Pearch.AI",st:"live",tag:"finds people from a plain-language description · API + MCP",
     p:"Founder. An engine that finds the right person from a plain-language description instead of filters. Shipped as an API and an MCP server — so somebody else's ATS suddenly knows how to search people.",
     e:["$1M+ raised","15+ countries","150+ B2B clients","six figures ARR"],
     img:"pearch",link:"pearch.ai",
@@ -611,7 +492,7 @@ var C={
     e:["100+ events","5,000 attendees","15,000 conversations started","five figures revenue"],
     need:"app screens + stats"}]},
   {g:"Digital, 3D and retail production",k:"dig",items:[
-   {n:"Under Armour Russia",st:"done",tag:"offline, not digital",
+   {n:"Under Armour Russia",st:"done",tag:"every store fit-out across Russia",
     p:"Technical director of the brand agency. Every marketing fit-out of the stores across the country, working straight with the head office in Panama. Adapted international window designs to local manufacturing and ran simultaneous night shifts in different cities.",
     e:["13 stores in 4 months","50+ people","a direct line to Panama"],
     need:"window, fixture and render photos"},
@@ -635,9 +516,9 @@ var C={
     p:"From selling industrial ventilation to running construction sites. Two or three sites at once, up to 40 people reporting directly — the most I have ever led.",
     e:["₽350M+ turnover","10+ sites","₽20–40M per site","40 people"],
     need:"site photos and screens"},
-   {n:"Condor-S",st:"done",tag:"innovation products",
+   {n:"Condor-S",st:"done",tag:"time tracking and face recognition on sites",
     p:"Time tracking, face recognition, interactive tablets on five sites, electronic data capture. A ≈₽100K rollout saved ₽500K+ of payroll in two months.",
-    e:["₽500K in 2 months","×5 return in a quarter","5 sites"],
+    e:["₽500K saved in 2 months","×5 return in a quarter","5 sites"],
     need:"screens"}]},
   {g:"Personal products, vibe-coded",k:"vibe",items:[
    {n:"Project Radar",st:"live",tag:"vibe-coded on myself",
@@ -708,305 +589,46 @@ function BENCH(cls){
 }
 function GSTYLE(){return window.gsap?gsap:null;}
 </script>
-<script>/* ═══ ПРОЦЕДУРНЫЕ ЗНАКИ ПРОЕКТОВ ═══════════════════════════════════════
-   Родословная (названа до кода):
-     MIT Media Lab, 2011 — Richard The / E Roon Kang: один алгоритм, 40 000 айдентик
-     Nordkyn, 2010 — Neue Design Studio: знак считается из данных, а не рисуется
-     GitHub identicon — хэш имени → детерминированный знак
-     Inigo Quilez, cosine palette — радужный кант прямо в шейдере
-     тонкоплёночная интерференция — хром, другая физика, чем стекло Apple
-   Изюминка наша: поле метаболов из варианта 07 «Liquid» + узлы из варианта
-   01 «Constellation», ОБЪЕДИНЁННЫЕ. Часть узлов ОТРИЦАТЕЛЬНЫЕ: они
-   вычитаются из поля, поэтому у знаков есть дырки, кольца и перешейки,
-   а не один выпуклый блоб на всех.
-   Четыре архетипа (цепь · кольцо · триада · спутник) выбираются хэшем
-   имени — знаки читаются как система, а не как шум.
-   ОДИН WebGL-проход рисует атлас 4×4; карточки копируют свою клетку.
-   ═══════════════════════════════════════════════════════════════════ */
-var ICO=(function(){
- var CELL=192, COLS=4, ROWS=4, N=16;
- var GCOL={ai:"#4DA3FF", sport:"#2FE0A6", net:"#A277FF",
-           dig:"#FF5CA8", build:"#FF8A3D", vibe:"#E2E04A"};
- var ARCH=["цепь","кольцо","триада","спутник"];
- var atlas=null, gl=null, prog=null, U={}, seeds=new Float32Array(N),
-     base=[], archs=new Float32Array(N), sinks=[], raf=0, t0=0,
-     live=false, softFail=false;
-
- function fnv(s){var h=2166136261>>>0,i;
-  for(i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0;}
-  return (h>>>0)/4294967296;}
- function fr(n){var v=Math.sin(n*12.9898)*43758.5453123;return v-Math.floor(v);}
- function hex2rgb(h){return [parseInt(h.substr(1,2),16)/255,
-   parseInt(h.substr(3,2),16)/255, parseInt(h.substr(5,2),16)/255];}
- /* оттенок внутри семейства группы: ±17°, чтобы шесть vibe-проектов различались */
- function spin(rgb,deg,dl){
-  var r=rgb[0],g=rgb[1],b=rgb[2],mx=Math.max(r,g,b),mn=Math.min(r,g,b),
-      l=(mx+mn)/2,h=0,s=0,d=mx-mn;
-  if(d){s=l>0.5?d/(2-mx-mn):d/(mx+mn);
-   h=mx===r?((g-b)/d+(g<b?6:0)):mx===g?((b-r)/d+2):((r-g)/d+4); h/=6;}
-  h=(h+deg/360+1)%1; l=Math.min(0.92,Math.max(0.18,l+dl));
-  if(!s)return [l,l,l];
-  var q=l<0.5?l*(1+s):l+s-l*s, p=2*l-q;
-  function k(t){t=(t+1)%1;
-   return t<1/6?p+(q-p)*6*t:t<0.5?q:t<2/3?p+(q-p)*(2/3-t)*6:p;}
-  return [k(h+1/3),k(h),k(h-1/3)];
- }
-
- var VS="attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);}";
- var FS=[
- "precision highp float;",
- "uniform vec2 uOrg; uniform float uCell; uniform float uT;",
- "uniform float uSeed; uniform vec3 uBase; uniform float uArch;",
- "float h1(float n){return fract(sin(n*12.9898)*43758.5453123);}",
- "void main(){",
- " vec2 uv=(gl_FragCoord.xy-uOrg)/uCell;",
- " vec2 q=uv*2.0-1.0;",
- " float s=uSeed;",
- " float arch=uArch;",
- " float dir=h1(s+8.11)>0.5?1.0:-1.0;",
- " float rot=uT*(0.055+0.085*h1(s+5.57))*dir;",   /* вся композиция медленно вращается */
- " float nb = arch<0.5 ? 4.0+floor(h1(s+1.9)*2.0)",
- "          : arch<1.5 ? 5.0+floor(h1(s+1.9)*3.0)",
- "          : arch<2.5 ? 4.0",
- "          :            3.0+floor(h1(s+1.9)*2.0);",
- " float f=0.0; vec2 g=vec2(0.0);",
- " for(int i=0;i<7;i++){",
- "  float fi=float(i); if(fi>=nb) break;",
- "  vec2 c; float br; float sg=1.0;",
- "  if(arch<0.5){",                                       /* ── ЦЕПЬ ── */
- "   float u=fi/max(nb-1.0,1.0);",
- "   float a=h1(s+1.1)*6.28318+u*2.15+rot;",
- "   c=vec2(cos(a),sin(a))*(0.07+0.33*u); br=0.235-0.075*u;",
- "  } else if(arch<1.5){",                                /* ── КОЛЬЦО ── */
- "   if(i==0){ c=vec2(0.0); br=0.275; sg=-1.0; }",
- "   else { float a=(fi-1.0)/(nb-1.0)*6.28318+rot;",
- "          c=vec2(cos(a),sin(a))*0.325; br=0.27; }",
- "  } else if(arch<2.5){",                                /* ── ТРИАДА ── */
- "   if(i==0){ c=vec2(0.0); br=0.27; sg=-1.0; }",
- "   else { float a=(fi-1.0)/(nb-1.0)*6.28318+rot+h1(s+2.2)*6.28318;",
- "          c=vec2(cos(a),sin(a))*0.275; br=0.315; }",
- "  } else {",                                            /* ── СПУТНИК ── */
- "   if(i==0){ c=vec2(cos(rot*0.8),sin(rot*0.8))*0.055; br=0.335; }",
- "   else { float a=(fi-1.0)/(nb-1.0)*6.28318+rot*1.7+h1(s+3.3)*6.28318;",
- "          c=vec2(cos(a),sin(a))*0.47; br=0.125; }",
- "  }",
- "  br*=1.0+0.065*sin(uT*(0.45+0.5*h1(s+fi*4.41))+fi*2.1);",  /* дыхание */
- "  vec2 d=q-c; float dd=dot(d,d)+0.0035;",
- "  f+=sg*br*br/dd;",
- "  g+=sg*(-2.0)*br*br*d/(dd*dd);",
- " }",
- " float m=smoothstep(0.90,1.09,f);",
- " if(m<=0.002){gl_FragColor=vec4(0.0); return;}",
- /* купол сферического профиля — нормаль плавная, без крапин */
- " float hh=clamp((f-1.0)*0.55,0.0,1.0);",
- " float dome=sqrt(max(0.0,1.0-(1.0-hh)*(1.0-hh)));",
- " vec2 gd=normalize(g+vec2(1e-5,1e-5));",
- " vec3 nrm=normalize(vec3(-gd*(1.0-dome)*1.15, dome*0.95+0.22));",
- " vec3 L=normalize(vec3(-0.34,0.62,0.71));",
- " float dif=clamp(dot(nrm,L)*0.5+0.5,0.0,1.0);",
- " float spec=pow(clamp(dot(nrm,normalize(L+vec3(0.0,0.0,1.0))),0.0,1.0),44.0);",
- " float rim=pow(1.0-dome,2.2);",
- " vec3 irid=0.5+0.5*cos(6.28318*(vec3(0.0,0.33,0.67)+rim*1.1+s*0.35+uT*0.02));",
- " vec3 col=uBase*(0.26+0.98*dif*dif);",
- " col=mix(col,irid,rim*0.44);",
- " col+=spec*0.85;",
- " gl_FragColor=vec4(col,m);",
- "}"].join("\n");
-
- function sh(type,src){var o=gl.createShader(type);gl.shaderSource(o,src);
-  gl.compileShader(o);
-  if(!gl.getShaderParameter(o,gl.COMPILE_STATUS)){softFail=true;return null;}
-  return o;}
-
- function boot(){
-  atlas=document.createElement("canvas");
-  atlas.width=COLS*CELL; atlas.height=ROWS*CELL;
-  try{gl=atlas.getContext("webgl",{alpha:true,premultipliedAlpha:false,
-    antialias:false,preserveDrawingBuffer:true})
-    ||atlas.getContext("experimental-webgl",{alpha:true,preserveDrawingBuffer:true});}
-  catch(e){gl=null;}
-  if(!gl){softFail=true;return false;}
-  var v=sh(gl.VERTEX_SHADER,VS), f=sh(gl.FRAGMENT_SHADER,FS);
-  if(!v||!f){softFail=true;return false;}
-  prog=gl.createProgram(); gl.attachShader(prog,v); gl.attachShader(prog,f);
-  gl.linkProgram(prog);
-  if(!gl.getProgramParameter(prog,gl.LINK_STATUS)){softFail=true;return false;}
-  gl.useProgram(prog);
-  var buf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,buf);
-  gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
-  var loc=gl.getAttribLocation(prog,"p");
-  gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
-  U.org=gl.getUniformLocation(prog,"uOrg");
-  U.cell=gl.getUniformLocation(prog,"uCell");
-  U.t=gl.getUniformLocation(prog,"uT");
-  U.seed=gl.getUniformLocation(prog,"uSeed");
-  U.base=gl.getUniformLocation(prog,"uBase");
-  U.arch=gl.getUniformLocation(prog,"uArch");
-  gl.uniform1f(U.cell,CELL);
-  gl.disable(gl.DEPTH_TEST); gl.disable(gl.BLEND);
-  return true;
- }
-
- function paint(t){
-  if(!gl)return;
-  gl.clearColor(0,0,0,0); gl.disable(gl.SCISSOR_TEST);
-  gl.viewport(0,0,atlas.width,atlas.height); gl.clear(gl.COLOR_BUFFER_BIT);
-  gl.uniform1f(U.t,t);
-  for(var i=0;i<N;i++){
-   var cx=(i%COLS)*CELL, cy=Math.floor(i/COLS)*CELL;
-   gl.viewport(cx,cy,CELL,CELL);
-   gl.uniform2f(U.org,cx,cy);
-   gl.uniform1f(U.seed,seeds[i]);
-   gl.uniform3f(U.base,base[i][0],base[i][1],base[i][2]);
-   gl.uniform1f(U.arch,archs[i]);
-   gl.drawArrays(gl.TRIANGLES,0,3);
-  }
- }
-
- /* ── запасной путь без WebGL: тот же алгоритм на 2D-канвасе ── */
- function nodes(s,t,arch){
-  var dir=fr(s+8.11)>0.5?1:-1,
-      rot=t*(0.055+0.085*fr(s+5.57))*dir, nb, out=[], i, a, c, br, sg, u;
-  nb = arch<1 ? 4+Math.floor(fr(s+1.9)*2)
-     : arch<2 ? 5+Math.floor(fr(s+1.9)*3)
-     : arch<3 ? 4 : 3+Math.floor(fr(s+1.9)*2);
-  for(i=0;i<nb;i++){
-   sg=1;
-   if(arch<1){u=i/Math.max(nb-1,1); a=fr(s+1.1)*6.28318+u*2.15+rot;
-    c=[Math.cos(a)*(0.07+0.33*u),Math.sin(a)*(0.07+0.33*u)]; br=0.235-0.075*u;}
-   else if(arch<2){ if(i===0){c=[0,0];br=0.275;sg=-1;}
-    else{a=(i-1)/(nb-1)*6.28318+rot; c=[Math.cos(a)*0.325,Math.sin(a)*0.325]; br=0.27;} }
-   else if(arch<3){ if(i===0){c=[0,0];br=0.27;sg=-1;}
-    else{a=(i-1)/(nb-1)*6.28318+rot+fr(s+2.2)*6.28318;
-     c=[Math.cos(a)*0.275,Math.sin(a)*0.275]; br=0.315;} }
-   else { if(i===0){c=[Math.cos(rot*0.8)*0.055,Math.sin(rot*0.8)*0.055];br=0.335;}
-    else{a=(i-1)/(nb-1)*6.28318+rot*1.7+fr(s+3.3)*6.28318;
-     c=[Math.cos(a)*0.47,Math.sin(a)*0.47]; br=0.125;} }
-   br*=1+0.065*Math.sin(t*(0.45+0.5*fr(s+i*4.41))+i*2.1);
-   out.push([c[0],c[1],sg*br*br]);
-  }
-  return out;
- }
- function paint2d(cv,i,t){
-  var w=64,h=64,c=cv.getContext("2d"),im=c.createImageData(w,h),d=im.data,
-      ns=nodes(seeds[i],t,archs[i]), b=base[i], x,y,j,dx,dy,dd,f,gx,gy,k4;
-  for(y=0;y<h;y++)for(x=0;x<w;x++){
-   var qx=x/w*2-1, qy=1-y/h*2; f=0;gx=0;gy=0;
-   for(j=0;j<ns.length;j++){
-    dx=qx-ns[j][0]; dy=qy-ns[j][1]; dd=dx*dx+dy*dy+0.0035;
-    f+=ns[j][2]/dd; gx+=-2*ns[j][2]*dx/(dd*dd); gy+=-2*ns[j][2]*dy/(dd*dd);
-   }
-   k4=(y*w+x)*4;
-   var m=f<0.90?0:(f>1.09?1:(f-0.90)/0.19);
-   if(m<=0.002){d[k4+3]=0;continue;}
-   var hh=Math.min(Math.max((f-1)*0.55,0),1),
-       dome=Math.sqrt(Math.max(0,1-(1-hh)*(1-hh))),
-       gl2=Math.sqrt(gx*gx+gy*gy)+1e-5,
-       nx=-gx/gl2*(1-dome)*1.15, ny=-gy/gl2*(1-dome)*1.15, nz=dome*0.95+0.22,
-       ln=Math.sqrt(nx*nx+ny*ny+nz*nz);
-   nx/=ln;ny/=ln;nz/=ln;
-   var dif=Math.min(1,Math.max(0,(nx*-0.34+ny*0.62+nz*0.71)*0.5+0.5)),
-       rim=Math.pow(1-dome,2.2), sh2=0.26+0.98*dif*dif;
-   d[k4]  =Math.min(255,(b[0]*sh2*(1-rim*0.44)+rim*0.44)*255);
-   d[k4+1]=Math.min(255,(b[1]*sh2*(1-rim*0.44)+rim*0.30)*255);
-   d[k4+2]=Math.min(255,(b[2]*sh2*(1-rim*0.44)+rim*0.52)*255);
-   d[k4+3]=Math.round(m*255);
-  }
-  c.putImageData(im,0,0);
- }
-
- function draw(t){
-  var i,s,cv,ctx,cx,cy;
-  if(!softFail){
-   paint(t);
-   for(i=0;i<sinks.length;i++){
-    s=sinks[i]; if(!s.vis)continue;
-    cv=s.el; ctx=s.ctx;
-    cx=(s.i%COLS)*CELL; cy=atlas.height-(Math.floor(s.i/COLS)+1)*CELL;
-    ctx.clearRect(0,0,cv.width,cv.height);
-    ctx.drawImage(atlas,cx,cy,CELL,CELL,0,0,cv.width,cv.height);
-   }
-  }else{
-   for(i=0;i<sinks.length;i++){s=sinks[i]; if(s.vis)paint2d(s.el,s.i,t);}
-  }
- }
-
- var io=null;
- function observe(s){
-  if(!("IntersectionObserver" in window)){s.vis=true;return;}
-  if(!io)io=new IntersectionObserver(function(es){
-   es.forEach(function(e){var k=e.target.__ico; if(k)k.vis=e.isIntersecting;});
-   kick();
-  },{rootMargin:"140px"});
-  io.observe(s.el);
- }
- function kick(){ if(raf||!live)return; loop(); }
- function loop(){
-  var any=false,i;
-  for(i=0;i<sinks.length;i++)if(sinks[i].vis){any=true;break;}
-  if(!any){raf=0;return;}
-  draw((performance.now()-t0)/1000);
-  raf=requestAnimationFrame(loop);
- }
-
- return {
-  color:function(k){return GCOL[k]||"#9AA0A8";},
-  arch:function(i){return ARCH[archs[i]];},
-  init:function(flat,name){
-   var i,it,sd;
-   for(i=0;i<N;i++){seeds[i]=0.17+i*1.37; base[i]=[0.6,0.6,0.6];}
-   for(i=0;i<flat.length&&i<15;i++){
-    it=flat[i]; sd=fnv(it.it.n);
-    seeds[i]=sd*9.0+0.3;
-    base[i]=spin(hex2rgb(GCOL[it.k]||"#9AA0A8"),(fr(sd*31.7)-0.5)*34,(fr(sd*17.3)-0.5)*0.12);
-   }
-   seeds[15]=fnv(name||"Yury Sakhonchyk")*9.0+0.3;
-   base[15]=hex2rgb("#AAB4BA");
-   /* архетип = ранг имени по второму хэшу % 4. Детерминированно И ровно
-      по четырём группам: сырой хэш на 16 элементах кучкуется. */
-   var ord=[]; for(i=0;i<N;i++)ord.push([i,fr(seeds[i]*7.77+2.13)]);
-   ord.sort(function(a,b){return a[1]-b[1];});
-   for(i=0;i<N;i++)archs[ord[i][0]]=i%4;
-   t0=performance.now(); live=true;
-   boot();
-   return !softFail;
-  },
-  attach:function(el,i){
-   if(!el)return;
-   var px=Math.max(1,Math.round((el.clientWidth||64)*Math.min(2,window.devicePixelRatio||1)));
-   el.width=px; el.height=px;
-   var s={el:el,ctx:el.getContext("2d"),i:((i%N)+N)%N,vis:true};
-   el.__ico=s; sinks.push(s);
-   draw((performance.now()-t0)/1000);   /* ПЕРВЫЙ КАДР СРАЗУ */
-   observe(s); kick();
-  },
-  cell:function(i,size){
-   var o=document.createElement("canvas"); o.width=o.height=size||192;
-   var c=o.getContext("2d"), t=(performance.now()-t0)/1000;
-   if(!softFail){
-    paint(t);
-    var cx=(i%COLS)*CELL, cy=atlas.height-(Math.floor(i/COLS)+1)*CELL;
-    c.drawImage(atlas,cx,cy,CELL,CELL,0,0,o.width,o.height);
-   }else{
-    var tmp=document.createElement("canvas"); tmp.width=tmp.height=64;
-    paint2d(tmp,i,t); c.imageSmoothingEnabled=true;
-    c.drawImage(tmp,0,0,o.width,o.height);
-   }
-   return o;
-  },
-  soft:function(){return softFail;}
- };
+<script>/* ═══ ЗНАКИ ПРОЕКТОВ ═══════════════════════════════════════════════════
+   Пятнадцать нарисованных иконок, по одной на проект, в порядке
+   C.flat. Линейные, 24×24, stroke=currentColor — цвет задаёт
+   группа проекта. Никакого движка: статичный SVG, первый кадр
+   рисуется сразу и без JS-пересчёта.
+   ═══════════════════════════════════════════════════════════ */
+window.MARK=(function(){"use strict";
+var GCOL={ai:"#4DA3FF",sport:"#2FE0A6",net:"#A277FF",dig:"#FF5CA8",build:"#FF8A3D",vibe:"#E2E04A"};
+var D=[
+ '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/><circle cx="8.6" cy="10.5" r="1.05" fill="currentColor" stroke="none"/><circle cx="12.4" cy="10.5" r="1.05" fill="currentColor" stroke="none"/>',   /* 0 */
+ '<path d="M12 2.6c3.6 0 6.1 2.6 6.1 6 0 3.4-2.6 6.1-6.1 6.1S5.9 12 5.9 8.6c0-3.4 2.5-6 6.1-6z"/><path d="M12 14.7V21"/><path d="M10 21h4"/><circle cx="12" cy="8.6" r="1" fill="currentColor" stroke="none"/>',   /* 1 */
+ '<circle cx="12" cy="4.2" r="1.8"/><circle cx="19.8" cy="12" r="1.8"/><circle cx="12" cy="19.8" r="1.8"/><circle cx="4.2" cy="12" r="1.8"/><path d="M13.3 5.5 18.5 10.7M18.5 13.3 13.3 18.5M10.7 18.5 5.5 13.3M5.5 10.7 10.7 5.5"/>',   /* 2 */
+ '<path d="M12 4.6a2 2 0 1 1 2 2c0 1-.9 1.6-2 1.6v1.9"/><path d="M12 10.1 4.1 15.5c-.9.6-.5 2.1.7 2.1h14.4c1.2 0 1.6-1.5.7-2.1L12 10.1z"/>',   /* 3 */
+ '<path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="M12 6.4v11.2M6.4 12h11.2"/><path d="M12 9.4 14.6 12 12 14.6 9.4 12z"/>',   /* 4 */
+ '<path d="M12 2.6 20.6 7.1v9.8L12 21.4 3.4 16.9V7.1z"/><path d="M12 2.6v9.4l8.6-4.9M12 12 3.4 7.1M12 12v9.4"/>',   /* 5 */
+ '<rect x="2.6" y="7.6" width="18.8" height="8.8" rx="4.4"/><path d="M7 10.6v2.8M5.6 12h2.8"/><circle cx="16.1" cy="11.1" r="1" fill="currentColor" stroke="none"/><circle cx="18.4" cy="13.5" r="1" fill="currentColor" stroke="none"/>',   /* 6 */
+ '<path d="M4.6 21.4V12A7.4 7.4 0 0 1 12 4.6h7.4"/><path d="M1.6 21.4h6"/><path d="M19.4 1.6v6"/>',   /* 7 */
+ '<path d="M2.6 9.4 12 15l9.4-5.6"/><path d="M5.6 14.4 12 18.4l6.4-4"/>',   /* 8 */
+ '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.4"/><path d="M12 12 18.4 7.8"/><circle cx="15.8" cy="15.3" r="1.2" fill="currentColor" stroke="none"/>',   /* 9 */
+ '<circle cx="12" cy="12" r="9"/><circle cx="9.1" cy="10" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.9" cy="10" r="1.1" fill="currentColor" stroke="none"/><path d="M8 14.4c1.1 1.5 2.4 2.2 4 2.2s2.9-.7 4-2.2"/>',   /* 10 */
+ '<path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="M7.25 7.25 16.75 16.75M16.75 7.25 7.25 16.75"/>',   /* 11 */
+ '<path d="M12 6.5C10 4.9 7.5 4.2 4 4.2v12.6c3.5 0 6 .7 8 2.3 2-1.6 4.5-2.3 8-2.3V4.2c-3.5 0-6 .7-8 2.3z"/><path d="M12 6.5v12.6"/>',   /* 12 */
+ '<rect x="10" y="10" width="4" height="4" rx=".8"/><rect x="2.6" y="10.5" width="5.4" height="3" rx=".8"/><rect x="16" y="10.5" width="5.4" height="3" rx=".8"/><path d="M12 10V6.6"/><path d="M10.2 5.3a2.5 2.5 0 0 1 3.6 0"/>',   /* 13 */
+ '<path d="M4.5 12c1.5-5 5-7.5 9-6.5s5.5 4.5 5 8-3 6-6.5 6-9-2.5-7.5-7.5z"/><path d="M8 12.2c.8-2.6 2.6-3.9 4.7-3.4s2.9 2.3 2.6 4.1-1.6 3.1-3.4 3.1-4.7-1.3-3.9-3.8z"/><circle cx="12" cy="12.4" r="1.2" fill="currentColor" stroke="none"/>',   /* 14 */
+];
+var SITE='<path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/><path d="M12 7.5 16.5 12 12 16.5 7.5 12z"/><circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none"/>';
+function w(b){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+b+"</svg>";}
+return {
+ color:function(k){return GCOL[k]||"#9AA0A8";},
+ svg:function(i){return w(D[i]||SITE);},
+ site:function(){return w(SITE);}
+};
 })();
 </script>
 <script>/* ═══ САЙТ · ЛОГИКА ═══════════════════════════════════════════════════
-   Герой — вариант 01 «Constellation», переписанный на чистый 2D canvas:
-   никакой CDN-зависимости, первый кадр рисуется синхронно. Узлы и связи
-   считаются из хэша имени, дрейф процедурный (сумма синусов), а не
-   заготовленные кривые.
-   Знаки проектов — вариант 07 «Liquid», движок s2/icons.js.
-   Форматы карточек — те четыре, что он отметил: 12 «Morph» (досье),
-   08 «Through Type» (сквозь тип), 14 «Grid» с ВИДИМЫМИ группами
-   (его правка), 15 «Deck» (колода).
+   Герой — созвездие на чистом 2D canvas: узлы и связи считаются из хэша
+   имени, дрейф процедурный. Это единственный движок на странице.
+   Карточки проектов — обычные: нарисованная иконка, имя, статус, тег.
+   Один приём украшения на экран — цвет группы: иконка в её цвете и
+   рамка в её цвете на hover. Форматов больше не четыре, формат один.
    ═══════════════════════════════════════════════════════════════════ */
 (function(){
 "use strict";
@@ -1064,278 +686,54 @@ function subHTML(sub){ if(!sub||!sub.length)return"";
  return '<div class="subs">'+sub.map(function(s){
   return '<div class="sub"><b>'+esc(s.n)+"</b><span>"+esc(s.p||"")+"</span></div>";
  }).join("")+"</div>"; }
-/* ─── 2.5 · ПЛИТА И СЛЕД КУРСОРА ───────────────────────────────────
-   Плита: кадр, которого ещё нет, но который уже спроектирован.
-   Земля — domain warping (Iñigo Quilez, iquilezles.org/articles/warp).
-   Рамки — вложенности по числу реальных пунктов карточки.
-   Цвет — ICO.color, тот же движок, что рисует знаки проектов. */
-var KMAP={}; C.flat.forEach(function(f){KMAP[f.it.n]=f.k;});
-
-function fnv1(s){var h=2166136261>>>0,i;s=String(s);
- for(i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0;}
- return h>>>0;}
-function rgb3(h){h=String(h||"#9AA0A8");
- return [parseInt(h.substr(1,2),16),parseInt(h.substr(3,2),16),parseInt(h.substr(5,2),16)];}
+/* ─── 2.5 · СКОЛЬКО В КАРТОЧКЕ ДОКАЗАТЕЛЬСТВ ─── */
 function pcount(it){
  return ((it.e||[]).length)+((it.sub||[]).length);}
-function plateHTML(it,cap,col){
- var k=KMAP[it.n]||"", n=pcount(it);
- return '<figure class="plate"><canvas data-plv="1" data-pn="'+esc(it.n)+
-  '" data-pk="'+esc(k)+'"'+(col?' data-pc="'+col+'"':'')+
-  ' data-pr="'+Math.max(2,Math.min(9,n+2))+
-  '" aria-label="'+esc(it.n)+' \u2014 procedural plate"></canvas>'+
-  '<figcaption>'+cap+'</figcaption></figure>';
-}
-function thumbHTML(it){
- var k=KMAP[it.n]||"", n=pcount(it);
- return '<canvas class="pthumb" data-plv="1" data-pn="'+esc(it.n)+
-  '" data-pk="'+esc(k)+'" data-pr="'+Math.max(2,Math.min(9,n+2))+
-  '" aria-hidden="true"></canvas>';
-}
-function plateDraw(cv){
- if(cv.__pd)return; var W=Math.round(cv.clientWidth||0);
- if(W<40)return;                       /* ещё скрыт — нарисуем при раскрытии */
- cv.__pd=1;
- var nm=cv.dataset.pn||"", k=cv.dataset.pk||"", rings=+cv.dataset.pr||3;
- var H=Math.round(W*10/16), dpr=Math.min(2,window.devicePixelRatio||1);
- cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
- var g=cv.getContext("2d"); if(!g)return;
- g.setTransform(dpr,0,0,dpr,0,0);
- var sd=fnv1(nm)/4294967296;
- function rr(n){var v=Math.sin((n+sd*131.7)*12.9898)*43758.5453123;return v-Math.floor(v);}
- function nz(x,y,o){var X=Math.floor(x),Y=Math.floor(y),fx=x-X,fy=y-Y;
-  fx=fx*fx*(3-2*fx); fy=fy*fy*(3-2*fy);
-  var a=rr(X*157.3+Y*311.1+o*79.7), b=rr((X+1)*157.3+Y*311.1+o*79.7),
-      e=rr(X*157.3+(Y+1)*311.1+o*79.7), f=rr((X+1)*157.3+(Y+1)*311.1+o*79.7),
-      ab=a+(b-a)*fx;
-  return ab+((e+(f-e)*fx)-ab)*fy;}
- function fbm(x,y,o){return nz(x,y,o)*0.55+nz(x*2.03,y*2.03,o+3)*0.28+
-   nz(x*4.11,y*4.11,o+7)*0.17;}
- var w2=Math.max(28,Math.round(W/5)), h2=Math.max(18,Math.round(H/5));
- var off=document.createElement("canvas"); off.width=w2; off.height=h2;
- var og=off.getContext("2d"), id=og.createImageData(w2,h2), d=id.data;
- var A=[13,16,18], B=rgb3(cv.dataset.pc||(window.ICO?ICO.color(k):"#9AA0A8")),
-     x,y,i=0,t,qx,qy,u,v;
- for(y=0;y<h2;y++) for(x=0;x<w2;x++){
-  u=x/w2*3.4+sd*7.1; v=y/h2*2.2+sd*3.3;
-  qx=fbm(u,v,0); qy=fbm(u+1.7,v+4.3,0);
-  t=fbm(u+3.1*qx, v+3.1*qy, 11);
-  t=(t-0.17)/0.62; t=t<0?0:t>1?1:t; t=t*t*(0.32+0.68*t);
-  d[i++]=A[0]+(B[0]-A[0])*t; d[i++]=A[1]+(B[1]-A[1])*t;
-  d[i++]=A[2]+(B[2]-A[2])*t; d[i++]=255;
- }
- og.putImageData(id,0,0);
- g.imageSmoothingEnabled=true; g.drawImage(off,0,0,W,H);
- var vg=g.createRadialGradient(W*0.5,H*0.44,W*0.10,W*0.5,H*0.5,W*0.80);
- vg.addColorStop(0,"rgba(10,12,13,0)"); vg.addColorStop(1,"rgba(10,12,13,0.80)");
- g.fillStyle=vg; g.fillRect(0,0,W,H);
- /* вложенности */
- var tiny=W<170; if(tiny&&rings>3)rings=3;
- var pad=W*0.055, step=(W*0.46-pad)/rings, ox,oy;
- g.lineWidth=1;
- for(i=0;i<rings;i++){ ox=pad+step*i; oy=ox*H/W;
-  g.strokeStyle="rgba("+B.join(",")+","+Math.max(0.055,0.26-0.027*i).toFixed(3)+")";
-  g.strokeRect(Math.round(ox)+0.5,Math.round(oy)+0.5,
-               Math.round(W-2*ox),Math.round(H-2*oy));
- }
- if(tiny)return;
- /* метки кадра */
- g.strokeStyle="rgba(237,239,240,0.20)"; g.lineWidth=1;
- var m=Math.round(W*0.034), cc=Math.round(W*0.017);
- [[m,m,1,1],[W-m,m,-1,1],[m,H-m,1,-1],[W-m,H-m,-1,-1]].forEach(function(p){
-  g.beginPath(); g.moveTo(p[0]+0.5,p[1]+0.5); g.lineTo(p[0]+cc*p[2]+0.5,p[1]+0.5);
-  g.moveTo(p[0]+0.5,p[1]+0.5); g.lineTo(p[0]+0.5,p[1]+cc*p[3]+0.5); g.stroke();
- });
- /* тики: по одному на пункт содержания */
- g.strokeStyle="rgba("+B.join(",")+",0.62)";
- var tn=rings-2, tx0=Math.round(W*0.5-tn*3.5);
- for(i=0;i<tn;i++){ g.beginPath();
-  g.moveTo(tx0+i*7+0.5,H-m-1.5); g.lineTo(tx0+i*7+0.5,H-m-6.5); g.stroke(); }
-}
-var pio=null;
-function plates(root){
- var list=$$("canvas[data-plv]",root||document);
- if(!list.length)return;
- if(!("IntersectionObserver" in window)){ list.forEach(plateDraw); return; }
- if(!pio) pio=new IntersectionObserver(function(es){
-  es.forEach(function(e){ if(e.isIntersecting){ plateDraw(e.target);
-   if(e.target.__pd) pio.unobserve(e.target); } });
- },{rootMargin:"220px"});
- list.forEach(function(cv){ if(!cv.__pd) pio.observe(cv); });
-}
-
-function trail(){
- if(!window.matchMedia) return;
- if(!matchMedia("(pointer:fine)").matches) return;
- if(matchMedia("(prefers-reduced-motion:reduce)").matches) return;
- var cv=document.createElement("canvas"); cv.className="trl";
- cv.setAttribute("aria-hidden","true");
- document.body.appendChild(cv);
- var g=cv.getContext("2d"); if(!g){cv.remove();return;}
- var dpr=Math.min(2,window.devicePixelRatio||1), W=0,H=0;
- function size(){ W=innerWidth; H=innerHeight;
-  cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
-  g.setTransform(dpr,0,0,dpr,0,0); }
- size(); addEventListener("resize",size);
- var N=20, px=new Float64Array(N), py=new Float64Array(N), i;
- var mx=0,my=0,lx=0,ly=0,live=false,idle=0;
- var col=[226,224,74], want=[226,224,74];
- addEventListener("pointermove",function(e){
-  if(e.pointerType==="touch")return;
-  mx=e.clientX; my=e.clientY; idle=0;
-  if(!live){ live=true; for(i=0;i<N;i++){px[i]=mx;py[i]=my;}
-   lx=mx; ly=my; cv.classList.add("on"); }
-  var el=e.target, c=el&&el.closest?el.closest("[data-i],[data-ico],[data-pk]"):null, k=null;
-  if(c){ if(c.dataset.pk) k=c.dataset.pk;
-   else { var ix=+(c.dataset.i!=null?c.dataset.i:c.dataset.ico);
-          if(C.flat[ix]) k=C.flat[ix].k; } }
-  want = (k&&window.ICO) ? rgb3(ICO.color(k)) : [226,224,74];
- },{passive:true});
- addEventListener("pointerleave",function(){ cv.classList.remove("on"); });
- addEventListener("pointerenter",function(){ if(live)cv.classList.add("on"); });
- (function loop(){
-  requestAnimationFrame(loop);
-  if(!live)return;
-  if(++idle>150){ g.clearRect(0,0,W,H); return; }
-  for(i=0;i<3;i++) col[i]+=(want[i]-col[i])*0.09;
-  px[0]+=(mx-px[0])*0.30; py[0]+=(my-py[0])*0.30;
-  for(i=1;i<N;i++){ px[i]+=(px[i-1]-px[i])*0.44; py[i]+=(py[i-1]-py[i])*0.44; }
-  var vx=px[0]-lx, vy=py[0]-ly; lx=px[0]; ly=py[0];
-  var sp=Math.sqrt(vx*vx+vy*vy)/26; if(sp>1)sp=1;
-  g.globalCompositeOperation="destination-out";
-  g.fillStyle="rgba(0,0,0,0.072)"; g.fillRect(0,0,W,H);
-  g.globalCompositeOperation="lighter";
-  var c3=Math.round(col[0])+","+Math.round(col[1])+","+Math.round(col[2]);
-  g.lineCap="round"; g.lineJoin="round";
-  for(i=1;i<N;i++){ var f=1-i/N;
-   g.strokeStyle="rgba("+c3+","+(0.12+0.46*f*f).toFixed(3)+")";
-   g.lineWidth=0.3+(5.4+2.2*sp)*f;
-   g.beginPath(); g.moveTo(px[i-1],py[i-1]); g.lineTo(px[i],py[i]); g.stroke();
-  }
-  g.fillStyle="rgba("+c3+",0.92)";
-  g.beginPath(); g.arc(mx,my,2.2+1.4*sp,0,6.2832); g.fill();
-  g.globalCompositeOperation="source-over";
- })();
-}
 
 function visHTML(it){
  if(it.img&&IMG[it.img]) return '<figure class="shot"><img alt="'+esc(it.n)+
    '" src="'+IMG[it.img]+'"><figcaption>'+esc(CAP[it.img]||"")+"</figcaption></figure>";
- if(it.need) return plateHTML(it,'<b>Photo pending</b><span>'+esc(it.need)+
-   '</span><i>frame drawn from the case itself</i>');
- return plateHTML(it,'<b>Plate</b><span>'+pcount(it)+
-   (pcount(it)===1?" point":" points")+' of this case, drawn</span>');
+ return '<div class="shot hole"><span>'+esc(it.need||"screen pending")+'</span></div>';
 }
 function bodyHTML(it){
  if(it.gate&&!unlocked()) return '<p>'+esc(it.p)+"</p>"+evHTML(it.e)+
-   plateHTML(it,'<b>Locked</b><span>'+esc(it.gate)+'</span>'+
-    '<span class="pact"><button class="btn go" data-open="lead">Open</button></span>');
+   '<div class="shot hole"><span>'+esc(it.gate)+'</span>'+
+   '<button class="btn go" data-open="lead">Open</button></div>';
  return "<p>"+esc(it.p)+"</p>"+evHTML(it.e)+visHTML(it)+subHTML(it.sub)+
   (it.link?'<div class="why">'+esc(it.link)+"</div>":"");
 }
-function icoInto(el,i){ if(window.ICO) ICO.attach(el,i); }
-
-/* ─── 3 · ЧЕТЫРЕ ФОРМАТА ─── */
-var FMT={};
-
-FMT["Dossier"]=function(host){                      /* вариант 12 · Morph */
- host.innerHTML='<div class="dos">'+C.flat.map(function(f,i){var it=f.it;
-  return '<article class="drow" data-i="'+i+'">'+
-   '<button class="dhead" aria-expanded="false"><canvas class="ico" data-ico="'+i+'"></canvas>'+
-   '<span class="dmeta"><span class="dname">'+esc(it.n)+
-     '<span class="st '+stCls(it.st)+'">'+stTx(it.st)+"</span></span>"+
-     '<span class="dtag">'+esc(it.tag||"")+"</span></span>"+
-   '<span class="dgrp">'+esc(f.g)+"</span>"+thumbHTML(it)+"</button>"+
-   '<div class="dbody">'+bodyHTML(it)+"</div></article>";
- }).join("")+"</div>";
- $$(".drow",host).forEach(function(r){
-  var b=$(".dhead",r);
-  b.addEventListener("click",function(){
-   var o=r.classList.toggle("open"); b.setAttribute("aria-expanded",o?"true":"false");
-   if(o)plates(r);});
- });
- $$(".drow",host).slice(0,3).forEach(function(r){ r.classList.add("open");
-  $(".dhead",r).setAttribute("aria-expanded","true"); });
-};
-
-FMT["Through type"]=function(host){                 /* вариант 08 */
- host.innerHTML='<div class="thr">'+C.flat.map(function(f,i){var it=f.it;
-  return '<article class="trow" data-i="'+i+'" tabindex="0">'+
-   '<h3 class="tname">'+esc(it.n)+"</h3>"+
-   '<div class="tside"><div class="tinfo"><span class="ttag">'+esc(it.tag||"")+"</span>"+
-     '<span class="st '+stCls(it.st)+'">'+stTx(it.st)+"</span></div>"+
-     '<canvas class="ico" data-ico="'+i+'"></canvas></div>'+
-   '<div class="tbody">'+bodyHTML(it)+"</div></article>";
- }).join("")+"</div>";
- $$(".trow",host).forEach(function(r){
-  function tg(){ r.classList.toggle("on"); if(r.classList.contains("on"))plates(r); }
-  r.addEventListener("click",tg);
-  r.addEventListener("keydown",function(e){
-   if(e.key==="Enter"||e.key===" "){e.preventDefault();tg();}});
- });
- $(".trow",host).classList.add("on");
-};
-
-FMT["Grid"]=function(host){                      /* вариант 14 + группы */
- var n=0;
- host.innerHTML='<div class="gwrap">'+C.groups.map(function(g,gi){
-  var col=window.ICO?ICO.color(g.k):"#7E8A91";
+/* ─── 3 · ПОРТФЕЛЬ: ОДИН ФОРМАТ ───────────────────────────────────
+   Группы видны полосами, ширина полосы = её населённость, внутри —
+   обычные карточки. Иконка проекта и рамка на hover берут цвет
+   группы; больше ни одного приёма. */
+/* главная цифра кейса — на карточку; у проектов в работе её нет */
+function cnum(it){var e=(it.e||[])[0];
+ return e&&/\d/.test(e)&&it.st!=="wip"?e:"";}
+function work(){
+ var host=$("#fhost"), n=0;
+ host.innerHTML='<div class="gwrap">'+C.groups.map(function(g){
+  var col=window.MARK?MARK.color(g.k):"#7E8A91";
   var w=g.items.length<=1?" sm":(g.items.length<=2?" md":"");
   return '<section class="gband'+w+'"><div class="gttl" style="color:'+col+'">'+
    "<b>"+esc(g.g)+"</b><span>"+g.items.length+
    (g.items.length===1?" project":" projects")+'</span><div class="gbar"></div></div>'+
    '<div class="cards">'+g.items.map(function(it){var i=n++;
-    return '<button class="card" data-i="'+i+'">'+
-     '<canvas class="cband" data-plv="1" data-pn="'+esc(it.n)+'" data-pk="'+esc(g.k)+
-     '" data-pr="'+Math.max(2,Math.min(9,pcount(it)+2))+'" aria-hidden="true"></canvas>'+
-     '<canvas class="ico" data-ico="'+i+'"></canvas>'+
+    return '<button class="card" data-i="'+i+'" style="--c:'+col+'">'+
+     '<span class="ico">'+(window.MARK?MARK.svg(i):"")+'</span>'+
      '<span class="cname">'+esc(it.n)+"</span>"+
-     '<span class="st '+stCls(it.st)+'" style="align-self:flex-start">'+stTx(it.st)+"</span>"+
+     '<span class="st '+stCls(it.st)+'">'+stTx(it.st)+"</span>"+
+     (cnum(it)?'<span class="cnum">'+esc(cnum(it))+"</span>":"")+
      '<span class="ctag">'+esc(it.tag||"")+"</span></button>";
    }).join("")+"</div></section>";
  }).join("")+"</div>";
  $$(".card",host).forEach(function(c){
   c.addEventListener("click",function(){ openCase(+c.dataset.i); });});
-};
-
-FMT["Deck"]=function(host){                     /* вариант 15 */
- host.innerHTML='<div class="deck">'+C.flat.map(function(f,i){var it=f.it;
-  return '<button class="dk" data-i="'+i+'"><canvas class="ico" data-ico="'+i+'"></canvas>'+
-   (it.img&&IMG[it.img]
-    ? '<figure class="plate"><img alt="'+esc(it.n)+'" src="'+IMG[it.img]+
-      '" style="width:100%;display:block"></figure>'
-    : plateHTML(it,'<b>'+(it.need?'Photo pending':'Plate')+'</b><span>'+
-        esc(it.need||(pcount(it)+' points, drawn'))+'</span>'))+
-   "<h3>"+esc(it.n)+"</h3>"+
-   '<span class="st '+stCls(it.st)+'" style="align-self:flex-start">'+stTx(it.st)+"</span>"+
-   "<p>"+esc(it.p)+"</p>"+evHTML((it.e||[]).slice(0,2))+"</button>";
- }).join("")+"</div>";
- $$(".dk",host).forEach(function(c){
-  c.addEventListener("click",function(){ openCase(+c.dataset.i); });});
-};
-
-var ORDER=["Dossier","Through type","Grid","Deck"];
-var NOTE={
- "Dossier":"format 12 \u00b7 the row opens in place \u2014 nothing flies off the screen",
- "Through type":"format 08 \u00b7 the project name set in outline, filled in on open",
- "Grid":"format 14 \u00b7 the groups stay visible on the left, always",
- "Deck":"format 15 \u00b7 a horizontal deck that snaps"
-};
-function paintFormat(name){
- var host=$("#fhost"); FMT[name](host);
- $("#fnote").textContent=NOTE[name];
- $$("[data-ico]",host).forEach(function(cv){ icoInto(cv,+cv.dataset.ico); });
- plates(host);
- $$("#ftabs button").forEach(function(b){
-  b.setAttribute("aria-selected", b.textContent===name?"true":"false"); });
 }
 
-/* ─── 4 · ОТКРЫТЬ КЕЙС В ПАНЕЛИ ─── */
 function openCase(i){
  var f=C.flat[i], it=f.it;
  panel('<h3>'+esc(it.n)+"</h3><p>"+esc(f.g)+" · "+esc(it.tag||"")+"</p>"+
-  '<div style="margin-top:14px">'+bodyHTML(it)+"</div>");
- plates($("#pan"));
+  '<div class="cbody">'+bodyHTML(it)+"</div>");
 }
 
 /* ─── 5 · БЕНЧМАРК ─── */
@@ -1385,7 +783,6 @@ function bench(){
 }
 
 /* ─── 6 · ПРОДУКТЫ (только существующее, без выдумок) ─── */
-var PCOL={open:"#2FE0A6",beta:"#E2E04A",ask:"#FF8A3D"};
 var PROD=[
  {n:"Pearch.AI \u00b7 API and MCP server",s:"open",st:"open",
   p:"Finds people from a plain-language description. Plugs into somebody else's ATS as an MCP server \u2014 and that ATS suddenly knows how to search people.",
@@ -1409,14 +806,13 @@ function prods(){
  $("#prods").innerHTML=PROD.map(function(p){
   return '<article class="prod"><span class="pstate '+p.s+'">'+esc(p.st)+"</span>"+
    "<h3>"+esc(p.n)+"</h3><p>"+esc(p.p)+"</p>"+
-   plateHTML({n:p.n,e:p.a},'<span>'+esc(p.w)+'</span>',PCOL[p.s])+
+   '<div class="shot hole"><span>'+esc(p.w)+'</span></div>'+
    '<div class="act">'+p.a.map(function(a){
      return a[1].charAt(0)==="#"
       ? '<button class="btn go" data-open="lead">'+esc(a[0])+"</button>"
       : '<a class="btn" target="_blank" rel="noopener" href="'+a[1]+'">'+esc(a[0])+"</a>";
    }).join("")+"</div></article>";
  }).join("");
- plates($("#prods"));
 }
 
 /* ─── 7 · ПАНЕЛЬ ─── */
@@ -1473,8 +869,7 @@ function leadPanel(){
 }
 function gateRefresh(){
  $("#entry").textContent=unlocked()?"Access open":"Sign in";
- var cur=$("#ftabs [aria-selected='true']");
- if(cur) paintFormat(cur.textContent);
+ work();
 }
 
 /* ─── 9 · ШЕРИНГ: КАРТОЧКА «О ЧЁМ САЙТ И ЧТО ЗА ПЕРСОНАЖ» ─── */
@@ -1498,23 +893,20 @@ function shareCard(){
  for(i=0;i<k.length;i++){g.globalAlpha=.5;g.fillStyle=k[i][3];
   g.beginPath();g.arc(k[i][0],k[i][1],k[i][2],0,6.284);g.fill();}
  g.globalAlpha=1;
- if(window.ICO){ var m=ICO.cell(15,188); if(m) g.drawImage(m,64,62,188,188); }
  g.fillStyle="#EDEFF0";
  g.font='800 62px Unbounded, system-ui, sans-serif';
- g.fillText(C.name,286,128);
+ g.fillText(C.name,64,128);
  g.fillStyle="#7E8A91"; g.font='500 23px "JetBrains Mono", monospace';
- g.fillText(C.role+"  ·  "+C.city,288,170);
+ g.fillText(C.role+"  ·  "+C.city,64,170);
  g.fillStyle="#D3D8DA"; g.font='400 28px Archivo, system-ui, sans-serif';
- wrap(g,C.thesis,288,218,850,38);
+ wrap(g,C.thesis,64,226,1072,40);
  g.fillStyle="#E2E04A"; g.font='600 25px Unbounded, system-ui, sans-serif';
- wrap(g,"«"+C.turn+"»",64,336,1072,36);
- for(i=0;i<15;i++){ if(!window.ICO)break;
-  var c=ICO.cell(i,78); if(c) g.drawImage(c,64+i*74,404,70,70); }
+ wrap(g,"«"+C.turn+"»",64,352,1072,38);
  var cl=C.chips.map(function(c){return c.k+" "+c.u;}).join("   ·   "), fs=22;
  g.fillStyle="#7E8A91";
  do{ fs-=1; g.font='500 '+fs+'px "JetBrains Mono", monospace'; }
  while(g.measureText(cl).width>W-128 && fs>11);
- g.fillText(cl,64,524);
+ g.fillText(cl,64,484);
  g.fillStyle="#EDEFF0"; g.font='700 28px Unbounded, system-ui, sans-serif';
  g.fillText("yury.digital",64,576);
  g.fillStyle="#525C62"; g.font='400 19px "JetBrains Mono", monospace';
@@ -1540,19 +932,8 @@ function boot(){
  $("#mark2").textContent=C.mark;
  $("#ccount").textContent=C.n+" projects \u00b7 "+C.gcount+" industries";
  sky($("#sky"));
- if(window.ICO){
-  ICO.init(C.flat,C.name);
-  ICO.attach($("#hmark"),15);
-  ICO.attach($("#bmark"),15);
-  ICO.attach($("#hintmark"),15);
- }
- /* форматы */
- $("#ftabs").innerHTML=ORDER.map(function(n){
-  return '<button role="tab" aria-selected="false">'+n+"</button>";}).join("");
- $$("#ftabs button").forEach(function(b){
-  b.addEventListener("click",function(){paintFormat(b.textContent);});});
- paintFormat(ORDER[0]);
- bench(); prods(); shareCard(); trail();
+ work();
+ bench(); prods(); shareCard();
  $("#entry").textContent=unlocked()?"Access open":"Sign in";
  /* события */
  document.addEventListener("click",function(e){
