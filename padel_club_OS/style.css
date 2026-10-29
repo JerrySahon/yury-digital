@@ -1257,3 +1257,4 @@ em.hl{word-spacing:normal}
 @media (max-width:760px){.mod-phones .phones .phone{--pw:min(68vw,260px)}.bd-in .person small{white-space:normal}.person{max-width:100%}}
 .mod-grid>*{min-width:0}@media (max-width:1100px){.fill-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:760px){.phones,.clock,.feed{scroll-padding-inline:var(--gutter)}.phones .phone,.mod-phones .phones .phone{scroll-snap-align:start}}
+@media (max-width:760px){.mod-phones .phones,.phones{justify-content:flex-start}}
