@@ -912,22 +912,23 @@ var TOP={
    Плитка = индустрия, цвет = её группа, клик открывает кейс. Точная
    выручка Gresco скрыта: только порядок, остальное по запросу. */
 var DRV=[
- {i:7,t:"Construction & engineering",big:"$\u2588,\u2588\u2588\u2588,\u2588\u2588\u2588",u:"annual revenue \u00b7 seven figures, exact number on request",
+ {s:"gresco",t:"Construction & engineering",big:"$\u2588,\u2588\u2588\u2588,\u2588\u2588\u2588",u:"annual revenue \u00b7 seven figures, exact number on request",
   s:"Gresco: managing partner in HVAC engineering and GR: permits, utilities, public clients. 10+ sites, up to 40 people."},
- {i:3,t:"BTL & digital agencies",logos:1,u:"brands I ran projects for",
+ {s:"ua",t:"BTL & digital agencies",logos:1,u:"brands I ran projects for",
   s:"13 Under Armour stores in 4 months; Disney, EA and Epic Games campaigns with 10M+ reach; Hyundai Sonata launch in the UAE."},
- {i:0,t:"Data science, worldwide",big:"150+",u:"B2B clients in 15 countries",
+ {s:"pearch",t:"Data science, worldwide",big:"150+",u:"B2B clients in 15 countries",
   s:"Pearch.AI: a people-search engine with a published paper, $1M+ raised."},
- {i:9,t:"Hardware health tech for kids",big:"3\u201310 min",u:"of warning before a child\u2019s meltdown",
+ {s:"emozu",t:"Hardware health tech for kids",big:"3\u201310 min",u:"of warning before a child\u2019s meltdown",
   s:"Emozu: built on published research, raising pre-seed now."},
- {i:1,t:"Vibe-coding \u00d7 real estate",big:"200",u:"guests at the club\u2019s biggest events",
+ {s:"padel",t:"Vibe-coding \u00d7 real estate",big:"200",u:"guests at the club\u2019s biggest events",
   s:"Padel Club OS grows a venue\u2019s business and every guest touchpoint. Partners: Inecobank, Red Bull."},
- {i:12,t:"Space tech",big:"Space",u:"tech \u2014 the dream I\u2019m building toward",
+ {s:"sat",t:"Space tech",big:"Space",u:"tech \u2014 the dream I\u2019m building toward",
   s:"Satellite imagery: started as an idea for the OpenAI hackathon."}];
 var LOGOS='<span class="logos"><img src="img/logo/underarmour.svg" alt="Under Armour"><span class="dw">Disney</span>'+
  '<img src="img/logo/ea.svg" alt="EA"><img src="img/logo/epicgames.svg" alt="Epic Games"><img src="img/logo/hyundai.svg" alt="Hyundai"></span>';
 function drivers(){
  $("#drv").innerHTML=DRV.map(function(d){
+  d.i=SLUG.indexOf(d.s);
   var col=window.MARK?MARK.color(C.flat[d.i].k):"#7E8A91";
   return '<button class="dt" data-case="'+d.i+'" style="--c:'+col+'"><span class="dhd"><img src="'+ICO(d.i)+'" alt="" loading="lazy"><b>'+esc(d.t)+'</b></span>'+
    (d.logos?LOGOS:'<span class="dbig">'+esc(d.big)+'</span>')+
