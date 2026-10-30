@@ -3,11 +3,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sakhonchyk.</title>
-<meta name="description" content="Seventeen projects across six industries — what shipped, what it changed, and the numbers behind it.">
+<meta name="description" content="Seventeen projects across six industries: what shipped, what it changed, and the numbers behind it.">
 <link rel="canonical" href="https://yury.digital/">
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Sakhonchyk — seventeen projects, six industries">
-<meta property="og:description" content="Yury Sakhonchyk — founder of Pearch.AI. Seventeen projects across six industries, and a benchmark we won.">
+<meta property="og:title" content="Sakhonchyk · seventeen projects, six industries">
+<meta property="og:description" content="Yury Sakhonchyk, founder of Pearch.AI. Seventeen projects across six industries, and a benchmark we won.">
 <meta property="og:url" content="https://yury.digital/">
 <meta property="og:image" content="https://yury.digital/img/camp.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -325,6 +325,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 .gband.sm .card{min-height:0}
 @media(max-width:860px){.gband.md{grid-column:span 12}}
 @media(max-width:760px){.gband.sm{grid-column:span 12}}
+/* три карточки: либо три в ряд, либо одна под другой, без 2+1 с сиротой */
+.gband[data-n="3"]:not(.sm) .cards{grid-template-columns:repeat(3,1fr)}
+@media(max-width:600px){.gband[data-n="3"]:not(.sm) .cards{grid-template-columns:1fr}}
 
 
 /* продукты: самая длинная подпись — пять строк, поэтому абзац держит
@@ -349,7 +352,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 .me img{width:100%;height:100%;object-fit:cover;display:block}
 .me:has(img){padding:0}
 @media(max-width:800px){ .hgrid{grid-template-columns:1fr} .me{width:118px;height:118px;padding:20px} }
-@media(max-width:520px){ #entry .xl{display:none} }
+#entry{white-space:nowrap}
+#entry .sm{display:none}
+@media(max-width:520px){ #entry .xl,#entry .lg{display:none} #entry .sm{display:inline} }
 /* ── топ-3 ── */
 .lead1{font-family:var(--fd);font-weight:600;font-size:17px;letter-spacing:-.02em;
   line-height:1.3;text-wrap:balance;margin-top:4px}
@@ -439,7 +444,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
     <a href="#drivers">Experience</a><a href="#work">Work</a><a href="#bench">Benchmark</a>
     <a href="#prod">Products</a><a href="#ct">Contact</a>
   </nav>
-  <button class="btn go" id="entry" data-open="lead"><span class="xl">For </span>Investors &amp; Partnerships</button>
+  <button class="btn go" id="entry" data-open="lead"><span class="xl">For </span><span class="lg">Investors &amp; Partnerships</span><span class="sm">Invest &amp; partner</span></button>
 </div></header>
 
 <section class="hero"><canvas id="sky"></canvas><div class="wrap">
@@ -495,7 +500,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
   <div class="shead"><h2>Contact</h2><p>Straight to me, no form.</p></div>
   <div class="cts">
     <a class="ct" href="https://t.me/jerry_sahon" target="_blank" rel="noopener">
-      <b>Telegram</b><span>@jerry_sahon — the fastest way in</span></a>
+      <b>Telegram</b><span>@jerry_sahon, the fastest way in</span></a>
     <a class="ct" href="https://www.linkedin.com/in/yu-ry" target="_blank" rel="noopener">
       <b>LinkedIn</b><span>in/yu-ry</span></a>
     <a class="ct" href="https://github.com/JerrySahon" target="_blank" rel="noopener">
@@ -507,7 +512,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 </div></section>
 
 <footer><div class="wrap">
-  <span>Seventeen projects across six industries — the cases, the numbers, and what is still missing.</span>
+  <span>Seventeen projects across six industries: the cases, the numbers, and what is still missing.</span>
   <span class="num">yury.digital</span>
 </div></footer>
 
@@ -523,13 +528,13 @@ var C={
  name:"Yury Sakhonchyk", mark:"Sakhonchyk.",
  role:"Founder · product · vibe-coding",
  city:"Yerevan, Armenia",
- thesis:"Fourteen years of launching what didn't exist yet: HVAC engineering, BTL & retail, XR & EdTech, social networks, people tech & data science, hardware health tech — and AI business automation.",
+ thesis:"Fourteen years of launching what didn't exist yet: HVAC engineering, BTL & retail, XR & EdTech, social networks, people tech & data science, hardware health tech and AI business automation.",
  turn:"I used to manage people. Now I lead people who run agents.",
  /* доказательства — только из реальных цифр портфеля */
  chips:[{k:"16",u:"projects"},{k:"6",u:"industries"},{k:"$1M+",u:"raised"},
         {k:"150+",u:"B2B clients"},{k:"40",u:"people led, peak"}],
  door:{t:"For Investors & Partnerships",s:"four questions, then straight to me"},
- hint:"Contacts are always here — bottom right.",
+ hint:"Contacts are always here: bottom right.",
  /* бенчмарк живёт внутри Pearch, не в первом экране */
  bench:{
   t:"Blind human judgement, four sourcing engines",
@@ -541,22 +546,22 @@ var C={
  groups:[
   {g:"AI: people search and memory",k:"ai",items:[
    {n:"Pearch.AI",top:1,why:"inspired by a challenge",st:"live",tag:"finds people from a plain-language description · API + MCP",
-    p:"Founder. An engine that finds the right person from a plain-language description instead of filters. Shipped as an API and an MCP server — so somebody else's ATS suddenly knows how to search people.",
+    p:"Founder. An engine that finds the right person from a plain-language description instead of filters. Shipped as an API and an MCP server, so somebody else's ATS suddenly knows how to search people.",
     e:["$1M+ raised","15 countries","150+ B2B clients","six figures / month"],
     img:"pearch",link:"pearch.ai",
     sub:[{n:"PSA · Partner Success panel",p:"Vibe-coded partner development panel: touch stats, enrichment, design-partner reports."},
-         {n:"The paper",p:"arXiv:2504.02463 — blind comparison, my surname in the authors.",img:"arxiv"},
+         {n:"The paper",p:"arXiv:2504.02463: blind comparison, my surname in the authors.",img:"arxiv"},
          {n:"Cold outreach for sales",p:"The outbound loop for the sales side."},
          {n:"Site articles",p:"Content that brings developers to the API."},
          {n:"GDPR compliance",p:"The legal perimeter around a profile index."},
          {n:"Onboarding flow",p:"A partner's path from key to first query."},
-         {n:"API documentation format",p:"Mine to own — which is where the technical depth comes from."}]},
+         {n:"API documentation format",p:"Mine to own, which is where the technical depth comes from."}]},
    {n:"Synthius",st:"beta",tag:"side product · part-time · memory and personality layer for AI",
-    p:"Side product, part-time. I build products on Synthius — a memory and personality layer for AI made by Andrew Kislov, Artem Gadzhiev and Petr Korolev. It sorts a person's scattered context into structured memory, so the agents they allow in know them instead of guessing. The numbers are from the team's paper.",
+    p:"Side product, part-time. I build products on Synthius, a memory and personality layer for AI made by Andrew Kislov, Artem Gadzhiev and Petr Korolev. It sorts a person's scattered context into structured memory, so the agents they allow in know them instead of guessing. The numbers are from the team's paper.",
     e:["#1 on LoCoMo","94.4% memory accuracy","99.6% adversarial robustness","≈5× fewer tokens"],
     img:"synthius",link:"synthius.ai",
-    sub:[{n:"The paper",p:"arXiv:2604.11563 — Synthius-Mem, April 2026. 94.4% on the LoCoMo memory benchmark, above every published system and the 87.9 human baseline.",u:"https://arxiv.org/abs/2604.11563"},
-         {n:"The site",p:"synthius.ai — beta, waitlist and the founders' contact.",u:"https://synthius.ai/"}]}]},
+    sub:[{n:"The paper",p:"arXiv:2604.11563: Synthius-Mem, April 2026. 94.4% on the LoCoMo memory benchmark, above every published system and the 87.9 human baseline.",u:"https://arxiv.org/abs/2604.11563"},
+         {n:"The site",p:"synthius.ai: beta, waitlist and the founders' contact.",u:"https://synthius.ai/"}]}]},
   {g:"Software for sports clubs",k:"sport",items:[
    {n:"Padel Club OS",top:2,why:"inspired by a hobby",link:"yury.digital/padel_club_OS",st:"live",tag:"runs Armenia's largest padel club",
     p:"The operating system of a padel club: a site with CRM and intake, a Telegram bot with admins wired in, court-load tracking, a content plan driven by that load, and a corporate offer that tracks who opened it.",
@@ -574,15 +579,15 @@ var C={
     e:["13 stores in 4 months","50+ people","a direct line to Panama"],
     need:"window, fixture and render photos"},
    {n:"YouRussia",st:"done",tag:"brand · online course «Wild bouquets» · 5,000+ students",
-    p:"My own brand: traffic, content and four products under one name. The biggest was an online course on wild bouquets — more than 5,000 people took it.",
+    p:"My own brand: traffic, content and four products under one name. The biggest was an online course on wild bouquets: more than 5,000 people took it.",
     e:["5,000+ students","top-10 sales on the tables"],
     sub:[{n:"Steel tables cut as vyshyvanka embroidery",p:"Top-10 by sales."},
-         {n:"Planters from ventilation duct",p:"The same duct as in Gresco — only indoors."},
+         {n:"Planters from ventilation duct",p:"The same duct as in Gresco, only indoors."},
          {n:"Online course «Wild bouquets»",p:"5,000+ students."},
          {n:"T-shirts with a stand we designed ourselves",p:"In many Russian cities."}],
     need:"photos of the tables and the stand"},
    {n:"Simple Digital",st:"done",tag:"Founder, CEO & Creative Director · Hyundai · Elikor",
-    p:"Founder, CEO and creative director of an AR / 3D studio. A remote team of design, development, 3D and motion — seven people from four countries. Launched the Hyundai Sonata in the UAE. Digitised 70+ Elikor hood models plus a configurator.",
+    p:"Founder, CEO and creative director of an AR / 3D studio. A remote team of design, development, 3D and motion: seven people from four countries. Launched the Hyundai Sonata in the UAE. Digitised 70+ Elikor hood models plus a configurator.",
     e:["120+ projects","average deal ×10","7 people / 4 countries"],
     need:"validate the numbers + screens"},
    {n:"WNM Digital",st:"done",tag:"Senior Account Manager · Disney · EA Games · Epic Games",
@@ -590,20 +595,20 @@ var C={
     e:["18 projects","≈$45–75K average budget","10M+ reach","50+ on set"]}]},
   {g:"Construction and industrial engineering",k:"build",items:[
    {n:"Gresco",st:"done",tag:"Managing Partner · HVAC engineering · GR · innovation driver",
-    p:"Managing partner of an HVAC engineering company. From selling industrial ventilation to running construction sites: two or three at once, up to 40 people reporting directly — the most I have ever led. GR was part of the job: permits, utilities and public clients.",
+    p:"Managing partner of an HVAC engineering company. From selling industrial ventilation to running construction sites: two or three at once, up to 40 people reporting directly, the most I have ever led. GR was part of the job: permits, utilities and public clients.",
     e:["10+ sites","seven-figure turnover","$300–600K per site","40 people"],
     sub:[{n:"Innovation: offline face recognition on our sites",
-          p:"Offline face recognition plus a work-tracking system with deadlines on five sites. A ≈$1.5K rollout saved $7.5K+ of payroll in two months — ×5 return in a quarter."}],
+          p:"Offline face recognition plus a work-tracking system with deadlines on five sites. A ≈$1.5K rollout saved $7.5K+ of payroll in two months, ×5 return in a quarter."}],
     need:"site photos and screens"}]},
   {g:"Personal products, vibe-coded",k:"vibe",items:[
    {n:"Project Radar",st:"live",tag:"vibe-coded on myself",
     p:"A product-owner agent that manages me: ranks projects by impact and cost, runs scheduled tasks, swaps my phone wallpaper to match the focus, and reads information back through neuro-interface rules.",
     e:["10 projects","a daily run"]},
    {n:"Emozu",top:3,why:"inspired by a personal story",st:"raise",tag:"warns a parent minutes before a child's meltdown",
-    p:"A device for children that warns about a meltdown early — early enough for a parent to act. Roadmap: a paper in nine months.",
+    p:"A device for children that warns about a meltdown early, early enough for a parent to act. Roadmap: a paper in nine months.",
     e:["3–10 min warning window","the window published studies already predict","nothing a family can buy today","pre-seed · raising now"],gate:"deep into this case only through the form and the quiz"},
    {n:"Nevod",st:"live",tag:"used every single day",
-    p:"It parses my screenshot feed and turns findings into rules I then work by. Not a grey prototype — a product I open daily.",
+    p:"It parses my screenshot feed and turns findings into rules I then work by. Not a grey prototype, a product I open daily.",
     e:["pipeline on Fly.io"]},
    {n:"English Tutor",st:"wip",tag:"open source + paid support",
     p:"An open repository for language learning with a paid support package on top.",
@@ -615,7 +620,7 @@ var C={
     p:"It decomposes a task and hunts the leading solution for each part: GitHub open source → products → and if there are none or they are absurdly priced, how to build it yourself and which services you would need. Recursively, until the ideal.",
     e:["36 nodes · 6 ok / 11 known / 19 holes"]},
    {n:"Kettlebell technique advisor",st:"wip",tag:"fitness · camera-based form check",
-    p:"Watches a kettlebell set through the camera and points out technique errors — so you fix the swing before it costs you your back.",
+    p:"Watches a kettlebell set through the camera and points out technique errors, so you fix the swing before it costs you your back.",
     e:["prototype"]},
    {n:"Padel highlights cropper",st:"wip",tag:"cuts the best rallies from a match",
     p:"Takes a recording of a padel game and cuts the highlights out of it, ready to post.",
@@ -633,11 +638,11 @@ function ICO(i){var s=SLUG[i];return "img/ico/"+s+".webp";}
 C.photo="";                 /* ← путь к его фото, когда пришлёт */
 /* ═══ ОБЩИЕ УТИЛИТЫ ═══ */
 var V={};
-var CAP={camp:"Highland camp — the cover shot he picked himself",
- pearch:"pearch.ai — the homepage",
- synthius:"synthius.ai — the homepage",
+var CAP={camp:"Highland camp, the cover shot he picked himself",
+ pearch:"pearch.ai · the homepage",
+ synthius:"synthius.ai · the homepage",
  courts:"Padel Battle Club courts, from the drone",
- arxiv:"arXiv:2504.02463 — the preprint page"};
+ arxiv:"arXiv:2504.02463 · the preprint page"};
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(m){
  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m];});}
 function ST(s){return {live:"live",beta:"beta",done:"shipped",wip:"in progress",raise:"raising"}[s]||s;}
@@ -809,7 +814,7 @@ function card(f){
      '<span class="ctag">'+esc(it.tag||"")+"</span></button>";
 }
 function band(title,col,list,w){
- return '<section class="gband'+w+'"><div class="gttl" style="color:'+col+'">'+
+ return '<section class="gband'+w+'" data-n="'+list.length+'"><div class="gttl" style="color:'+col+'">'+
    "<b>"+esc(title)+"</b><span>"+list.length+
    (list.length===1?" project":" projects")+'</span><div class="gbar"></div></div>'+
    '<div class="cards">'+list.map(card).join("")+"</div></section>";
@@ -865,18 +870,18 @@ function TL(){
 }
 var TOP={
  pearch:function(it,i){
-  return '<p class="lead1">First in blind human judgement against three sourcing engines \u2014 and a paper to prove it.</p>'+
+  return '<p class="lead1">First in blind human judgement against three sourcing engines, and a paper to prove it.</p>'+
    tfs([["#1","in blind human judgement vs JuiceBox, Exa and LinkedIn Recruiter"],
         ["150+","B2B clients"],["15","countries"],
         ["6 figures","revenue a month"],["$1M+","raised"]])+
    '<p>'+esc(it.p)+'</p>'+fig(IMG.pearch,CAP.pearch)+
-   sec("The paper",fig(IMG.arxiv,"arXiv 2504.02463 \u2014 the paper"))+subHTML(it.sub)+
+   sec("The paper",fig(IMG.arxiv,"arXiv 2504.02463 · the paper"))+subHTML(it.sub)+
    '<div class="tcta">'+ext("Try pearch.ai","https://pearch.ai")+ext("Read the paper","https://arxiv.org/abs/2504.02463")+
    '<a class="btn" href="#bench" data-x>How it was measured \u2193</a>'+pageBtn(i)+'</div>';
  },
  padel:function(it,i){
   return '<p class="lead1">Runs on the biggest padel club in Armenia.</p>'+
-   '<div class="duo">'+fig("img/padel-site.webp","padelbattle.am \u2014 the club site it runs")+fig("img/padel-mobile.webp","on a phone")+'</div>'+
+   '<div class="duo">'+fig("img/padel-site.webp","padelbattle.am · the club site it runs")+fig("img/padel-mobile.webp","on a phone")+'</div>'+
    tfs([["200","guests at the biggest events"],
         ["Red Bull","and Inecobank, a top Armenian bank, as partners"],
         ["only","indoor padel courts in Armenia"]])+
@@ -922,7 +927,7 @@ var DRV=[
   s:"Emozu: built on published research, raising pre-seed now."},
  {slug:"padel",t:"Vibe-coding \u00d7 real estate",big:"200",u:"guests at the club\u2019s biggest events",
   s:"Padel Club OS grows a venue\u2019s business and every guest touchpoint. Partners: Inecobank, Red Bull."},
- {slug:"sat",t:"Space tech",big:"Space",u:"tech \u2014 the dream I\u2019m building toward",
+ {slug:"sat",t:"Space tech",big:"Space",u:"tech, the dream I\u2019m building toward",
   s:"Satellite imagery: started as an idea for the OpenAI hackathon."}];
 var LOGOS='<span class="logos"><img src="img/logo/underarmour.svg" alt="Under Armour"><span class="dw">Disney</span>'+
  '<img src="img/logo/ea.svg" alt="EA"><img src="img/logo/epicgames.svg" alt="Epic Games"><img src="img/logo/hyundai.svg" alt="Hyundai"></span>';
@@ -972,7 +977,7 @@ function pick(t){
  var g="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Call with Yury Sakhonchyk (to be confirmed)")+
   "&dates="+f8(t)+"/"+f8(t+CAL.len*6e4)+"&details="+encodeURIComponent("Requested on yury.digital. Yury confirms in Telegram: t.me/jerry_sahon");
  var k=$("#calok");
- k.innerHTML='<p><b>'+esc(lt(t))+'</b> (your time) \u2014 30 min</p>'+
+ k.innerHTML='<p><b>'+esc(lt(t))+'</b> (your time) · 30 min</p>'+
   '<a class="btn go" id="caltg" target="_blank" rel="noopener" href="https://t.me/jerry_sahon?text='+encodeURIComponent(msg)+'">Send the request in Telegram \u2197</a>'+
   '<a class="btn" target="_blank" rel="noopener" href="'+g+'">Add to Google Calendar \u2197</a>'+
   '<button class="btn" data-ics="'+t+'">.ics file</button>'+
@@ -1038,7 +1043,7 @@ function bench(){
      '<line x1="'+x.toFixed(1)+'" y1="'+base+'" x2="'+(x+bw).toFixed(1)+
       '" y2="'+base+'" stroke="#222A2E"></line>';
    }).join("")+'</g></svg>'+
-   '<figcaption>Height is the place, not a score \u2014 the paper reports '+
+   '<figcaption>Height is the place, not a score: the paper reports '+
    'ranks, so there is no bar length to draw honestly.</figcaption></figure>');
  $("#bsrc").textContent=b.t+" · "+b.src;
 }
@@ -1108,12 +1113,12 @@ function leadPanel(){
     'access to Project Radar','just looking'].map(function(o){
      return '<option>'+o+"</option>";}).join("")+"</select></div>"+
   '<div class="fld"><label>how to reach you</label><input name="how" required placeholder="telegram, email or linkedin"></div>'+
-  '<div class="fld"><label>one line \u2014 what you need</label><textarea name="txt" placeholder="optional"></textarea></div>'+
+  '<div class="fld"><label>one line: what you need</label><textarea name="txt" placeholder="optional"></textarea></div>'+
   '<div class="pfoot"><button class="btn go" type="submit">Send, and open the closed cases</button></div>'+
   '<div class="ok" id="lok"></div>'+
   '<div class="why"><a href="#cal" data-x>or book a 30-min call</a></div>'+
   '<div class="priv">This site has no backend. Your request is kept in your own '+
-  'browser, copied to the clipboard and opens Telegram — you send it yourself, '+
+  'browser, copied to the clipboard and opens Telegram, and you send it yourself, '+
   'in one tap. It goes nowhere else.</div></form>');
  $("#lf").addEventListener("submit",function(e){
   e.preventDefault();
@@ -1121,13 +1126,13 @@ function leadPanel(){
   d.forEach(function(v,k){o[k]=String(v);});
   try{ var q=JSON.parse(localStorage.getItem(LEAD_KEY)||"[]");
        q.push(o); localStorage.setItem(LEAD_KEY,JSON.stringify(q)); }catch(x){}
-  var tx="Request from yury.digital\n— who: "+o.who+"\n— why: "+o.why+
-         "\n— reach: "+o.how+(o.txt?"\n— needs: "+o.txt:"");
+  var tx="Request from yury.digital\n· who: "+o.who+"\n· why: "+o.why+
+         "\n· reach: "+o.how+(o.txt?"\n· needs: "+o.txt:"");
   if(LEAD_URL){ try{fetch(LEAD_URL,{method:"POST",
     headers:{"Content-Type":"application/json"},body:JSON.stringify(o)});}catch(x){} }
   if(navigator.clipboard) navigator.clipboard.writeText(tx)["catch"](function(){});
   unlock();
-  var k=$("#lok"); k.textContent="Copied. Opening Telegram \u2014 paste it and hit send. The closed cases are open now.";
+  var k=$("#lok"); k.textContent="Copied. Opening Telegram: paste it and hit send. The closed cases are open now.";
   k.classList.add("on");
   setTimeout(function(){ window.open("https://t.me/jerry_sahon","_blank","noopener"); },450);
   gateRefresh();
