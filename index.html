@@ -100,7 +100,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media(max-width:800px){
   .hgrid{grid-template-columns:1fr;gap:20px}
   .mark{width:118px;height:118px}
+}
+/* пять цифр: пять в ряд, на телефоне 2+2 и последняя на всю ширину, без сироты */
+@media(max-width:560px){
   .chips{grid-template-columns:repeat(2,1fr)}
+  .chips>:last-child{grid-column:1/-1}
 }
 
 /* ═══ СЕКЦИИ ═══ */
