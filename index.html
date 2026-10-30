@@ -125,6 +125,7 @@ section{padding:56px 0;border-top:1px solid var(--ln)}
   border:1px solid currentColor;flex:none}
 .st.live{color:var(--ok)} .st.done{color:var(--dim)}
 .st.soon{color:var(--warm)}
+.st.raise{color:var(--go)}
 .ev{margin-top:13px;display:flex;flex-wrap:wrap;gap:7px}
 .ev i{font-style:normal;font-family:var(--fm);font-size:11px;
   background:var(--s2);border:1px solid var(--ln);border-radius:7px;
@@ -551,9 +552,9 @@ var C={
          {n:"Onboarding flow",p:"A partner's path from key to first query."},
          {n:"API documentation format",p:"Mine to own — which is where the technical depth comes from."}]}]},
   {g:"Software for sports clubs",k:"sport",items:[
-   {n:"Padel Club OS",top:2,why:"inspired by a hobby",link:"yury.digital/padel_club_OS",st:"live",tag:"portfolio project: Padel Battle Club",
+   {n:"Padel Club OS",top:2,why:"inspired by a hobby",link:"yury.digital/padel_club_OS",st:"live",tag:"runs Armenia's largest padel club",
     p:"The operating system of a padel club: a site with CRM and intake, a Telegram bot with admins wired in, court-load tracking, a content plan driven by that load, and a corporate offer that tracks who opened it.",
-    e:["biggest club in Armenia","events up to 200 guests","Inecobank · Red Bull"],img:"courts",
+    e:["events up to 200 guests","biggest club in Armenia","Inecobank · Red Bull"],img:"courts",
     sub:[{n:"Media kit",p:"Work in progress."},
          {n:"Ad placements",p:"A list of spots and ideas. «Monthly rotating towel sponsors» is still at the idea stage."}]}]},
   {g:"Networking and events",k:"net",items:[
@@ -592,9 +593,9 @@ var C={
    {n:"Project Radar",st:"live",tag:"vibe-coded on myself",
     p:"A product-owner agent that manages me: ranks projects by impact and cost, runs scheduled tasks, swaps my phone wallpaper to match the focus, and reads information back through neuro-interface rules.",
     e:["10 projects","a daily run"]},
-   {n:"Emozu",top:3,why:"inspired by a personal story",st:"live",tag:"pre-seed · raising",
+   {n:"Emozu",top:3,why:"inspired by a personal story",st:"raise",tag:"warns a parent minutes before a child's meltdown",
     p:"A device for children that warns about a meltdown early — early enough for a parent to act. Roadmap: a paper in nine months.",
-    e:["logo + deck ready"],gate:"deep into this case only through the form and the quiz"},
+    e:["3–10 min warning window","the window published studies already predict","nothing a family can buy today","pre-seed · raising now"],gate:"deep into this case only through the form and the quiz"},
    {n:"Nevod",st:"live",tag:"used every single day",
     p:"It parses my screenshot feed and turns findings into rules I then work by. Not a grey prototype — a product I open daily.",
     e:["pipeline on Fly.io"]},
@@ -632,7 +633,7 @@ var CAP={camp:"Highland camp — the cover shot he picked himself",
  arxiv:"arXiv:2504.02463 — the preprint page"};
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(m){
  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m];});}
-function ST(s){return {live:"live",done:"shipped",wip:"in progress"}[s]||s;}
+function ST(s){return {live:"live",done:"shipped",wip:"in progress",raise:"raising"}[s]||s;}
 /* кадр: настоящий скрин или честная пустая рама с тем, чего не хватает */
 function SHOT(key,cls,need){
  cls=cls||"shot";
@@ -758,8 +759,8 @@ function sky(cv){
 }
 
 /* ─── 2 · ОБЩИЕ КУСКИ КАРТОЧКИ ─── */
-function stCls(s){return s==="live"?"live":s==="done"?"done":"soon";}
-function stTx(s){return s==="live"?"live":s==="done"?"closed":"soon";}
+function stCls(s){return s==="live"?"live":s==="done"?"done":s==="raise"?"raise":"soon";}
+function stTx(s){return s==="live"?"live":s==="done"?"closed":s==="raise"?"raising":"soon";}
 function evHTML(e){ if(!e||!e.length)return"";
  return '<div class="ev">'+e.map(function(x){return "<i>"+esc(x)+"</i>";}).join("")+"</div>"; }
 function subHTML(sub){ if(!sub||!sub.length)return"";
