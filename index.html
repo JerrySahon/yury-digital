@@ -479,7 +479,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
   <div class="shead">
     <h2>Work<span class="num" id="ccount"></span></h2>
     <p>Projects grouped by industry. Open any card for the case:
-       what was built, what it changed, and what is still pending.</p>
+       what was built and what it changed.</p>
   </div>
   <div id="fhost"></div>
 </div></section>
@@ -516,7 +516,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 </div></section>
 
 <footer><div class="wrap">
-  <span>Seventeen projects across six industries: the cases, the numbers, and what is still missing.</span>
+  <span>Seventeen projects across six industries: the cases and the numbers.</span>
   <span class="num">yury.digital</span>
 </div></footer>
 
@@ -776,7 +776,7 @@ function sky(cv){
 
 /* ─── 2 · ОБЩИЕ КУСКИ КАРТОЧКИ ─── */
 function stCls(s){return s==="live"||s==="beta"?"live":s==="done"?"done":s==="raise"?"raise":"soon";}
-function stTx(s){return s==="live"?"live":s==="beta"?"beta":s==="done"?"closed":s==="raise"?"raising":"soon";}
+function stTx(s){return s==="live"?"live":s==="beta"?"beta":s==="done"?"shipped":s==="raise"?"raising":"soon";}
 function evHTML(e){ if(!e||!e.length)return"";
  return '<div class="ev">'+e.map(function(x){return "<i>"+esc(x)+"</i>";}).join("")+"</div>"; }
 function subHTML(sub){ if(!sub||!sub.length)return"";
@@ -790,7 +790,7 @@ function pcount(it){
 function visHTML(it){
  if(it.img&&IMG[it.img]) return '<figure class="shot"><img alt="'+esc(it.n)+
    '" src="'+IMG[it.img]+'"><figcaption>'+esc(CAP[it.img]||"")+"</figcaption></figure>";
- return '<div class="shot hole"><span>'+esc(it.need||"screen pending")+'</span></div>';
+ return "";
 }
 function bodyHTML(it,i){
  if(it.gate&&!unlocked()) return '<p>'+esc(it.p)+"</p>"+evHTML(it.e)+
@@ -1049,7 +1049,7 @@ function bench(){
    }).join("")+'</g></svg>'+
    '<figcaption>Height is the place, not a score: the paper reports '+
    'ranks, so there is no bar length to draw honestly.</figcaption></figure>');
- $("#bsrc").textContent=b.t+" · "+b.src;
+ $("#bsrc").innerHTML=esc(b.t)+' · <a href="https://arxiv.org/abs/2504.02463" target="_blank" rel="noopener">'+esc(b.src)+" ↗</a>";
 }
 
 /* ─── 6 · ПРОДУКТЫ (только существующее, без выдумок) ─── */
@@ -1118,7 +1118,7 @@ function leadPanel(){
      return '<option>'+o+"</option>";}).join("")+"</select></div>"+
   '<div class="fld"><label>how to reach you</label><input name="how" required placeholder="telegram, email or linkedin"></div>'+
   '<div class="fld"><label>one line: what you need</label><textarea name="txt" placeholder="optional"></textarea></div>'+
-  '<div class="pfoot"><button class="btn go" type="submit">Send, and open the closed cases</button></div>'+
+  '<div class="pfoot"><button class="btn go" type="submit">Send</button></div>'+
   '<div class="ok" id="lok"></div>'+
   '<div class="why"><a href="#cal" data-x>or book a 30-min call</a></div>'+
   '<div class="priv">This site has no backend. Your request is kept in your own '+
@@ -1136,7 +1136,7 @@ function leadPanel(){
     headers:{"Content-Type":"application/json"},body:JSON.stringify(o)});}catch(x){} }
   if(navigator.clipboard) navigator.clipboard.writeText(tx)["catch"](function(){});
   unlock();
-  var k=$("#lok"); k.textContent="Copied. Opening Telegram: paste it and hit send. The closed cases are open now.";
+  var k=$("#lok"); k.textContent="Copied. Opening Telegram: paste it and hit send.";
   k.classList.add("on");
   setTimeout(function(){ window.open("https://t.me/jerry_sahon","_blank","noopener"); },450);
   gateRefresh();
