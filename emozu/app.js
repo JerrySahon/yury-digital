@@ -329,33 +329,68 @@
       ['dragleave', 'drop'].forEach(function (t) { drop.addEventListener(t, function () { drop.classList.remove('over'); }); });
     }
 
+    function readFile(f) {
+      return new Promise(function (resolve, reject) {
+        if (!f) { resolve(null); return; }
+        var fr = new FileReader();
+        fr.onload = function () { resolve({ name: f.name, type: f.type, data: String(fr.result).split(',')[1] }); };
+        fr.onerror = function () { reject(new Error('read')); };
+        fr.readAsDataURL(f);
+      });
+    }
+
     form.addEventListener('submit', function (e) {
+      e.preventDefault();
       var role = $('input[name="role"]:checked', form);
-      var name = form.elements.name.value.trim();
       var contact = form.elements.contact.value.trim();
       var text = form.elements.message.value.trim();
       var link = form.elements.link.value.trim();
-      var hasFile = file && file.files && file.files[0];
-      if (!contact) { e.preventDefault(); say(d.errContact, 'err'); form.elements.contact.focus(); return; }
-      if (!text && !link && !hasFile) { e.preventDefault(); say(d.errEmpty, 'err'); form.elements.message.focus(); return; }
+      var picked = file && file.files && file.files[0];
+      if (!contact) { say(d.errContact, 'err'); form.elements.contact.focus(); return; }
+      if (!text && !link && !picked) { say(d.errEmpty, 'err'); form.elements.message.focus(); return; }
 
-      if (form.dataset.ready === 'true') {
-        var btn = $('button[type=submit]', form);
-        btn.disabled = true;
-        btn.textContent = d.sending;
-        return; /* normal POST with the file */
-      }
+      var btn = $('button[type=submit]', form);
+      var label = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = d.sending;
+      say('');
 
-      /* backend not switched on yet: hand over to Telegram with the text filled in */
-      e.preventDefault();
-      var lines = ['Emozu site'];
-      if (role) lines.push('Role: ' + role.value);
-      if (name) lines.push('Name: ' + name);
-      lines.push('Contact: ' + contact);
-      if (text) lines.push(text);
-      if (link) lines.push(link);
-      window.open('https://t.me/jerry_sahon?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
-      say(hasFile ? d.tgFile : d.tg, 'ok');
+      var ctrl = 'AbortController' in window ? new AbortController() : null;
+      var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 120000) : null;
+
+      readFile(picked).then(function (f) {
+        /* text/plain keeps this a simple request, so the browser sends no preflight */
+        return fetch(d.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          signal: ctrl ? ctrl.signal : undefined,
+          body: JSON.stringify({
+            role: role ? role.value : '',
+            name: form.elements.name.value.trim(),
+            contact: contact,
+            message: text,
+            link: link,
+            page: d.page,
+            company: form.elements.company.value,
+            file: f
+          })
+        });
+      }).then(function (r) {
+        return r.json();
+      }).then(function (res) {
+        if (!res.ok) throw new Error(res.error || 'server');
+        var box = $('#sentBox');
+        form.hidden = true;
+        box.hidden = false;
+        box.focus({ preventScroll: true });
+        if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+      }).catch(function (err) {
+        say(err && err.message === 'size' ? d.errSize : d.errSend, 'err');
+        btn.disabled = false;
+        btn.textContent = label;
+      }).then(function () {
+        if (timer) clearTimeout(timer);
+      });
     });
   }
 })();

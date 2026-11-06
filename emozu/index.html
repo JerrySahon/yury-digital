@@ -43,6 +43,7 @@ setTimeout(function(){if(!window.__emozuReady)d.classList.remove('motion')},3500
       <a href="./" hreflang="en" aria-current="page">EN</a>
       <a href="ru/" hreflang="ru" >RU</a>
     </div>
+    <a class="li" href="https://www.linkedin.com/company/emozu/" target="_blank" rel="noopener" aria-label="Emozu on LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M6.5 8.7H3.3V20h3.2V8.7zM4.9 3.9a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8zM20.7 13.4c0-3.1-1.7-4.9-4.2-4.9-1.6 0-2.7.8-3.2 1.7V8.7h-3.1V20h3.2v-5.9c0-1.6.8-2.7 2.2-2.7s1.9 1 1.9 2.6v6h3.2v-6.6z"/></svg></a>
     <a class="btn sm" href="#write">Write to us</a>
   </div>
   <nav class="rail" aria-label="Sections">
@@ -532,7 +533,7 @@ setTimeout(function(){if(!window.__emozuReady)d.classList.remove('motion')},3500
         <p style="font-size:15px;color:var(--ink2)">At 3, 5, and 10 minutes ahead:</p>
         <ul class="keys"><li>AUROC</li><li>Sensitivity</li><li>PPV</li><li>False alarms per day</li></ul>
         <p style="font-size:15px;color:var(--ink2);margin-top:6px">In phase B we compare how often and how long episodes last on “on” days and “off” days.</p>
-        <p style="font-size:15px;color:var(--ink2)">A Telegram labeling bot is built and being tried out.</p>
+        <p style="font-size:15px;color:var(--ink2)">A labeling bot for parents is built and being tried out.</p>
       </div>
     </div>
   </div>
@@ -565,22 +566,18 @@ setTimeout(function(){if(!window.__emozuReady)d.classList.remove('motion')},3500
       <p class="eyebrow">Write to us</p>
       <h2 data-split>One button. Tell us who you are and what you have.</h2>
       <p class="lead rv">We need people who can turn a pilot into science and a product. Investors, clinicians and psychiatrists, hardware engineers, research groups, families. Write a line, drop a link, or attach a file.</p>
-      <p class="direct rv">Yury, the founder, reads every message. Prefer direct? <a href="https://t.me/jerry_sahon" target="_blank" rel="noopener">Telegram</a> or <a href="https://www.linkedin.com/in/yu-ry" target="_blank" rel="noopener">LinkedIn</a>.</p>
+      <p class="direct rv">Yury, the founder, reads every message.</p>
+      <div class="rv"><a class="btn ghost magnet" href="https://www.linkedin.com/company/emozu/" target="_blank" rel="noopener">Emozu on LinkedIn</a></div>
     </div>
     <div>
-      <div class="sent" id="sentBox" hidden><b>Got it, thank you.</b><span>Yury will reply to the contact you left.</span></div>
-      <form class="form" id="writeForm" method="post" enctype="multipart/form-data" action="" data-ready="false" novalidate
-        data-err-contact="Please leave an email or a Telegram, so we can reply."
+      <div class="sent" id="sentBox" tabindex="-1" hidden><b>Got it, thank you.</b><span>Yury will reply to the contact you left. In the meantime, follow <a href="https://www.linkedin.com/company/emozu/" target="_blank" rel="noopener">Emozu on LinkedIn</a>.</span></div>
+      <form class="form" id="writeForm" novalidate data-endpoint="https://script.google.com/macros/s/AKfycbyhIGlPQOx8sifKIHcONOcBHsb5ACOCOTRmmxJkmex7qTfh5ywVS4YmFyzZEAVy8Mk/exec" data-page="en"
+        data-err-contact="Please leave an email or a LinkedIn, so we can reply."
         data-err-empty="Add a line, a link, or a file."
         data-err-size="The file is over 10 MB. Please send a link instead."
-        data-sending="Sending…"
-        data-tg="Telegram opened with your message filled in. Press send there."
-        data-tg-file="Telegram opened with your message filled in. Please attach the file there.">
-        <input type="hidden" name="_subject" value="Emozu site: new message">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://yury.digital/emozu/?sent=1#write">
-        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        data-err-send="It did not send. Please try again, or write to us on LinkedIn: linkedin.com/company/emozu"
+        data-sending="Sending…">
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
         <fieldset>
           <legend>I am</legend>
           <div class="roles">
@@ -597,7 +594,7 @@ setTimeout(function(){if(!window.__emozuReady)d.classList.remove('motion')},3500
         </fieldset>
         <div class="two">
           <label class="f"><span>Name</span><input type="text" name="name" autocomplete="name"></label>
-          <label class="f"><span>Email or Telegram</span><input type="text" name="contact" autocomplete="email" required aria-required="true"></label>
+          <label class="f"><span>Email or LinkedIn</span><input type="text" name="contact" autocomplete="email" required aria-required="true"></label>
         </div>
         <label class="f"><span>Message</span><textarea name="message" rows="4" placeholder="A line is enough."></textarea></label>
         <div class="two">
@@ -670,14 +667,11 @@ setTimeout(function(){if(!window.__emozuReady)d.classList.remove('motion')},3500
 <footer class="foot">
   <div class="wrap">
     <p><b>Emozu is a research project.</b> It is not a medical device and it is not for sale. It does not diagnose, treat, or prevent any condition. Product images are renders, not photos. No real child's data appears on this site.</p>
-    <p>If a child is in danger, call your local emergency number. <a href="https://yury.digital/">yury.digital</a></p>
+    <p>If a child is in danger, call your local emergency number. <a href="https://www.linkedin.com/company/emozu/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://yury.digital/">yury.digital</a></p>
   </div>
 </footer>
 
 <div class="mob-cta"><a class="btn" href="#write">Write to us</a></div>
 
-<script>
-(function(){if(/[?&]sent=1/.test(location.search)){var s=document.getElementById('sentBox');if(s){s.hidden=false;s.style.marginBottom='14px'}}})();
-</script>
 </body>
 </html>
