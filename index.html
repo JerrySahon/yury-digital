@@ -280,6 +280,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
    порядок — крупной порядковой и цветом, ничью — общей скобкой.
    ─────────────────────────────────────────────────────────────── */
 .lad{list-style:none;display:flex;flex-direction:column;gap:10px}
+.lgnd{font-family:var(--fm);font-size:12px;color:var(--mu);line-height:1.8}.lgnd b{color:var(--tx);font-weight:600}
 .lgrp{display:grid;grid-template-columns:104px 1fr;gap:18px;align-items:center;
   background:var(--s1);border:1px solid var(--ln);border-radius:var(--r);
   padding:16px 20px;position:relative;overflow:hidden}
@@ -477,7 +478,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 
 <section id="work"><div class="wrap">
   <div class="shead">
-    <h2>Work<span class="num" id="ccount"></span></h2>
+    <h2>Work <span class="num" id="ccount"></span></h2>
     <p>Projects grouped by industry. Open any card for the case:
        what was built and what it changed.</p>
   </div>
@@ -584,8 +585,8 @@ var C={
     need:"window, fixture and render photos"},
    {n:"YouRussia",st:"done",tag:"brand · online course «Wild bouquets» · 5,000+ students",
     p:"My own brand: traffic, content and four products under one name. The biggest was an online course on wild bouquets: more than 5,000 people took it.",
-    e:["5,000+ students","top-10 sales on the tables"],
-    sub:[{n:"Steel tables cut as vyshyvanka embroidery",p:"Top-10 by sales."},
+    e:["5,000+ students","a small run of steel tables"],
+    sub:[{n:"Steel tables cut as vyshyvanka embroidery",p:"A small project: a short run of tables, sold."},
          {n:"Planters from ventilation duct",p:"The same duct as in Gresco, only indoors."},
          {n:"Online course «Wild bouquets»",p:"5,000+ students."},
          {n:"T-shirts with a stand we designed ourselves",p:"In many Russian cities."}],
@@ -913,7 +914,7 @@ var TOP={
      ["Model","starter set + new friends + Emozu Care subscription"],
      ["Year 1","IRB-clean study with 20\u201340 families"],
      ["Markets","US, UK, Nordics \u00b7 ages 3\u201310"]].map(function(x){return "<dt>"+esc(x[0])+"</dt><dd>"+esc(x[1])+"</dd>";}).join("")+'</dl>')+
-   '<div class="tcta"><button class="btn go" data-open="lead">Request the deck</button>'+pageBtn(i)+'</div>';
+   '<div class="tcta"><button class="btn go" data-open="lead">Request the deck</button>'+'<a class="btn" href="emozu/">The research behind it \u2192</a>'+pageBtn(i)+'</div>';
  }
 };
 
@@ -1012,16 +1013,9 @@ function bench(){
     Поэтому лестница, а не полосы: длину полосы пришлось бы выдумать. */
  var b=C.bench, ord=[], map={};
  b.rows.forEach(function(r){ if(!map[r.r]){map[r.r]=[];ord.push(r.r);} map[r.r].push(r); });
- $("#brows").innerHTML='<ol class="lad">'+ord.map(function(rk,i){
-  var set=map[rk], cls=i===0?"win":(i===ord.length-1?"out":"mid");
-  if(set.length>1) cls+=" tie";
-  return '<li class="lgrp '+cls+'"><div class="lpos">'+esc(rk)+'</div><div class="lset">'+
-   set.map(function(r){
-    return '<div class="lrow"><span class="lname">'+esc(r.n)+'</span>'+
-     (r.hot?'<span class="st live">ours</span>':'')+
-     '<i class="ldot"></i><span class="lwhy">'+esc(r.w)+'</span></div>';
-   }).join("")+'</div></li>';
- }).join("")+'</ol>';
+ $("#brows").innerHTML='<p class="lgnd">'+b.rows.map(function(r){
+  return '<span><b>'+esc(r.n)+(r.hot?' (ours)':'')+'</b>: '+esc(r.w)+'</span>';
+ }).join(' \u00b7 ')+'</p>';
  /* Высота ступени = МЕСТО. Пейпер даёт места, а не баллы, поэтому
     длину полосы рисовать нечем — ступень честнее столбика. */
  var N=ord.length, SW=620, gp=14, bw=(SW-gp*(N+1))/N, base=168;
