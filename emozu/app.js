@@ -384,6 +384,9 @@
         box.hidden = false;
         box.focus({ preventScroll: true });
         if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+        /* the form just collapsed, so bring the thank-you message back into view */
+        if (window.__emozuLenis) { window.__emozuLenis.resize(); window.__emozuLenis.scrollTo(box, { offset: -160, immediate: true }); }
+        else box.scrollIntoView({ block: 'center' });
       }).catch(function (err) {
         say(err && err.message === 'size' ? d.errSize : d.errSend, 'err');
         btn.disabled = false;
