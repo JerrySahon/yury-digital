@@ -609,9 +609,9 @@ var C={
    {n:"Project Radar",st:"live",tag:"vibe-coded on myself",
     p:"A product-owner agent that manages me: ranks projects by impact and cost, runs scheduled tasks, swaps my phone wallpaper to match the focus, and shows me information in a form built around how my attention works.",
     e:["10 active projects","runs every day"]},
-   {n:"Emozu",top:3,why:"inspired by a personal story",st:"raise",tag:"warns a parent minutes before a child's meltdown",
-    p:"A soft band for children, autistic kids first, that warns a parent minutes before a meltdown: early enough to act. Pre-seed, raising now. Roadmap: a paper in nine months.",
-    e:["3–10 min warning window","the window published studies already predict","nothing a family can buy today","pre-seed · raising now"],gate:"deep into this case only through the form and the quiz"},
+   {n:"Emozu",top:3,why:"inspired by a personal story",st:"raise",tag:"researching early warning for parents",
+    p:"A research project exploring whether a soft band can warn parents before a child’s meltdown at home. Autistic children first. Pre-seed, raising now.",
+    e:["research stage","published studies inform the approach","not a medical device or for sale","pre-seed · raising now"],gate:"deep into this case only through the form and the quiz"},
    {n:"Nevod",st:"live",tag:"used every single day",
     p:"It parses my screenshot feed and turns findings into rules I then work by. A working product I use every day.",
     e:["a daily pipeline in the cloud"]},
@@ -864,13 +864,13 @@ function TL(){
   return '<line x1="'+x+'" y1="96" x2="'+x+'" y2="100" stroke="#525C62" fill="none"/>'+
    '<text x="'+x+'" y="112" font-size="10" fill="#7E8A91" font-family="JetBrains Mono,monospace" text-anchor="'+(m===-10?"start":m===0?"end":"middle")+'">'+
    (m===0?"0 min":"\u2212"+(-m)+" min")+'</text>';}).join("");
- return '<figure class="tl"><svg viewBox="0 0 360 120" role="img" aria-label="Emozu warns 3 to 10 minutes before a meltdown; consumer wearables report at zero seconds, after it starts">'+
-  '<text x="20" y="24" font-size="11" fill="#E2E04A" font-family="JetBrains Mono,monospace">Emozu \u00b7 warning 3\u201310 min ahead</text>'+
+ return '<figure class="tl"><svg viewBox="0 0 360 120" role="img" aria-label="Published studies investigate signals minutes before an episode; Emozu has not yet validated an at-home warning">'+
+  '<text x="20" y="24" font-size="11" fill="#E2E04A" font-family="JetBrains Mono,monospace">Published studies \u00b7 3\u201310 min ahead</text>'+
   '<rect x="20" y="34" width="224" height="16" rx="3" fill="#E2E04A"/>'+
   '<line x1="340" y1="20" x2="340" y2="96" stroke="#EDEFF0" stroke-dasharray="3 3" fill="none"/>'+
   '<text x="340" y="12" font-size="10" fill="#EDEFF0" font-family="JetBrains Mono,monospace" text-anchor="end">meltdown</text>'+
   '<circle cx="340" cy="78" r="4" fill="#7E8A91"/>'+
-  '<text x="330" y="82" font-size="10" fill="#7E8A91" font-family="JetBrains Mono,monospace" text-anchor="end">wearables \u00b7 0 s, after it starts</text>'+
+  '<text x="330" y="82" font-size="10" fill="#7E8A91" font-family="JetBrains Mono,monospace" text-anchor="end">episode onset</text>'+
   '<line x1="20" y1="96" x2="340" y2="96" stroke="#222A2E" fill="none"/>'+tk+'</svg></figure>';
 }
 var TOP={
@@ -898,22 +898,19 @@ var TOP={
  },
  emozu:function(it,i){
   return '<div class="slide1"><div class="s1top"><span class="s1wm">EMOZU</span><span class="raise">Raising now \u00b7 pre-seed</span></div>'+
-   '<p class="s1line">A soft band with an animal friend that warns a parent minutes before a child\u2019s meltdown.</p>'+
-   tfs([["3\u201310 min","of warning in published studies"],
-        ["0 s","from consumer wearables: they report after it starts"],
+   '<p class="s1line">A research project exploring whether a soft band can warn parents before a child\u2019s meltdown at home.</p>'+
+   tfs([["3\u201310 min","prediction windows in separate published studies"],
+        ["Research","not a medical device or for sale"],
         ["1 in 31","US 8-year-olds is autistic \u00b7 CDC 2025"]])+'</div>'+
-   sec("The warning window, to scale",TL())+
+   sec("The evidence",'<p>Separate studies investigate prediction before challenging behaviour. Emozu has not yet validated an at-home warning.</p><p><a href="https://emozu.kids/research/" target="_blank" rel="noopener">Read the research \u2197</a></p>')+
    sec("What the research says",tfs([["0.80","AUROC, 3 min ahead \u00b7 JAMA Netw Open 2023, n=70"],
         ["0.78","AUROC, 10 min ahead · classroom study, 2026 preprint, n=9"],
         ["0.84","personal model vs 0.71 general, 1 min ahead · Autism Research 2019, n=20"],
         ["0.71","AUROC from an accelerometer alone, detection only · Physiological Measurement 2025, n=11"]]))+
-   sec("Why now",fig("img/emozu-whynow.webp","From the deck: why now"))+
    sec("The plan",'<dl class="kv">'+
-    [["Product","8 animal friends, a Zoo base, 5-day battery, no screen"],
-     ["Roadmap","Sense \u2192 Speak \u2192 Connect"],
-     ["Model","starter set + new friends + Emozu Care subscription"],
-     ["Year 1","IRB-clean study with 20\u201340 families"],
-     ["Markets","US, UK, Nordics \u00b7 ages 3\u201310"]].map(function(x){return "<dt>"+esc(x[0])+"</dt><dd>"+esc(x[1])+"</dd>";}).join("")+'</dl>')+
+    [["Research","Study whether early warning is possible at home"],
+     ["Next","Develop prototypes and a study with clinical psychiatrists"],
+     ["Stage","Pre-seed; research, not a product for sale"]].map(function(x){return "<dt>"+esc(x[0])+"</dt><dd>"+esc(x[1])+"</dd>";}).join("")+'</dl>')+
    '<div class="tcta"><button class="btn go" data-open="lead">Request the deck</button>'+'<a class="btn" href="https://emozu.kids/">The research behind it \u2192</a>'+pageBtn(i)+'</div>';
  }
 };
@@ -928,7 +925,7 @@ var DRV=[
   s:"13 Under Armour stores in 4 months; Disney, EA and Epic Games campaigns with 10M+ reach; Hyundai Sonata launch in the UAE."},
  {slug:"pearch",t:"Data science, worldwide",big:"150+",u:"B2B clients in 15 countries",
   s:"Pearch.AI: a people-search engine with a published paper, $1M+ raised."},
- {slug:"emozu",t:"Hardware health tech for kids",big:"3\u201310 min",u:"of warning before a child\u2019s meltdown",
+ {slug:"emozu",t:"Hardware health tech for kids",big:"Research",u:"exploring early warning at home",
   s:"Emozu: built on published research, raising pre-seed now."},
  {slug:"padel",t:"Vibe-coding \u00d7 real estate",big:"200",u:"guests at the club\u2019s biggest events",
   s:"Padel Club OS grows a venue\u2019s business and every guest touchpoint. Partners: Red Bull and a top Armenian bank."},
@@ -1064,8 +1061,8 @@ var PROD=[
   p:"The hackathon project on satellite data. My way into space tech.",
   w:"public page with the build",
   a:[["Open GroundTruth","https://jerrysahon.github.io/groundtruth/"]]},
- {n:"Emozu pitch deck",s:"ask",st:"on request",img:"img/emozu-whynow.webp",
-  p:"Hardware health tech for children: a device that warns about a meltdown early. We are raising now; the deck goes out after a short form.",
+ {n:"Emozu pitch deck",s:"ask",st:"on request",img:"img/ico/emozu.webp",
+  p:"A research project exploring early warning for parents at home. Pre-seed; the deck goes out after a short form.",
   w:"pre-seed \u00b7 raising",
   a:[["Request the deck","#lead"]]}
 ];
@@ -1112,12 +1109,11 @@ function leadPanel(){
      return '<option>'+o+"</option>";}).join("")+"</select></div>"+
   '<div class="fld"><label>how to reach you</label><input name="how" required placeholder="telegram, email or linkedin"></div>'+
   '<div class="fld"><label>one line: what you need</label><textarea name="txt" placeholder="optional"></textarea></div>'+
-  '<div class="pfoot"><button class="btn go" type="submit">Send</button></div>'+
+  '<div class="pfoot"><button class="btn go" type="submit">Prepare message</button></div>'+
   '<div class="ok" id="lok"></div>'+
   '<div class="why"><a href="#cal" data-x>or book a 30-min call</a></div>'+
   '<div class="priv">This site has no backend. Your request is kept in your own '+
-  'browser, copied to the clipboard and opens Telegram, and you send it yourself, '+
-  'in one tap. It goes nowhere else.</div></form>');
+  'browser. Review the message, then send it yourself in Telegram. It goes nowhere else.</div></form>');
  $("#lf").addEventListener("submit",function(e){
   e.preventDefault();
   var d=new FormData(e.target), o={t:new Date().toISOString()};
@@ -1128,11 +1124,20 @@ function leadPanel(){
          "\n· reach: "+o.how+(o.txt?"\n· needs: "+o.txt:"");
   if(LEAD_URL){ try{fetch(LEAD_URL,{method:"POST",
     headers:{"Content-Type":"application/json"},body:JSON.stringify(o)});}catch(x){} }
-  if(navigator.clipboard) navigator.clipboard.writeText(tx)["catch"](function(){});
   unlock();
-  var k=$("#lok"); k.textContent="Copied. Opening Telegram: paste it and hit send.";
+  var k=$("#lok");
+  k.innerHTML='<p>Copy the message below, then paste and send it in Telegram.</p>'+
+   '<textarea id="lead-message" readonly aria-label="Prepared message" rows="6"></textarea>'+
+   '<p><button class="btn" type="button" id="lead-copy">Copy message</button> '+
+   '<a class="btn go" href="https://t.me/jerry_sahon" target="_blank" rel="noopener">Open Telegram \u2197</a></p>'+
+   '<small id="lead-copy-status" aria-live="polite"></small>';
+  $("#lead-message").value=tx;
+  $("#lead-copy").addEventListener("click",function(){
+   var status=$("#lead-copy-status"), field=$("#lead-message");
+   if(!navigator.clipboard){ field.focus(); field.select(); status.textContent="Select and copy the message above."; return; }
+   navigator.clipboard.writeText(tx).then(function(){status.textContent="Copied. Paste it in Telegram.";},function(){field.focus();field.select();status.textContent="Select and copy the message above.";});
+  });
   k.classList.add("on");
-  setTimeout(function(){ window.open("https://t.me/jerry_sahon","_blank","noopener"); },450);
   gateRefresh();
  });
 }
