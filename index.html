@@ -441,6 +441,10 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 .calok p{flex-basis:100%;font-size:14px}
 .calok small{flex-basis:100%;font-family:var(--fm);font-size:10.5px;color:var(--dim)}
 
+/* Career path: a horizontal sequence, with the full cases one click away. */
+.path{margin-top:46px}.path-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:16px}.path-head h3{font-size:20px;letter-spacing:-.02em}.path-head p{font:11px var(--fm);color:var(--dim)}
+.path-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 0 16px;overscroll-behavior-inline:contain}.path-track{scrollbar-width:thin;scrollbar-color:var(--mu) var(--s1)}.path-track::-webkit-scrollbar{height:6px}.path-track::-webkit-scrollbar-track{background:var(--s1);border-radius:5px}.path-track::-webkit-scrollbar-thumb{background:var(--mu);border-radius:5px}.path-step{flex:0 0 250px;scroll-snap-align:start;border:1px solid var(--ln);border-radius:12px;padding:19px;text-align:left;background:var(--s1);color:var(--tx);cursor:pointer}.path-step:hover,.path-step:focus-visible{border-color:var(--go)}.path-step small{display:block;font:10px var(--fm);color:var(--go);margin-bottom:15px}.path-step strong{display:block;font-size:16px;line-height:1.3}.path-step span{display:block;color:var(--mu);font-size:13px;line-height:1.5;margin-top:8px}.path-step em{display:block;color:var(--dim);font:11px var(--fm);font-style:normal;margin-top:17px}
+@media(max-width:600px){.path-step{flex-basis:78%}.path-head{display:block}.path-head p{margin-top:8px}}
 </style>
 </head><body>
 
@@ -475,6 +479,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
 <section id="drivers"><div class="wrap">
   <div class="shead"><h2>Experience</h2><p>Six things that drive the rest: where the money, the brands and the science come from.</p></div>
   <div class="drv" id="drv"></div>
+  <div class="path"><div class="path-head"><h3>My path</h3><p>From construction sites to AI products · scroll to explore →</p></div>
+    <div class="path-track" role="region" aria-label="Career path, scroll horizontally" tabindex="0" id="career-path"></div>
+  </div>
 </div></section>
 
 <section id="work"><div class="wrap">
@@ -944,6 +951,20 @@ function drivers(){
  }).join("");
 }
 
+/* Career sequence uses the projects already on the site, not guessed dates. */
+function careerPath(){
+ var steps=[
+  ["01 · Started on site","Construction & engineering","Installer to project lead in HVAC and industrial construction.","gresco"],
+  ["02 · Retail","Under Armour","Retail installations and store launches across the country.","ua"],
+  ["03 · Digital & creative","Agencies and production","Campaigns, brands and creative projects across digital and retail.","wnm"],
+  ["04 · Back to building","Gresco","Returned to construction as a partner and project lead.","gresco"],
+  ["05 · A new venture","B4 Networking","Built a networking product that pivoted into people search.","b4"],
+  ["06 · People and AI","Pearch.AI","Co-founded an AI people-search company and helped take it to market.","pearch"],
+  ["07 · Building with AI","Personal products","Building tools around real problems, from project focus to a padel club.","radar"]
+ ];
+ $("#career-path").innerHTML=steps.map(function(x){return '<button class="path-step" data-case="'+SLUG.indexOf(x[3])+'"><small>'+esc(x[0])+'</small><strong>'+esc(x[1])+'</strong><span>'+esc(x[2])+'</span><em>Open the case →</em></button>';}).join("");
+}
+
 /* ─── 3.7 · КАЛЕНДАРЬ ───────────────────────────────────────────────
    Бэкенда записи нет и притворяться им не буду: слоты считаются из его
    рабочих часов по Еревану (UTC+4, без перевода часов), показываются во
@@ -1172,7 +1193,7 @@ function boot(){
  if(C.photo){$("#me").innerHTML='<img src="'+C.photo+'" alt="'+esc(C.name)+'">';}
  $("#ccount").textContent=C.n+" projects \u00b7 "+C.gcount+" industries";
  sky($("#sky"));
- drivers(); work();
+ drivers(); work(); careerPath();
  bench(); prods(); cal();
  /* события */
  document.addEventListener("click",function(e){
