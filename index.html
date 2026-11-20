@@ -242,6 +242,7 @@ section{padding:56px 0;border-top:1px solid var(--ln)}
 .ok{margin-top:13px;font-family:var(--fm);font-size:11.5px;color:var(--ok);
   display:none}
 .ok.on{display:block}
+#lead-message{display:block;width:100%;margin:10px 0;padding:11px 13px;resize:vertical;background:var(--bg);border:1px solid var(--ln);border-radius:10px;color:var(--tx);font:inherit;line-height:1.5}
 .xclose{position:absolute;top:14px;right:16px;font-family:var(--fm);
   font-size:12px;color:var(--mu)}
 .pan{position:relative}
@@ -464,7 +465,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
         <button class="btn go" data-open="lead">For Investors &amp; Partnerships</button>
         <a class="btn" href="#work">See the track record</a>
         <a class="btn" href="https://www.linkedin.com/in/yu-ry" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a class="btn" href="#cal">Book a call</a>
+        <a class="btn" href="#cal">Request a call</a>
       </div>
     </div>
   </div>
@@ -513,7 +514,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;
     <a class="ct" href="https://pearch.ai" target="_blank" rel="noopener">
       <b>Pearch.AI</b><span>the product I co-founded</span></a>
   </div>
-  <div class="cal" id="cal"><div class="calh"><h3>Book a 30-minute call</h3><span id="caltz"></span></div><div class="days" id="days"></div><div class="slots" id="slots"></div><div class="calok" id="calok"></div></div>
+  <div class="cal" id="cal"><div class="calh"><h3>Request a 30-minute call</h3><span id="caltz"></span></div><div class="days" id="days"></div><div class="slots" id="slots"></div><div class="calok" id="calok"></div></div>
 </div></section>
 
 <footer><div class="wrap">
@@ -948,14 +949,27 @@ function drivers(){
    рабочих часов по Еревану (UTC+4, без перевода часов), показываются во
    времени гостя, а заявка уходит ему в телеграм + в календарь гостя. */
 var CAL={tz:4,hours:[11,14,15,16,17],days:7,len:30};
-function slotDays(){var now=Date.now(),out=[];for(var k=0;k<20&&out.length<CAL.days;k++){var w=new Date(now+k*864e5+CAL.tz*36e5),y=w.getUTCFullYear(),m=w.getUTCMonth(),dd=w.getUTCDate(),wd=w.getUTCDay();if(wd===0||wd===6)continue;var sl=CAL.hours.map(function(h){return Date.UTC(y,m,dd,h-CAL.tz,0);}).filter(function(t){return t-now>2*36e5;});if(sl.length)out.push({t:Date.UTC(y,m,dd,12-CAL.tz),slots:sl});}return out;}
+function slotDays(){
+ var now=Date.now(), groups=new Map();
+ for(var k=0;k<20;k++){
+  var w=new Date(now+k*864e5+CAL.tz*36e5),y=w.getUTCFullYear(),m=w.getUTCMonth(),dd=w.getUTCDate(),wd=w.getUTCDay();
+  if(wd===0||wd===6)continue;
+  CAL.hours.forEach(function(h){var t=Date.UTC(y,m,dd,h-CAL.tz,0),d=new Date(t);
+   if(t-now<=2*36e5)return;
+   var key=d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate();
+   if(!groups.has(key))groups.set(key,{t:t,slots:[]});
+   groups.get(key).slots.push(t);
+  });
+ }
+ return Array.from(groups.values()).slice(0,CAL.days);
+}
 function f8(x){return new Date(x).toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");}
 function lt(t){return new Date(t).toLocaleString("en-GB",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});}
-function yt(t){return new Date(t).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Yerevan"});}
+function yt(t){return new Date(t).toLocaleString("en-GB",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit",timeZone:"Asia/Yerevan"});}
 var CD=[],CDI=0;
 function cal(){
  var z="";try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}
- $("#caltz").textContent="times shown in your zone"+(z?" \u00b7 "+z:"");
+ $("#caltz").textContent="suggested times, confirm in Telegram \u00b7 your zone"+(z?" \u00b7 "+z:"");
  CD=slotDays(); calDays();
  $("#cal").addEventListener("click",function(e){
   var d=e.target.closest("[data-day]"); if(d){CDI=+d.dataset.day;calDays();return;}
@@ -966,7 +980,7 @@ function cal(){
 function calDays(){
  $("#days").innerHTML=CD.map(function(d,k){
   return '<button class="day" data-day="'+k+'" aria-pressed="'+(k===CDI)+'">'+
-   esc(new Date(d.t).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short",timeZone:"Asia/Yerevan"}))+'</button>';}).join("");
+   esc(new Date(d.t).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}))+'</button>';}).join("");
  var d=CD[CDI];
  $("#slots").innerHTML=d?d.slots.map(function(t){
   return '<button class="slot" data-slot="'+t+'" aria-pressed="false">'+
@@ -1111,7 +1125,7 @@ function leadPanel(){
   '<div class="fld"><label>one line: what you need</label><textarea name="txt" placeholder="optional"></textarea></div>'+
   '<div class="pfoot"><button class="btn go" type="submit">Prepare message</button></div>'+
   '<div class="ok" id="lok"></div>'+
-  '<div class="why"><a href="#cal" data-x>or book a 30-min call</a></div>'+
+  '<div class="why"><a href="#cal" data-x>or request a 30-min call</a></div>'+
   '<div class="priv">This site has no backend. Your request is kept in your own '+
   'browser. Review the message, then send it yourself in Telegram. It goes nowhere else.</div></form>');
  $("#lf").addEventListener("submit",function(e){
